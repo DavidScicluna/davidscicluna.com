@@ -10,7 +10,27 @@
 		<link rel="apple-touch-icon" href="/logo192.png" />
 		<link rel="manifest" href="/manifest.json" />
 
-		<title>{TITLE}</title>
+		<title>David Scicluna</title>
+
+		<script>
+			const favicon = document.getElementById('favicon');
+			const logo192 = document.getElementById('logo192');
+			const manifest = document.getElementById('manifest');
+
+			const checkColorMode = () => {
+				const defaultColorMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+				const colorMode = localStorage.getItem('user_theme_colorMode') || defaultColorMode;
+
+				favicon.href = `/${colorMode}/favicon.ico`;
+				logo192.href = `/${colorMode}/logo192.png`;
+				manifest.href = `/${colorMode}/manifest.json`;
+			};
+
+			window.addEventListener('storage', () => checkColorMode());
+
+			checkColorMode();
+		</script>
 	</head>
 	<body>
 		<div id="root"></div>
