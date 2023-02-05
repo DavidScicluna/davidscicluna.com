@@ -7,5 +7,5 @@ export default defineConfig({
 	base: '/',
 	plugins: [react(), viteTsconfigPaths(), svgrPlugin()],
 	build: { outDir: 'build' },
-	server: { open: false, port: 3000 }
+	server: { open: false, port: 3000, watch: { usePolling: true } }
 });
