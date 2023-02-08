@@ -1,21 +1,20 @@
-import { Color } from '@davidscicluna/component-library';
+import { useColorMode } from '@chakra-ui/react';
 
-import { ColorMode, useColorMode } from '@chakra-ui/react';
+import { AppColor, AppColorMode } from '../../store/slices/App/types';
+
+import { useSelector } from '.';
 
 type UseUserThemeReturn = {
-	color: Exclude<Color, 'transparent' | 'black' | 'white' | 'gray'>;
-	colorMode: ColorMode;
+	color: AppColor;
+	colorMode: Exclude<AppColorMode, 'system'>;
 };
-
-const color = 'blue';
 
 const useUserTheme = (): UseUserThemeReturn => {
 	const { colorMode } = useColorMode();
 
-	return {
-		color: color,
-		colorMode
-	};
+	const color = useSelector((state) => state.app.ui.color);
+
+	return { color, colorMode };
 };
 
 export default useUserTheme;
