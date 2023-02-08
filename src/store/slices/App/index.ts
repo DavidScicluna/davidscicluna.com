@@ -1,10 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { StateProps, ColorMode } from './types';
+import { color as defaultColor, colorMode as defaultColorMode } from '../../../common/data/defaultPropValues';
+
+import { StateProps, AppColorMode } from './types';
 
 const initialState: StateProps = {
 	ui: {
-		colorMode: 'system'
+		color: defaultColor,
+		colorMode: defaultColorMode
 	}
 };
 
@@ -12,7 +15,7 @@ const appSlice = createSlice({
 	name: 'app',
 	initialState: { ...initialState },
 	reducers: {
-		setColorMode: (state: StateProps, action: PayloadAction<ColorMode>) => {
+		setColorMode: (state: StateProps, action: PayloadAction<AppColorMode>) => {
 			state.ui.colorMode = action.payload;
 		}
 	}
