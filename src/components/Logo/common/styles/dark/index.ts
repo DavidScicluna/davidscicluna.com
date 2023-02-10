@@ -2,8 +2,7 @@ import { Style, utils } from '@davidscicluna/component-library';
 
 import { lighten } from 'color2k';
 
-import { color as defaultColor } from '../../../../../common/data/defaultPropValues';
-import { size as defaultSize } from '../../data/defaultPropValues';
+import { color as defaultColor, size as defaultSize } from '../../data/defaultPropValues';
 import { getAmount, getSizeConfig } from '../../utils';
 
 import { LogoDarkStylingProps } from './types';
@@ -22,7 +21,7 @@ export default ({ theme, color = defaultColor, size = defaultSize }: LogoDarkSty
 	const offset = config.offset;
 
 	return {
-		'color': theme.colors.gray[shade],
+		'color': theme.colors[color][shade],
 		'borderColor': theme.colors.transparent,
 		'backgroundColor': theme.colors.transparent,
 		'background': theme.colors.transparent,

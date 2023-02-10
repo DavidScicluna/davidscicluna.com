@@ -1,10 +1,6 @@
 import { Style, utils } from '@davidscicluna/component-library';
 
-import {
-	isClickable as defaultIsClickable,
-	isSquare as defaultIsSquare,
-	size as defaultSize
-} from '../../data/defaultPropValues';
+import { isClickable as defaultIsClickable, size as defaultSize } from '../../data/defaultPropValues';
 import { getSizeConfig } from '../../utils';
 
 import { LogoStyleProps } from './types';
@@ -13,15 +9,9 @@ const { checkIsTouchDevice } = utils;
 
 const isTouchDevice: boolean = checkIsTouchDevice();
 
-export default ({
-	theme,
-	isClickable = defaultIsClickable,
-	isSquare = defaultIsSquare,
-	size = defaultSize
-}: LogoStyleProps): Style => {
-	const config = getSizeConfig({ isSquare, size });
-	const width = config.width;
-	const height = config.height;
+export default ({ theme, isClickable = defaultIsClickable, size = defaultSize }: LogoStyleProps): Style => {
+	const config = getSizeConfig({ size });
+
 	const fontSize = config.fontSize;
 	const padding = config.padding;
 
@@ -45,9 +35,8 @@ export default ({
 
 		'pointerEvents': isClickable ? 'auto' : 'none',
 
-		'width': `${width}px`,
-		'height': `${height}px`,
-
+		'width': 'auto',
+		'height': 'auto',
 		'minWidth': 'auto',
 		'minHeight': 'auto',
 		'maxWidth': 'none',
@@ -62,7 +51,8 @@ export default ({
 
 		'outline': !isTouchDevice ? '0px transparent' : 'none !important',
 
-		'fontSize': `${fontSize}%`,
+		'fontFamily': 'Raleway, sans-serif',
+		'fontSize': theme.fontSizes[fontSize],
 		'fontWeight': theme.fontWeights.bold,
 		'textTransform': 'lowercase',
 		'whiteSpace': 'nowrap',

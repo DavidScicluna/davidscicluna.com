@@ -6,9 +6,9 @@ import { Center } from '@chakra-ui/react';
 
 import merge from 'lodash/merge';
 
-import { useUserTheme } from '../../common/hooks';
-
 import {
+	color as defaultColor,
+	colorMode as defaultColorMode,
 	isClickable as defaultIsClickable,
 	isSquare as defaultIsSquare,
 	size as defaultSize
@@ -19,13 +19,18 @@ import { LogoProps } from './types';
 const Logo: FC<LogoProps> = (props) => {
 	const theme = useTheme();
 
-	const { color, colorMode } = useUserTheme();
+	const {
+		color = defaultColor,
+		colorMode = defaultColorMode,
+		isClickable = defaultIsClickable,
+		isSquare = defaultIsSquare,
+		size = defaultSize,
+		sx
+	} = props;
 
-	const { isClickable = defaultIsClickable, isSquare = defaultIsSquare, size = defaultSize, sx } = props;
+	const style = useStyles({ theme, color, colorMode, isClickable, size });
 
-	const style = useStyles({ theme, color, colorMode, isClickable, isSquare, size });
-
-	return <Center sx={merge(style.logo, sx)}>davidscicluna</Center>;
+	return <Center sx={merge(style.logo, sx)}>{isSquare ? 'ds' : 'davidscicluna'}</Center>;
 };
 
 export default Logo;

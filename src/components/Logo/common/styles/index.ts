@@ -1,9 +1,9 @@
 import { memoize, merge } from 'lodash';
 
-import { color as defaultColor, colorMode as defaultColorMode } from '../../../../common/data/defaultPropValues';
 import {
+	color as defaultColor,
+	colorMode as defaultColorMode,
 	isClickable as defaultIsClickable,
-	isSquare as defaultIsSquare,
 	size as defaultSize
 } from '../data/defaultPropValues';
 
@@ -18,13 +18,13 @@ export default memoize((props: LogoStyleProps): LogoStyleReturn => {
 		color = defaultColor,
 		colorMode = defaultColorMode,
 		isClickable = defaultIsClickable,
-		isSquare = defaultIsSquare,
+
 		size = defaultSize
 	} = props;
 
 	const scheme = colorMode === 'light' ? light : dark;
 
 	return {
-		logo: merge(logo({ theme, isClickable, isSquare, size }), scheme({ theme, color }))
+		logo: merge(logo({ theme, isClickable, size }), scheme({ theme, color }))
 	};
 });

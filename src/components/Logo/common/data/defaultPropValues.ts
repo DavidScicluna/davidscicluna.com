@@ -1,6 +1,11 @@
-import { LogoSize } from '../../types';
+import { ColorMode } from '@chakra-ui/react';
 
-export const isClickable = true;
-export const isSquare = true;
+import { LogoColor, LogoSize } from '../../types';
+
+export const color: LogoColor = 'gray';
+export const colorMode: ColorMode = 'light';
+
+export const isClickable = false;
+export const isSquare = false;
 
 export const size: LogoSize = 'md';
