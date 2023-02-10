@@ -1,0 +1,26 @@
+{
+	"short_name": "David Scicluna",
+	"name": "David Scicluna Portfolio",
+	"description": "Hello! I'm David Scicluna, a Front-end Developer based in the sunny Maltese islands. Currently working as a freelancer. I am very passionate about technology; I love developing ideas into applications and am committed to creating products and services with exceptional user experience and with modern user interface techniques. I try my best to keep on learning and expanding my knowledge in this field, as I believe that the more I learn, the better my applications will develop into.",
+	"icons": [
+		{
+			"src": "favicon.ico",
+			"sizes": "64x64 32x32 24x24 16x16",
+			"type": "image/x-icon"
+		},
+		{
+			"src": "logo192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "logo512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#F7FAFC",
+	"background_color": "#171923"
+}
