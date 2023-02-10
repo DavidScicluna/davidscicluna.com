@@ -1,10 +1,9 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import { useColorMode } from '@chakra-ui/react';
 
 import { debounce } from 'lodash';
 import { useMediaMatch } from 'rooks';
-import { useUpdateEffect } from 'usehooks-ts';
 
 import { updateFavicon } from '../utils';
 
@@ -37,7 +36,7 @@ const useCheckColorMode = (): void => {
 		[colorMode, isDarkMode]
 	);
 
-	useUpdateEffect(() => handleSetColorMode(), [isDarkMode, colorModeHook]);
+	useEffect(() => handleSetColorMode(), [colorMode, colorModeHook, isDarkMode]);
 };
 
 export default useCheckColorMode;
