@@ -1,13 +1,12 @@
 import { FC } from 'react';
 
-import { useTheme, Tooltip, utils } from '@davidscicluna/component-library';
+import { useTheme, Tooltip } from '@davidscicluna/component-library';
 
-import { useBoolean, Center } from '@chakra-ui/react';
+import { useBoolean, AspectRatio } from '@chakra-ui/react';
 
-import { React as ReactIcon } from '../../../../common/assets/icons';
+import icons from '../../../../common/assets/icons';
 import { useUserTheme } from '../../../../common/hooks';
-
-const { getColor } = utils;
+import { Image } from '../../../../components';
 
 const HomeReactIcon: FC = () => {
 	const theme = useTheme();
@@ -24,19 +23,22 @@ const HomeReactIcon: FC = () => {
 			label='React'
 			gutter={12}
 		>
-			<Center
+			<AspectRatio
+				width={theme.fontSizes['5xl']}
+				height={theme.fontSizes['5xl']}
 				onMouseEnter={() => setIsHovering.on()}
 				onMouseLeave={() => setIsHovering.off()}
-				fill={getColor({ theme, colorMode, type: 'text.secondary' })}
+				ratio={1 / 1}
 			>
-				<ReactIcon
-					style={{
-						width: theme.fontSizes['5xl'],
-						height: theme.fontSizes['5xl'],
-						fontSize: theme.fontSizes['5xl']
-					}}
+				<Image
+					alt='React'
+					width='inherit'
+					height='inherit'
+					fit='contain'
+					borderRadius='none'
+					src={{ full: icons[colorMode].react }}
 				/>
-			</Center>
+			</AspectRatio>
 		</Tooltip>
 	);
 };
