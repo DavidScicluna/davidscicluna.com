@@ -5,24 +5,27 @@ import { createRoot } from 'react-dom/client';
 import Providers from './containers/Providers';
 
 // Importing Main Fonts (Raleway)
-import '@fontsource/raleway/100.css';
-import '@fontsource/raleway/100-italic.css';
-import '@fontsource/raleway/200.css';
-import '@fontsource/raleway/200-italic.css';
-import '@fontsource/raleway/300.css';
-import '@fontsource/raleway/300-italic.css';
-import '@fontsource/raleway/400.css';
-import '@fontsource/raleway/400-italic.css';
-import '@fontsource/raleway/500.css';
-import '@fontsource/raleway/500-italic.css';
-import '@fontsource/raleway/600.css';
-import '@fontsource/raleway/600-italic.css';
 import '@fontsource/raleway/700.css';
 import '@fontsource/raleway/700-italic.css';
-import '@fontsource/raleway/800.css';
-import '@fontsource/raleway/800-italic.css';
-import '@fontsource/raleway/900.css';
-import '@fontsource/raleway/900-italic.css';
+// Importing Main Fonts (Work Sans)
+import '@fontsource/work-sans/100.css';
+import '@fontsource/work-sans/100-italic.css';
+import '@fontsource/work-sans/200.css';
+import '@fontsource/work-sans/200-italic.css';
+import '@fontsource/work-sans/300.css';
+import '@fontsource/work-sans/300-italic.css';
+import '@fontsource/work-sans/400.css';
+import '@fontsource/work-sans/400-italic.css';
+import '@fontsource/work-sans/500.css';
+import '@fontsource/work-sans/500-italic.css';
+import '@fontsource/work-sans/600.css';
+import '@fontsource/work-sans/600-italic.css';
+import '@fontsource/work-sans/700.css';
+import '@fontsource/work-sans/700-italic.css';
+import '@fontsource/work-sans/800.css';
+import '@fontsource/work-sans/800-italic.css';
+import '@fontsource/work-sans/900.css';
+import '@fontsource/work-sans/900-italic.css';
 // Importing Main Fonts (Roboto Slab)
 import '@fontsource/roboto-slab/100.css';
 import '@fontsource/roboto-slab/200.css';
