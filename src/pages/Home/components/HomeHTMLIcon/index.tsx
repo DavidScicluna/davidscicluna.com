@@ -1,13 +1,12 @@
 import { FC } from 'react';
 
-import { useTheme, Tooltip, utils } from '@davidscicluna/component-library';
+import { useTheme, Tooltip } from '@davidscicluna/component-library';
 
-import { useBoolean, Center } from '@chakra-ui/react';
+import { useBoolean, AspectRatio } from '@chakra-ui/react';
 
-import { HTML as HTMLIcon } from '../../../../common/assets/icons';
+import icons from '../../../../common/assets/icons';
 import { useUserTheme } from '../../../../common/hooks';
-
-const { getColor } = utils;
+import { Image } from '../../../../components';
 
 const HomeHTMLIcon: FC = () => {
 	const theme = useTheme();
@@ -24,19 +23,22 @@ const HomeHTMLIcon: FC = () => {
 			label='HTML'
 			gutter={12}
 		>
-			<Center
+			<AspectRatio
+				width={theme.fontSizes['5xl']}
+				height={theme.fontSizes['5xl']}
 				onMouseEnter={() => setIsHovering.on()}
 				onMouseLeave={() => setIsHovering.off()}
-				fill={getColor({ theme, colorMode, type: 'text.secondary' })}
+				ratio={1 / 1}
 			>
-				<HTMLIcon
-					style={{
-						width: theme.fontSizes['5xl'],
-						height: theme.fontSizes['5xl'],
-						fontSize: theme.fontSizes['5xl']
-					}}
+				<Image
+					alt='HTML'
+					width='inherit'
+					height='inherit'
+					fit='contain'
+					borderRadius='none'
+					src={{ full: icons[colorMode].html }}
 				/>
-			</Center>
+			</AspectRatio>
 		</Tooltip>
 	);
 };
