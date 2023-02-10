@@ -7,10 +7,7 @@ import { useMediaQuery, useBreakpointValue, Text, VStack, HStack } from '@chakra
 import content from '../../../common/content/home';
 import { useSpacing, useUserTheme } from '../../../common/hooks';
 import { useDummyLayoutContext } from '../../../containers/Layout/DummyLayout/common/hooks';
-import HomeCSSIcon from '../components/HomeCSSIcon';
-import HomeHTMLIcon from '../components/HomeHTMLIcon';
-import HomeJSIcon from '../components/HomeJSIcon';
-import HomeReactIcon from '../components/HomeReactIcon';
+import { HomeCSSIcon, HomeHTMLIcon, HomeJSIcon, HomeReactIcon, HomeTSIcon } from '../components';
 
 const { title, subtitle } = content;
 
@@ -41,7 +38,7 @@ const DummyHome: FC = () => {
 	return (
 		<VStack
 			width='100%'
-			height={`calc(100vh - ${height}px)`}
+			minHeight={`calc(100vh - ${height}px)`}
 			alignItems='flex-start'
 			justifyContent='center'
 			spacing={spacing * 1.5}
@@ -80,6 +77,10 @@ const DummyHome: FC = () => {
 
 				<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
 					<HomeJSIcon />
+				</Skeleton>
+
+				<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
+					<HomeTSIcon />
 				</Skeleton>
 
 				<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>

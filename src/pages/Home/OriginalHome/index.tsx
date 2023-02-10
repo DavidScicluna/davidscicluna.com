@@ -10,10 +10,7 @@ import content from '../../../common/content/home';
 import { useSpacing, useUserTheme } from '../../../common/hooks';
 import { getFontSizeHeight } from '../../../common/utils';
 import { useLayoutContext } from '../../../containers/Layout/OriginalLayout/common/hooks';
-import HomeCSSIcon from '../components/HomeCSSIcon';
-import HomeHTMLIcon from '../components/HomeHTMLIcon';
-import HomeJSIcon from '../components/HomeJSIcon';
-import HomeReactIcon from '../components/HomeReactIcon';
+import { HomeCSSIcon, HomeHTMLIcon, HomeJSIcon, HomeReactIcon, HomeTSIcon } from '../components';
 
 const { title, subtitle } = content;
 
@@ -50,7 +47,7 @@ const Home: FC = () => {
 	return (
 		<VStack
 			width='100%'
-			height={`calc(100vh - ${height}px)`}
+			minHeight={`calc(100vh - ${height}px)`}
 			alignItems='flex-start'
 			justifyContent='center'
 			spacing={spacing * 1.5}
@@ -106,8 +103,8 @@ const Home: FC = () => {
 					in
 					offsetY={theme.fontSizes['2xl']}
 					transition={{
-						enter: { ...config, delay: delay * 1.75 },
-						exit: { ...config, delay: delay * 1.75 }
+						enter: { ...config, delay: delay * 1.6 },
+						exit: { ...config, delay: delay * 1.6 }
 					}}
 				>
 					<HomeHTMLIcon />
@@ -117,8 +114,8 @@ const Home: FC = () => {
 					in
 					offsetY={theme.fontSizes['2xl']}
 					transition={{
-						enter: { ...config, delay: delay * 1.85 },
-						exit: { ...config, delay: delay * 1.85 }
+						enter: { ...config, delay: delay * 1.7 },
+						exit: { ...config, delay: delay * 1.7 }
 					}}
 				>
 					<HomeCSSIcon />
@@ -128,8 +125,8 @@ const Home: FC = () => {
 					in
 					offsetY={theme.fontSizes['2xl']}
 					transition={{
-						enter: { ...config, delay: delay * 1.95 },
-						exit: { ...config, delay: delay * 1.95 }
+						enter: { ...config, delay: delay * 1.8 },
+						exit: { ...config, delay: delay * 1.8 }
 					}}
 				>
 					<HomeJSIcon />
@@ -139,8 +136,19 @@ const Home: FC = () => {
 					in
 					offsetY={theme.fontSizes['2xl']}
 					transition={{
-						enter: { ...config, delay: delay * 2.05 },
-						exit: { ...config, delay: delay * 2.05 }
+						enter: { ...config, delay: delay * 1.9 },
+						exit: { ...config, delay: delay * 1.9 }
+					}}
+				>
+					<HomeTSIcon />
+				</SlideFade>
+
+				<SlideFade
+					in
+					offsetY={theme.fontSizes['2xl']}
+					transition={{
+						enter: { ...config, delay: delay * 2 },
+						exit: { ...config, delay: delay * 2 }
 					}}
 				>
 					<HomeReactIcon />
