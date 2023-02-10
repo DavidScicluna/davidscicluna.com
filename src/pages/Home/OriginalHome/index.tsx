@@ -8,13 +8,12 @@ import { Transition } from 'framer-motion';
 
 import content from '../../../common/content/home';
 import { useSpacing, useUserTheme } from '../../../common/hooks';
-import { getFontSizeHeight } from '../../../common/utils';
 import { useLayoutContext } from '../../../containers/Layout/OriginalLayout/common/hooks';
 import { HomeCSSIcon, HomeHTMLIcon, HomeJSIcon, HomeReactIcon, HomeTSIcon } from '../components';
 
 const { title, subtitle } = content;
 
-const { getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor } = utils;
+const { getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor, getFontSizeHeight } = utils;
 
 const Home: FC = () => {
 	const theme = useTheme();
