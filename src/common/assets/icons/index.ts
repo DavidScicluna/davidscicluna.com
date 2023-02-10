@@ -1,6 +1,4 @@
-import CSS from './CSS';
-import HTML from './HTML';
-import JS from './JS';
-import React from './React';
+import dark from './dark';
+import light from './light';
 
-export { CSS, HTML, JS, React };
+export default { dark, light };
