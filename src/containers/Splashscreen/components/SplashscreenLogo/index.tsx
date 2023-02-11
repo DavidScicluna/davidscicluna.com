@@ -8,9 +8,7 @@ import { Transition } from 'framer-motion';
 
 import { useUserTheme } from '../../../../common/hooks';
 
-const { getTransitionConfig, getTransitionDuration } = utils;
-
-const { getColor } = utils;
+const { getTransitionConfig, getTransitionDuration, getColor } = utils;
 
 const SplashscreenLogo: FC = () => {
 	const theme = useTheme();
@@ -24,6 +22,7 @@ const SplashscreenLogo: FC = () => {
 			<Text
 				align='center'
 				color={getColor({ theme, colorMode, type: 'text.primary' })}
+				fontFamily='Raleway, sans-serif'
 				fontSize={['3xl', '4xl', '5xl', '6xl', '7xl', '8xl']}
 				fontWeight='bold'
 				userSelect='none'
