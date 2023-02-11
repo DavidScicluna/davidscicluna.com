@@ -5,6 +5,7 @@ import { FontSize, useTheme, Button, SlideFade, utils } from '@davidscicluna/com
 import { useMediaQuery, useBreakpointValue, useConst, Text, VStack, HStack } from '@chakra-ui/react';
 
 import { Transition } from 'framer-motion';
+import { useInView } from 'react-cool-inview';
 
 import content from '../../../common/content/home';
 import { useSpacing, useUserTheme } from '../../../common/hooks';
@@ -21,6 +22,8 @@ const Home: FC = () => {
 
 	const [isSm] = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 	const [isMd] = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
+
+	const { observe, inView } = useInView({ threshold: 1, unobserveOnEnter: true });
 
 	const titleFontSize = useBreakpointValue<FontSize>({
 		base: '2xl',
@@ -45,6 +48,7 @@ const Home: FC = () => {
 
 	return (
 		<VStack
+			ref={observe}
 			width='100%'
 			minHeight={`calc(100vh - ${height}px)`}
 			alignItems='flex-start'
@@ -54,7 +58,7 @@ const Home: FC = () => {
 		>
 			<VStack width='100%' alignItems='flex-start' justifyContent='center' spacing={0.5}>
 				<SlideFade
-					in
+					in={inView}
 					offsetY={getFontSizeHeight({ theme, fontSize: titleFontSize, lineHeight: 'shorter' })}
 					transition={{
 						enter: { ...config, delay },
@@ -78,7 +82,7 @@ const Home: FC = () => {
 					</VStack>
 				</SlideFade>
 				<SlideFade
-					in
+					in={inView}
 					offsetY={getFontSizeHeight({ theme, fontSize: subtitleFontSize, lineHeight: 'shorter' })}
 					transition={{
 						enter: { ...config, delay: delay * 1.5 },
@@ -99,7 +103,7 @@ const Home: FC = () => {
 
 			<HStack spacing={2}>
 				<SlideFade
-					in
+					in={inView}
 					offsetY={theme.fontSizes['2xl']}
 					transition={{
 						enter: { ...config, delay: delay * 1.6 },
@@ -110,7 +114,7 @@ const Home: FC = () => {
 				</SlideFade>
 
 				<SlideFade
-					in
+					in={inView}
 					offsetY={theme.fontSizes['2xl']}
 					transition={{
 						enter: { ...config, delay: delay * 1.7 },
@@ -121,7 +125,7 @@ const Home: FC = () => {
 				</SlideFade>
 
 				<SlideFade
-					in
+					in={inView}
 					offsetY={theme.fontSizes['2xl']}
 					transition={{
 						enter: { ...config, delay: delay * 1.8 },
@@ -132,7 +136,7 @@ const Home: FC = () => {
 				</SlideFade>
 
 				<SlideFade
-					in
+					in={inView}
 					offsetY={theme.fontSizes['2xl']}
 					transition={{
 						enter: { ...config, delay: delay * 1.9 },
@@ -143,7 +147,7 @@ const Home: FC = () => {
 				</SlideFade>
 
 				<SlideFade
-					in
+					in={inView}
 					offsetY={theme.fontSizes['2xl']}
 					transition={{
 						enter: { ...config, delay: delay * 2 },
@@ -155,7 +159,7 @@ const Home: FC = () => {
 			</HStack>
 
 			<SlideFade
-				in
+				in={inView}
 				transition={{
 					enter: { ...config, delay: delay * 2.5 },
 					exit: { ...config, delay: delay * 2.5 }
