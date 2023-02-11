@@ -7,7 +7,6 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import store from '../../store';
-import theme from '../../theme';
 import Container from '../Container';
 
 const persistor = persistStore(store);
@@ -16,7 +15,7 @@ const Providers: FC = () => {
 	return (
 		<ReduxProvider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
-				<DSCLProvider theme={theme}>
+				<DSCLProvider>
 					<Container />
 				</DSCLProvider>
 			</PersistGate>
