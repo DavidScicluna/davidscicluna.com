@@ -166,7 +166,7 @@ const Home: FC = () => {
 				}}
 			>
 				<Button color={color} colorMode={colorMode} size={isSm ? 'md' : isMd ? 'lg' : 'xl'}>
-					Say Hello
+					Get in touch
 				</Button>
 			</SlideFade>
 		</VStack>

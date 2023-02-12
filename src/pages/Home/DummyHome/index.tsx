@@ -90,7 +90,7 @@ const DummyHome: FC = () => {
 
 			<Skeleton color={color} colorMode={colorMode} isLoaded={false} variant='rectangle'>
 				<DummyButton color={color} colorMode={colorMode} size={isSm ? 'md' : isMd ? 'lg' : 'xl'}>
-					Say Hello
+					Get in touch
 				</DummyButton>
 			</Skeleton>
 		</VStack>
