@@ -13,7 +13,7 @@ import {
 
 import { ImageProps as CUIImageProps } from '@chakra-ui/react';
 
-export type ImageSrcMode = 'boring' | 'thumbnail' | 'full';
+export type ImageSrcMode = 'thumbnail' | 'full';
 
 type Omitted =
 	// CUI Box Props
