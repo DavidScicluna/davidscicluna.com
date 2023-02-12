@@ -87,9 +87,14 @@ const Project: FC<ProjectProps> = (props) => {
 		<Grid
 			data-active={dataAttr(isHovering || isActive)}
 			width='100%'
-			minHeight='500px'
+			minHeight={isLg ? '500px' : 'auto'}
 			templateColumns={['1fr', '1fr', '1fr', '50% 1fr']}
-			templateRows={['1fr auto', '1fr auto', '1fr auto', '1fr']}
+			templateRows={[
+				'minmax(min-content, max-content) minmax(min-content, max-content)',
+				'minmax(min-content, max-content) minmax(min-content, max-content)',
+				'minmax(min-content, max-content) minmax(min-content, max-content)',
+				'minmax(min-content, max-content)'
+			]}
 			onClick={!isDisabled ? () => navigate(`/projects/${id}`) : undefined}
 			onMouseEnter={() => setIsHovering.on()}
 			onMouseLeave={() => setIsHovering.off()}

@@ -43,9 +43,14 @@ const DummyProject: FC<DummyProjectProps> = (props) => {
 	return (
 		<Grid
 			width='100%'
-			minHeight='500px'
+			minHeight={isLg ? '500px' : 'auto'}
 			templateColumns={['1fr', '1fr', '1fr', '50% 1fr']}
-			templateRows={['1fr auto', '1fr auto', '1fr auto', '1fr']}
+			templateRows={[
+				'minmax(min-content, max-content) minmax(min-content, max-content)',
+				'minmax(min-content, max-content) minmax(min-content, max-content)',
+				'minmax(min-content, max-content) minmax(min-content, max-content)',
+				'minmax(min-content, max-content)'
+			]}
 			background={getColor({ theme, colorMode, type: 'background' })}
 			gap={spacing}
 			px={spacing}
