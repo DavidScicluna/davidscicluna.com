@@ -1,33 +1,40 @@
 import { FC } from 'react';
 
-import { InternalLink, Button } from '@davidscicluna/component-library';
+import { useTheme, InternalLink, Button } from '@davidscicluna/component-library';
 
-import { useMediaQuery } from '@chakra-ui/react';
+import { useMediaQuery, Center } from '@chakra-ui/react';
 
 import Error from '../../../Error';
+import { useLayoutContext } from '../../../Layout/OriginalLayout/common/hooks';
 
 const NoMatch: FC = () => {
-	const [isSm] = useMediaQuery('(max-width: 600px)');
+	const theme = useTheme();
+
+	const [isSm] = useMediaQuery(`(min-width: ${theme.breakpoints.sm})`);
+
+	const { height } = useLayoutContext();
 
 	return (
-		<Error
-			code={404}
-			title='Page not found!'
-			subtitle='Please check the URL in the address bar and try again.'
-			renderActions={(props) => (
-				<>
-					<InternalLink to='/' isFullWidth={isSm}>
-						<Button {...props} isFullWidth>
-							Go back home
-						</Button>
-					</InternalLink>
+		<Center width='100%' height={`calc(100vh - ${height}px)`}>
+			<Error
+				code={404}
+				title='Page not found!'
+				subtitle='Please check the URL in the address bar and try again.'
+				renderActions={(props) => (
+					<>
+						<InternalLink to='/' isFullWidth={isSm}>
+							<Button {...props} isFullWidth variant='outlined'>
+								Go back home
+							</Button>
+						</InternalLink>
 
-					<Button {...props} isFullWidth={isSm} onClick={() => window.location.reload()} variant='outlined'>
-						Try again
-					</Button>
-				</>
-			)}
-		/>
+						<Button {...props} isFullWidth={isSm} onClick={() => window.location.reload()}>
+							Try again
+						</Button>
+					</>
+				)}
+			/>
+		</Center>
 	);
 };
 
