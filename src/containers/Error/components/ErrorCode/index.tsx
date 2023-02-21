@@ -20,7 +20,7 @@ const ErrorCode: FC<ErrorCodeProps> = ({ code }) => {
 			color={getColor({ theme, colorMode, color, type: 'color' })}
 			fontSize='9xl'
 			fontWeight='extrabold'
-			lineHeight='1'
+			lineHeight='0.9'
 		>
 			{code}
 		</Text>
