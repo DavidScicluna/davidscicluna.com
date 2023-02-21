@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { useTheme, Divider } from '@davidscicluna/component-library';
+import { Space, useTheme, Divider } from '@davidscicluna/component-library';
 
 import { Center, Show, HStack, VStack } from '@chakra-ui/react';
 
@@ -9,6 +9,8 @@ import { useSpacing, useUserTheme } from '../../common/hooks';
 import Code from './components/ErrorCode';
 import Description from './components/ErrorDescription';
 import { ErrorProps } from './types';
+
+const padding: Space = 2;
 
 const Error: FC<ErrorProps> = (props) => {
 	const theme = useTheme();
@@ -20,9 +22,9 @@ const Error: FC<ErrorProps> = (props) => {
 
 	return (
 		<Center width='100%' height='100%' minHeight='inherit'>
-			<VStack spacing={spacing} p={2}>
+			<VStack spacing={spacing} p={padding}>
 				<Show breakpoint={`(max-width: ${theme.breakpoints.md})`}>
-					<VStack alignItems='flex-start' divider={<Divider colorMode={colorMode} />} spacing={2}>
+					<VStack alignItems='flex-start' divider={<Divider colorMode={colorMode} />} spacing={padding}>
 						<Code code={code} />
 						<Description title={title} subtitle={subtitle} />
 					</VStack>
@@ -32,7 +34,7 @@ const Error: FC<ErrorProps> = (props) => {
 						alignItems='stretch'
 						justifyContent='stretch'
 						divider={<Divider colorMode={colorMode} orientation='vertical' />}
-						spacing={2}
+						spacing={padding}
 					>
 						<Code code={code} />
 						<Description title={title} subtitle={subtitle} />
@@ -40,7 +42,7 @@ const Error: FC<ErrorProps> = (props) => {
 				</Show>
 
 				{renderActions && (
-					<HStack width='100%' alignItems='flex-start' spacing={2}>
+					<HStack width='100%' alignItems='flex-start' spacing={padding}>
 						{renderActions({ color, colorMode, size: 'md', variant: 'contained' })}
 					</HStack>
 				)}
