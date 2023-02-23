@@ -3,13 +3,10 @@ import { FC } from 'react';
 import { DSCLProvider } from '@davidscicluna/component-library';
 
 import { Provider as ReduxProvider } from 'react-redux';
-import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import store from '../../store';
+import { store, persistor } from '../../store';
 import Container from '../Container';
-
-const persistor = persistStore(store);
 
 const Providers: FC = () => {
 	return (
