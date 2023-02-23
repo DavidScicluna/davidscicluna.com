@@ -5,6 +5,7 @@ import { useTheme, Modal, ModalStack, ModalBody, ScaleFade, utils } from '@david
 import { useConst, Center, Show } from '@chakra-ui/react';
 
 import { Transition } from 'framer-motion';
+import { useWindowSize } from 'rooks';
 
 import { useUserTheme } from '../../common/hooks';
 
@@ -19,8 +20,9 @@ const labelHeight = 18;
 
 const Splashscreen: FC<SplashscreenProps> = ({ isOpen = false, onClose }) => {
 	const theme = useTheme();
-
 	const { colorMode } = useUserTheme();
+
+	const { innerHeight: windowHeight } = useWindowSize();
 
 	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }) * 6);
 	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
@@ -30,7 +32,7 @@ const Splashscreen: FC<SplashscreenProps> = ({ isOpen = false, onClose }) => {
 		<Modal isOpen={isOpen} closeOnEsc={false} closeOnOverlayClick={false} onClose={onClose} size='full' spacing={0}>
 			<ModalStack>
 				<ModalBody background={getColor({ theme, colorMode, type: 'background' })} sx={{ transition: 'none' }}>
-					<Center width='100%' height='100vh'>
+					<Center width='100%' height={windowHeight ? `${windowHeight}px` : '100vh'}>
 						{/* Top Label */}
 						<Center position='absolute' top={0} left='50%' transform='translateX(-50%)' p={2}>
 							<ScaleFade in transition={{ enter: { ...config }, exit: { ...config } }}>

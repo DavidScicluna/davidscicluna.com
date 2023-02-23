@@ -4,6 +4,8 @@ import { useTheme, InternalLink, Button } from '@davidscicluna/component-library
 
 import { useMediaQuery, Center } from '@chakra-ui/react';
 
+import { useWindowSize } from 'rooks';
+
 import Error from '../../../Error';
 import { useLayoutContext } from '../../../Layout/OriginalLayout/common/hooks';
 
@@ -14,8 +16,10 @@ const NoMatch: FC = () => {
 
 	const { height } = useLayoutContext();
 
+	const { innerHeight: windowHeight } = useWindowSize();
+
 	return (
-		<Center width='100%' height={`calc(100vh - ${height}px)`}>
+		<Center width='100%' minHeight={`calc(${windowHeight ? `${windowHeight}px` : '100vh'} - ${height}px)`}>
 			<Error
 				code={404}
 				title='Page not found!'

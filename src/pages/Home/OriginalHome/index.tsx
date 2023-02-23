@@ -6,6 +6,7 @@ import { useMediaQuery, useBreakpointValue, useConst, Text, VStack, HStack } fro
 
 import { Transition } from 'framer-motion';
 import { useInView } from 'react-cool-inview';
+import { useWindowSize } from 'rooks';
 
 import content from '../../../common/content/home';
 import { useSpacing, useUserTheme } from '../../../common/hooks';
@@ -42,6 +43,8 @@ const Home: FC = () => {
 
 	const { height } = useLayoutContext();
 
+	const { innerHeight: windowHeight } = useWindowSize();
+
 	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
 	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }));
 	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration });
@@ -50,7 +53,7 @@ const Home: FC = () => {
 		<VStack
 			ref={observe}
 			width='100%'
-			minHeight={`calc(100vh - ${height}px)`}
+			minHeight={`calc(${windowHeight ? `${windowHeight}px` : '100vh'} - ${height}px)`}
 			alignItems='flex-start'
 			justifyContent='center'
 			spacing={spacing * 1.5}

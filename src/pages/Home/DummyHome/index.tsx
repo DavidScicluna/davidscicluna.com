@@ -4,6 +4,8 @@ import { FontSize, useTheme, DummyButton, Skeleton } from '@davidscicluna/compon
 
 import { useMediaQuery, useBreakpointValue, Text, VStack, HStack } from '@chakra-ui/react';
 
+import { useWindowSize } from 'rooks';
+
 import content from '../../../common/content/home';
 import { useSpacing, useUserTheme } from '../../../common/hooks';
 import { useDummyLayoutContext } from '../../../containers/Layout/DummyLayout/common/hooks';
@@ -35,10 +37,12 @@ const DummyHome: FC = () => {
 
 	const { height } = useDummyLayoutContext();
 
+	const { innerHeight: windowHeight } = useWindowSize();
+
 	return (
 		<VStack
 			width='100%'
-			minHeight={`calc(100vh - ${height}px)`}
+			minHeight={`calc(${windowHeight ? `${windowHeight}px` : '100vh'} - ${height}px)`}
 			alignItems='flex-start'
 			justifyContent='center'
 			spacing={spacing * 1.5}
