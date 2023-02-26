@@ -12,8 +12,9 @@ import { LayoutContext as LayoutContextType, LayoutProps } from '../types';
 
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import InternationalizationModal from './components/InternationalizationModal';
 import Navigation from './components/Navigation';
-import Playground from './components/Playground';
+import PlaygroundModal from './components/PlaygroundModal';
 
 const { convertREMToPixels, convertStringToNumber, getColor } = utils;
 
@@ -84,7 +85,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 				<Footer />
 			</Container>
 
-			<Playground />
+			<InternationalizationModal />
+
+			<PlaygroundModal />
 		</>
 	);
 };
