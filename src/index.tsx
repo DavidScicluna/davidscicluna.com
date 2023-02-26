@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom/client';
 
 import Providers from './containers/Providers';
 
+import './common/scripts/i18n';
+
 // Importing Main Fonts (Raleway)
 import '@fontsource/raleway/700.css';
 import '@fontsource/raleway/700-italic.css';
