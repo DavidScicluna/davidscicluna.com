@@ -8,7 +8,8 @@ export const defaultPlaygroundModal: PlaygroundModal = {
 
 const initialState: ModalsStateProps = {
 	ui: {
-		playgroundModal: { ...defaultPlaygroundModal }
+		playgroundModal: { ...defaultPlaygroundModal },
+		isInternationalizationModalOpen: false
 	}
 };
 
@@ -18,10 +19,13 @@ const modalsSlice = createSlice({
 	reducers: {
 		setPlaygroundModal: (state: ModalsStateProps, action: PayloadAction<PlaygroundModal>) => {
 			state.ui.playgroundModal = action.payload;
+		},
+		toggleInternationalizationModal: (state: ModalsStateProps, action: PayloadAction<boolean>) => {
+			state.ui.isInternationalizationModalOpen = action.payload;
 		}
 	}
 });
 
-export const { setPlaygroundModal } = modalsSlice.actions;
+export const { setPlaygroundModal, toggleInternationalizationModal } = modalsSlice.actions;
 
 export default modalsSlice.reducer;

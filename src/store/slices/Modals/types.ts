@@ -8,5 +8,6 @@ export type PlaygroundModal = {
 export type ModalsStateProps = {
 	ui: {
 		playgroundModal: PlaygroundModal;
+		isInternationalizationModalOpen: boolean;
 	};
 };
