@@ -2,10 +2,12 @@ import { FC, useState, useCallback } from 'react';
 
 import { IconButton, IconButtonIcon } from '@davidscicluna/component-library';
 
-import { VStack, SimpleGrid } from '@chakra-ui/react';
+import { useConst, VStack, SimpleGrid } from '@chakra-ui/react';
 
 import { sort } from 'fast-sort';
+import { sample } from 'lodash';
 import { Controller } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import allLanguages from '../../../../../../../common/content/languages';
 import { useUserTheme } from '../../../../../../../common/hooks';
@@ -19,7 +21,11 @@ import { getLanguages } from './utils';
 const Languages: FC<LanguagesProps> = ({ form }) => {
 	const { color, colorMode } = useUserTheme();
 
+	const { i18n, t } = useTranslation();
+
 	const { control, setValue } = form;
+
+	const placeholderLanguage = useConst(sample(allLanguages.map(({ iso_639_1 }) => iso_639_1)) || i18n.language);
 
 	const [languages, setLanguages] = useState<LanguagesType>([...allLanguages]);
 
@@ -42,11 +48,15 @@ const Languages: FC<LanguagesProps> = ({ form }) => {
 						<IconButtonIcon icon={icon} category={category} />
 					</IconButton>
 				)}
+				placeholder={`${t('layout.internationalizationModal.placeholder', {
+					language: `${t(`layout.internationalizationModal.languages.${placeholderLanguage}`)}`
+				})}`}
 				isFullWidth
 				onFilter={handleSubmit}
 				onClear={handleClear}
 			/>
 
+			{/* // TODO: Show Empty if found nothing from search */}
 			<Controller
 				control={control}
 				name='language'

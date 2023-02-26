@@ -81,7 +81,7 @@ const InternationalizationModal: FC = () => {
 					)}
 					renderAction={(props) => (
 						<Button {...props} color={color} isDisabled={!isDirty} type='submit'>
-							{`${t('layout.internationalizationModal.submit')}`}
+							{`${t('layout.internationalizationModal.action')}`}
 						</Button>
 					)}
 				/>
