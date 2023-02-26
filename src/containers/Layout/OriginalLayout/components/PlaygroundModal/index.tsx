@@ -36,7 +36,7 @@ const MotionGrid = motion(Grid);
 
 const spacing: Space = 2;
 
-const Playground: FC = () => {
+const PlaygroundModal: FC = () => {
 	const theme = useTheme();
 	const { color, colorMode } = useUserTheme();
 
@@ -263,4 +263,4 @@ const Playground: FC = () => {
 	);
 };
 
-export default Playground;
+export default PlaygroundModal;
