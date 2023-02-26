@@ -7,7 +7,7 @@ import { useMediaQuery, Center } from '@chakra-ui/react';
 import { useWindowSize } from 'rooks';
 
 import Error from '../../../Error';
-import { useLayoutContext } from '../../../Layout/OriginalLayout/common/hooks';
+import { useLayoutContext } from '../../../Layout/common/hooks';
 
 const NoMatch: FC = () => {
 	const theme = useTheme();
