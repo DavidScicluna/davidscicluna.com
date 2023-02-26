@@ -5,7 +5,7 @@ import { useTheme, Button, utils } from '@davidscicluna/component-library';
 import { useMediaQuery, useBoolean, VStack, Text } from '@chakra-ui/react';
 
 import { dataAttr } from '@chakra-ui/utils';
-import { darken, lighten } from 'color2k';
+import { darken } from 'color2k';
 import { useTranslation } from 'react-i18next';
 import { useUpdateEffect } from 'usehooks-ts';
 
@@ -35,7 +35,7 @@ const Contact: FC = () => {
 	return (
 		<MailOverlay>
 			<VStack
-				data-active={dataAttr(isHovering || isActive)}
+				data-active={dataAttr(isActive)}
 				width='100%'
 				height={['75vh', '50vh']}
 				cursor='pointer'
@@ -48,13 +48,26 @@ const Contact: FC = () => {
 				spacing={spacing}
 				p={spacing}
 				sx={{
-					'color': getColor({ theme, colorMode, color, type: 'color' }),
+					'color': getColor({ theme, colorMode, color, type: 'dark' }),
 					'background': getColor({ theme, colorMode, color, type: 'light' }),
 
 					'transition': transition,
 					'transitionProperty': transition,
 					'transitionDuration': transition,
 					'transitionTimingFunction': transition,
+
+					'& button': {
+						'&::before': {
+							boxShadow: `0 4px 0 0 ${darken(getColor({ theme, colorMode, color, type: 'dark' }), 0.15)}`,
+							borderColor: getColor({ theme, colorMode, color, type: 'dark' }),
+							backgroundColor: getColor({ theme, colorMode, color, type: 'dark' }),
+							background: getColor({ theme, colorMode, color, type: 'dark' })
+						}
+					},
+
+					'& span': {
+						color: getColor({ theme, colorMode, color, type: 'light' })
+					},
 
 					'& *': {
 						transition: transition,
@@ -64,18 +77,89 @@ const Contact: FC = () => {
 					}
 				}}
 				_hover={{
-					color: getColor({ theme, colorMode, type: 'background' }),
-					background: getColor({ theme, colorMode, color, type: 'color' })
+					'color': getColor({ theme, colorMode, color, type: 'light' }),
+					'background': getColor({ theme, colorMode, color, type: 'dark' }),
+
+					'& button': {
+						'&::before': {
+							boxShadow: `0 4px 0 0 ${darken(
+								getColor({ theme, colorMode, color, type: 'light' }),
+								0.15
+							)}`,
+							borderColor: getColor({ theme, colorMode, color, type: 'light' }),
+							backgroundColor: getColor({ theme, colorMode, color, type: 'light' }),
+							background: getColor({ theme, colorMode, color, type: 'light' })
+						},
+
+						'&:hover': {
+							'&::before': {
+								boxShadow: `0 4px 0 0 ${darken(
+									getColor({ theme, colorMode, color, type: 'light' }),
+									0.15
+								)}`,
+								borderColor: getColor({ theme, colorMode, color, type: 'light' }),
+								backgroundColor: getColor({ theme, colorMode, color, type: 'light' }),
+								background: getColor({ theme, colorMode, color, type: 'light' })
+							},
+
+							'&:active': {
+								'&::before': {
+									boxShadow: 'none',
+									borderColor: getColor({ theme, colorMode, color, type: 'light' }),
+									backgroundColor: getColor({ theme, colorMode, color, type: 'light' }),
+									background: getColor({ theme, colorMode, color, type: 'light' })
+								}
+							}
+						},
+
+						'&::active': {
+							'&::before': {
+								boxShadow: 'none',
+								borderColor: getColor({ theme, colorMode, color, type: 'light' }),
+								backgroundColor: getColor({ theme, colorMode, color, type: 'light' }),
+								background: getColor({ theme, colorMode, color, type: 'light' })
+							}
+						}
+					},
+
+					'& span': {
+						color: getColor({ theme, colorMode, color, type: 'dark' })
+					},
+
+					'&:active': {
+						'color': getColor({ theme, colorMode, color, type: 'light' }),
+						'background': getColor({ theme, colorMode, color, type: 'dark' }),
+
+						'& button': {
+							'&::before': {
+								boxShadow: 'none',
+								borderColor: getColor({ theme, colorMode, color, type: 'light' }),
+								backgroundColor: getColor({ theme, colorMode, color, type: 'light' }),
+								background: getColor({ theme, colorMode, color, type: 'light' })
+							}
+						},
+
+						'& span': {
+							color: getColor({ theme, colorMode, color, type: 'dark' })
+						}
+					}
 				}}
 				_active={{
-					color:
-						colorMode === 'light'
-							? darken(getColor({ theme, colorMode: 'light', type: 'background' }), 0.1)
-							: lighten(getColor({ theme, colorMode: 'dark', type: 'background' }), 0.1),
-					background:
-						colorMode === 'light'
-							? darken(getColor({ theme, colorMode, color, type: 'color' }), 0.1)
-							: lighten(getColor({ theme, colorMode, color, type: 'color' }), 0.1)
+					'color': getColor({ theme, colorMode, color, type: 'light' }),
+					'background': getColor({ theme, colorMode, color, type: 'dark' }),
+
+					'& button': {
+						'&::before': {
+							boxShadow: 'none',
+							borderColor: getColor({ theme, colorMode, color, type: 'light' }),
+							backgroundColor: getColor({ theme, colorMode, color, type: 'light' }),
+							background: getColor({ theme, colorMode, color, type: 'light' })
+						}
+					},
+
+					'& span': {
+						color: getColor({ theme, colorMode, color, type: 'dark' })
+					}
 				}}
 			>
 				<Text
@@ -89,12 +173,7 @@ const Contact: FC = () => {
 					{`${t('layout.contact.label')}`}
 				</Text>
 
-				<Button
-					color={isHovering || isActive ? (colorMode === 'light' ? 'white' : 'black') : color}
-					colorMode={colorMode}
-					isActive={isActive}
-					size={isSm ? 'md' : isMd ? 'lg' : 'xl'}
-				>
+				<Button color={color} colorMode={colorMode} isActive={isActive} size={isSm ? 'md' : isMd ? 'lg' : 'xl'}>
 					{`${t('layout.contact.action')}`}
 				</Button>
 			</VStack>
