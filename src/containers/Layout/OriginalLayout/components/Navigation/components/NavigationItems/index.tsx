@@ -6,8 +6,7 @@ import { useTheme, InternalLink, Button } from '@davidscicluna/component-library
 
 import { useMediaQuery, HStack } from '@chakra-ui/react';
 
-import navItems from '../../../../../../../common/content/navItems';
-import { useUserTheme } from '../../../../../../../common/hooks';
+import { useGetNavItems, useUserTheme } from '../../../../../../../common/hooks';
 
 const NavigationItems: FC = () => {
 	const theme = useTheme();
@@ -17,6 +16,8 @@ const NavigationItems: FC = () => {
 	const [isMd] = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
 	const location = useLocation();
+
+	const navItems = useGetNavItems();
 
 	return (
 		<HStack spacing={0}>

@@ -4,6 +4,7 @@ import { Tooltip, IconButton, IconButtonIcon } from '@davidscicluna/component-li
 
 import { useBoolean } from '@chakra-ui/react';
 
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
 import { useUserTheme } from '../../../../../../../common/hooks';
@@ -14,18 +15,20 @@ const InternationalizationIconButton: FC = () => {
 
 	const dispatch = useDispatch();
 
+	const { t } = useTranslation();
+
 	const [isHovering, setIsHovering] = useBoolean();
 
 	return (
 		<Tooltip
-			aria-label='Change Language (tooltip)'
+			aria-label={`${t('layout.navigation.internationalizationIconButton.aria-label.tooltip')}`}
 			colorMode={colorMode}
 			isOpen={isHovering}
 			placement='bottom-end'
-			label='Change Language'
+			label={`${t('layout.navigation.internationalizationIconButton.tooltip')}`}
 		>
 			<IconButton
-				aria-label='Change Language'
+				aria-label={`${t('layout.navigation.internationalizationIconButton.aria-label.button')}`}
 				color={colorMode === 'light' ? 'black' : 'white'}
 				colorMode={colorMode}
 				onMouseEnter={() => setIsHovering.on()}

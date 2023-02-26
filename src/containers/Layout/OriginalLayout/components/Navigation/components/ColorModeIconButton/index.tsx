@@ -4,6 +4,7 @@ import { Tooltip, IconButton, IconButtonIcon } from '@davidscicluna/component-li
 
 import { useBoolean } from '@chakra-ui/react';
 
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
 import { useUserTheme } from '../../../../../../../common/hooks';
@@ -14,18 +15,20 @@ const ColorModeIconButton: FC = () => {
 
 	const dispatch = useDispatch();
 
+	const { t } = useTranslation();
+
 	const [isHovering, setIsHovering] = useBoolean();
 
 	return (
 		<Tooltip
-			aria-label={`Switch to ${colorMode === 'light' ? 'Dark' : 'Light'} Mode (tooltip)`}
+			aria-label={`${t(`layout.navigation.colorModeIconButton.${colorMode}.aria-label.tooltip`)}`}
 			colorMode={colorMode}
 			isOpen={isHovering}
 			placement='bottom-end'
-			label={`Switch to ${colorMode === 'light' ? 'Dark' : 'Light'} Mode`}
+			label={`${t(`layout.navigation.colorModeIconButton.${colorMode}.tooltip`)}`}
 		>
 			<IconButton
-				aria-label={`Switch to ${colorMode === 'light' ? 'Dark' : 'Light'} Mode`}
+				aria-label={`${t(`layout.navigation.colorModeIconButton.${colorMode}.aria-label.button`)}`}
 				color={colorMode === 'light' ? 'black' : 'white'}
 				colorMode={colorMode}
 				onMouseEnter={() => setIsHovering.on()}

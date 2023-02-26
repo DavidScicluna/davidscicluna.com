@@ -6,6 +6,8 @@ import { useTheme, InternalLink, Button, Divider, ScaleFade } from '@davidsciclu
 
 import { useMediaQuery, VStack, HStack } from '@chakra-ui/react';
 
+import { useTranslation } from 'react-i18next';
+
 import { useSpacing, useUserTheme } from '../../../../../common/hooks';
 import { Logo, MailOverlay } from '../../../../../components';
 import Socials from '../Socials';
@@ -23,9 +25,11 @@ const Navigation: FC = () => {
 	const [isMd] = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 	const [isLg] = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
 
-	const location = useLocation();
-
 	const spacing = useSpacing();
+
+	const { t } = useTranslation();
+
+	const location = useLocation();
 
 	return isMd ? (
 		<VStack width='100%' divider={<Divider colorMode={colorMode} />} spacing={0}>
@@ -63,7 +67,7 @@ const Navigation: FC = () => {
 					<ScaleFade in={location.pathname !== '/'}>
 						<MailOverlay>
 							<Button color={color} colorMode={colorMode}>
-								Get in Touch
+								{`${t('layout.navigation.action')}`}
 							</Button>
 						</MailOverlay>
 					</ScaleFade>
