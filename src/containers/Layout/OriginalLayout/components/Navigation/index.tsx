@@ -11,6 +11,7 @@ import { Logo, MailOverlay } from '../../../../../components';
 import Socials from '../Socials';
 
 import ColorModeIconButton from './components/ColorModeIconButton';
+import InternationalizationIconButton from './components/InternationalizationIconButton';
 import NavigationItems from './components/NavigationItems';
 
 const Navigation: FC = () => {
@@ -33,7 +34,10 @@ const Navigation: FC = () => {
 					<Logo colorMode={colorMode} isClickable={location.pathname !== '/'} />
 				</InternalLink>
 
-				<ColorModeIconButton />
+				<HStack spacing={0}>
+					<InternationalizationIconButton />
+					<ColorModeIconButton />
+				</HStack>
 			</HStack>
 
 			<HStack
@@ -64,6 +68,8 @@ const Navigation: FC = () => {
 						</MailOverlay>
 					</ScaleFade>
 				)}
+
+				<InternationalizationIconButton />
 
 				<ColorModeIconButton />
 			</HStack>
