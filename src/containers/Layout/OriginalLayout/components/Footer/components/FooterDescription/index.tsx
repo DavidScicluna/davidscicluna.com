@@ -4,16 +4,17 @@ import { useTheme, utils } from '@davidscicluna/component-library';
 
 import { Text } from '@chakra-ui/react';
 
-import content from '../../../../../../../common/content/footer';
-import { useUserTheme } from '../../../../../../../common/hooks';
+import { useTranslation } from 'react-i18next';
 
-const { description } = content;
+import { useUserTheme } from '../../../../../../../common/hooks';
 
 const { getColor } = utils;
 
 const FooterDescription: FC = () => {
 	const theme = useTheme();
 	const { colorMode } = useUserTheme();
+
+	const { t } = useTranslation();
 
 	return (
 		<Text
@@ -23,7 +24,7 @@ const FooterDescription: FC = () => {
 			lineHeight='shorter'
 			userSelect='none'
 		>
-			{description}
+			{`${t('layout.footer.description')}`}
 		</Text>
 	);
 };

@@ -7,6 +7,7 @@ import { useTheme, InternalLink, Divider, utils } from '@davidscicluna/component
 import { useMediaQuery, VStack, Text, HStack } from '@chakra-ui/react';
 
 import dayjs from 'dayjs';
+import { useTranslation } from 'react-i18next';
 
 import { useSpacing, useUserTheme } from '../../../../../common/hooks';
 import { Logo } from '../../../../../components';
@@ -23,9 +24,11 @@ const Footer: FC = () => {
 
 	const [isSm] = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
-	const location = useLocation();
-
 	const spacing = useSpacing();
+
+	const { t } = useTranslation();
+
+	const location = useLocation();
 
 	return (
 		<VStack
@@ -55,7 +58,7 @@ const Footer: FC = () => {
 					fontWeight='medium'
 					lineHeight='shorter'
 				>
-					{`© ${dayjs(new Date()).format('YYYY')} David Scicluna, All rights reserved.`}
+					{`${t('layout.footer.copyright', { year: dayjs(new Date()).format('YYYY') })}`}
 				</Text>
 
 				{!isSm && <Socials />}

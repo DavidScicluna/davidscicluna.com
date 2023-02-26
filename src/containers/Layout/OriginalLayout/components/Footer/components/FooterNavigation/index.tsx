@@ -6,8 +6,7 @@ import { useTheme, InternalLink } from '@davidscicluna/component-library';
 
 import { useMediaQuery, Stack } from '@chakra-ui/react';
 
-import navItems from '../../../../../../../common/content/navItems';
-import { useSpacing, useUserTheme } from '../../../../../../../common/hooks';
+import { useGetNavItems, useSpacing, useUserTheme } from '../../../../../../../common/hooks';
 
 const FooterNavigation: FC = () => {
 	const theme = useTheme();
@@ -18,6 +17,8 @@ const FooterNavigation: FC = () => {
 	const location = useLocation();
 
 	const spacing = useSpacing();
+
+	const navItems = useGetNavItems();
 
 	return (
 		<Stack
