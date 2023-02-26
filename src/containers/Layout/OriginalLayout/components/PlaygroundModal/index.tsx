@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react';
 
 import {
 	Space,
+	CloseIconButtonIconType,
 	useTheme,
 	Modal,
 	ModalStack,
@@ -14,6 +15,7 @@ import {
 	IconButton,
 	IconButtonIcon,
 	Button,
+	CloseIconButton,
 	Icon,
 	Skeleton,
 	DummyButton,
@@ -23,11 +25,12 @@ import {
 import { useBoolean, useConst, HStack, Grid, GridItem, Box, Text, Collapse } from '@chakra-ui/react';
 
 import { Transition, motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useFullscreen } from 'rooks';
 
-import projects, { Project, ProjectID } from '../../../../../common/content/projects';
-import { useSelector, useUserTheme } from '../../../../../common/hooks';
+import { useGetProjects, useSelector, useUserTheme } from '../../../../../common/hooks';
+import { Project, ProjectID } from '../../../../../common/hooks/useGetProjects';
 import { defaultPlaygroundModal, setPlaygroundModal } from '../../../../../store/slices/Modals';
 
 const { getTransitionConfig, getColor } = utils;
@@ -40,8 +43,12 @@ const PlaygroundModal: FC = () => {
 	const theme = useTheme();
 	const { color, colorMode } = useUserTheme();
 
+	const { t } = useTranslation();
+
 	const dispatch = useDispatch();
 	const { isOpen: isPlaygroundOpen = false, id } = useSelector((state) => state.modals.ui.playgroundModal);
+
+	const projects = useGetProjects();
 
 	const [project, setProject] = useState<Project>();
 	const [url, setUrl] = useState<string>();
@@ -51,7 +58,6 @@ const PlaygroundModal: FC = () => {
 
 	const [isNavigationTooltip, setIsNavigationTooltip] = useBoolean();
 	const [isFullscreenTooltip, setIsFullscreenTooltip] = useBoolean();
-	const [isCloseTooltip, setIsCloseTooltip] = useBoolean();
 
 	const { isFullscreenAvailable, isFullscreenEnabled, toggleFullscreen, disableFullscreen } = useFullscreen();
 
@@ -93,34 +99,41 @@ const PlaygroundModal: FC = () => {
 			<ModalStack>
 				<ModalHeader
 					renderTitle={(props) => (
-						<HStack alignItems='center' justifyContent='space-between' spacing={spacing}>
-							<Skeleton colorMode={colorMode} isLoaded={!!project?.title} variant='text'>
-								<Text {...props} align='left' fontWeight='bold' lineHeight='shorter' userSelect='none'>
-									{project?.title || 'Project Title'}
-								</Text>
-							</Skeleton>
-							{/* {!!project && <PlaygroundNavigationInfo {...pick(project, ['id', 'title'])} />} */}
-						</HStack>
+						<Skeleton colorMode={colorMode} isLoaded={!!project?.title} variant='text'>
+							<Text {...props} align='left' fontWeight='bold' lineHeight='shorter' userSelect='none'>
+								{project?.title || `${t('layout.playgroundModal.title')}`}
+							</Text>
+						</Skeleton>
 					)}
 					renderSubtitle={(props) => (
 						<Skeleton colorMode={colorMode} isLoaded={!!project?.description} variant='text'>
 							<Text {...props} align='left' lineHeight='shorter' userSelect='none'>
-								{project?.description || 'Project Description'}
+								{project?.description || `${t('layout.playgroundModal.subtitle')}`}
 							</Text>
 						</Skeleton>
 					)}
 					renderCancel={({ icon, category, ...rest }) => (
 						<HStack spacing={0}>
 							<Tooltip
-								aria-label={`${isNavExpanded ? 'Close' : 'Open'} Navigation (tooltip)`}
+								aria-label={`${t(
+									`layout.playgroundModal.navigation.${
+										isNavExpanded ? 'close' : 'open'
+									}.aria-label.tooltip`
+								)}`}
 								colorMode={colorMode}
 								isOpen={isNavigationTooltip}
 								placement='top'
-								label={`${isNavExpanded ? 'Close' : 'Open'} Navigation`}
+								label={`${t(
+									`layout.playgroundModal.navigation.${isNavExpanded ? 'close' : 'open'}.tooltip`
+								)}`}
 							>
 								<IconButton
 									{...rest}
-									aria-label={`${isNavExpanded ? 'Close' : 'Open'} Navigation`}
+									aria-label={`${t(
+										`layout.playgroundModal.navigation.${
+											isNavExpanded ? 'close' : 'open'
+										}.aria-label.button`
+									)}`}
 									onClick={() => setIsNavExpanded.toggle()}
 									onMouseEnter={() => setIsNavigationTooltip.on()}
 									onMouseLeave={() => setIsNavigationTooltip.off()}
@@ -130,15 +143,27 @@ const PlaygroundModal: FC = () => {
 							</Tooltip>
 							{isFullscreenAvailable && (
 								<Tooltip
-									aria-label={`${isFullscreenEnabled ? 'Exit' : 'Open'} Fullscreen (tooltip)`}
+									aria-label={`${t(
+										`layout.playgroundModal.fullscreen.${
+											isFullscreenEnabled ? 'close' : 'open'
+										}.aria-label.tooltip`
+									)}`}
 									colorMode={colorMode}
 									isOpen={isFullscreenTooltip}
 									placement='top'
-									label={`${isFullscreenEnabled ? 'Exit' : 'Open'} Fullscreen`}
+									label={`${t(
+										`layout.playgroundModal.fullscreen.${
+											isFullscreenEnabled ? 'close' : 'open'
+										}.tooltip`
+									)}`}
 								>
 									<IconButton
 										{...rest}
-										aria-label={`${isFullscreenEnabled ? 'Exit' : 'Open'} Fullscreen`}
+										aria-label={`${t(
+											`layout.playgroundModal.fullscreen.${
+												isFullscreenEnabled ? 'close' : 'open'
+											}.aria-label.button`
+										)}`}
 										onClick={() => toggleFullscreen()}
 										onMouseEnter={() => setIsFullscreenTooltip.on()}
 										onMouseLeave={() => setIsFullscreenTooltip.off()}
@@ -150,22 +175,15 @@ const PlaygroundModal: FC = () => {
 									</IconButton>
 								</Tooltip>
 							)}
-							<Tooltip
-								aria-label='Close Playground (tooltip)'
+							<CloseIconButton
+								{...rest}
+								aria-label={`${t('layout.playgroundModal.close.aria-label')}`}
 								colorMode={colorMode}
-								isOpen={isCloseTooltip}
 								placement='top'
-								label='Close'
-							>
-								<IconButton
-									{...rest}
-									aria-label='Close Playground'
-									onMouseEnter={() => setIsCloseTooltip.on()}
-									onMouseLeave={() => setIsCloseTooltip.off()}
-								>
-									<IconButtonIcon icon={icon} category={category} />
-								</IconButton>
-							</Tooltip>
+								label={`${t('layout.playgroundModal.close.tooltip')}`}
+								icon={icon as CloseIconButtonIconType}
+								category={category}
+							/>
 						</HStack>
 					)}
 				/>
@@ -237,23 +255,24 @@ const PlaygroundModal: FC = () => {
 									<Skeleton width='100%' colorMode={colorMode} isLoaded={false} variant='rectangle' />
 								)
 							) : (
+								// TODO: Show Error
 								<div>Error</div>
 							)}
 						</GridItem>
 					</MotionGrid>
 				</ModalBody>
 				<ModalFooter
-					renderCancel={(props) => <Button {...props}>Cancel</Button>}
+					renderCancel={(props) => <Button {...props}>{`${t('layout.playgroundModal.action')}`}</Button>}
 					renderAction={(props) =>
 						url ? (
 							<ExternalLink href={url} target='_blank'>
 								<Button {...props} color={color} onClick={handleClose}>
-									Open in new tab
+									{`${t('layout.playgroundModal.action')}`}
 								</Button>
 							</ExternalLink>
 						) : (
 							<DummyButton {...props} color={color}>
-								Open in new tab
+								{`${t('layout.playgroundModal.action')}`}
 							</DummyButton>
 						)
 					}
