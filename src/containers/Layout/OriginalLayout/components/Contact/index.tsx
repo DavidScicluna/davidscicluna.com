@@ -6,6 +6,7 @@ import { useMediaQuery, useBoolean, VStack, Text } from '@chakra-ui/react';
 
 import { dataAttr } from '@chakra-ui/utils';
 import { darken, lighten } from 'color2k';
+import { useTranslation } from 'react-i18next';
 import { useUpdateEffect } from 'usehooks-ts';
 
 import { useSpacing, useUserTheme } from '../../../../../common/hooks';
@@ -23,6 +24,8 @@ const Contact: FC = () => {
 	const [isMd] = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
 	const spacing = useSpacing();
+
+	const { t } = useTranslation();
 
 	const [isActive, setIsActive] = useBoolean();
 	const [isHovering, setIsHovering] = useBoolean();
@@ -83,7 +86,7 @@ const Contact: FC = () => {
 					userSelect='none'
 					textTransform='uppercase'
 				>
-					{`Want to get in touch to collaborate on a project you have in mind? Click to talk!`}
+					{`${t('layout.contact.label')}`}
 				</Text>
 
 				<Button
@@ -92,7 +95,7 @@ const Contact: FC = () => {
 					isActive={isActive}
 					size={isSm ? 'md' : isMd ? 'lg' : 'xl'}
 				>
-					Lets talk
+					{`${t('layout.contact.action')}`}
 				</Button>
 			</VStack>
 		</MailOverlay>
