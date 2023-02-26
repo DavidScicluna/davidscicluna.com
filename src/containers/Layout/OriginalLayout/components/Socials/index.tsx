@@ -4,6 +4,8 @@ import { useTheme, ExternalLink, Tooltip, IconButton } from '@davidscicluna/comp
 
 import { useMediaQuery, useBoolean, HStack } from '@chakra-ui/react';
 
+import { useTranslation } from 'react-i18next';
+
 import icons from '../../../../../common/assets/icons';
 import { useUserTheme } from '../../../../../common/hooks';
 import { MailOverlay } from '../../../../../components';
@@ -16,6 +18,8 @@ const Socials: FC = () => {
 
 	const [isSm] = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
+	const { t } = useTranslation();
+
 	const [isHoveringEmail, setIsHoveringEmail] = useBoolean();
 	const [isHoveringLinkedin, setIsHoveringLinkedin] = useBoolean();
 	const [isHoveringGithub, setIsHoveringGithub] = useBoolean();
@@ -24,14 +28,20 @@ const Socials: FC = () => {
 		<HStack spacing={0}>
 			<MailOverlay>
 				<Tooltip
-					aria-label='Send email to "hello@davidscicluna.com" (tooltip)'
+					aria-label={`${t('layout.socials.email.aria-label.tooltip', {
+						email: import.meta.env.VITE_EMAIL_URL
+					})}`}
 					colorMode={colorMode}
 					isOpen={isHoveringEmail}
 					placement='top'
-					label='Email: "hello@davidscicluna.com"'
+					label={`${t('layout.socials.email.tooltip', {
+						email: import.meta.env.VITE_EMAIL_URL
+					})}`}
 				>
 					<IconButton
-						aria-label='Send email to "hello@davidscicluna.com" '
+						aria-label={`${t('layout.socials.email.aria-label.button', {
+							email: import.meta.env.VITE_EMAIL_URL
+						})}`}
 						colorMode={colorMode}
 						onMouseEnter={() => setIsHoveringEmail.on()}
 						onMouseLeave={() => setIsHoveringEmail.off()}
@@ -44,14 +54,14 @@ const Socials: FC = () => {
 			</MailOverlay>
 			<ExternalLink href='https://www.linkedin.com/in/davidscicluna98/'>
 				<Tooltip
-					aria-label='Open Linkedin Profile Page (tooltip)'
+					aria-label={`${t('layout.socials.linkedin.aria-label.tooltip')}`}
 					colorMode={colorMode}
 					isOpen={isHoveringLinkedin}
 					placement='top'
-					label='Linkedin Profile'
+					label={`${t('layout.socials.linkedin.tooltip')}`}
 				>
 					<IconButton
-						aria-label='Open Linkedin Profile Page'
+						aria-label={`${t('layout.socials.linkedin.aria-label.button')}`}
 						colorMode={colorMode}
 						onMouseEnter={() => setIsHoveringLinkedin.on()}
 						onMouseLeave={() => setIsHoveringLinkedin.off()}
@@ -64,14 +74,14 @@ const Socials: FC = () => {
 			</ExternalLink>
 			<ExternalLink href='https://github.com/DavidScicluna'>
 				<Tooltip
-					aria-label='Open Github Profile Page (tooltip)'
+					aria-label={`${t('layout.socials.github.aria-label.tooltip')}`}
 					colorMode={colorMode}
 					isOpen={isHoveringGithub}
 					placement='top'
-					label='Github Profile'
+					label={`${t('layout.socials.github.tooltip')}`}
 				>
 					<IconButton
-						aria-label='Open Github Profile Page'
+						aria-label={`${t('layout.socials.github.aria-label.button')}`}
 						colorMode={colorMode}
 						onMouseEnter={() => setIsHoveringGithub.on()}
 						onMouseLeave={() => setIsHoveringGithub.off()}
