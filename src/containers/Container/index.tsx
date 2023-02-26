@@ -6,12 +6,11 @@ import { useIsFirstRender, useTimeout } from 'usehooks-ts';
 
 import { useCheckColorMode } from '../../common/hooks';
 import { Suspense } from '../../components';
-import DummyLayout from '../Layout/DummyLayout';
 import Router from '../Router';
 import Routes from '../Routes';
 import Splashscreen from '../Splashscreen';
 
-const Layout = lazy(() => import('../Layout/OriginalLayout'));
+const Layout = lazy(() => import('../Layout'));
 
 const Container: FC = () => {
 	const isFirstRender = useIsFirstRender();
@@ -29,13 +28,7 @@ const Container: FC = () => {
 			<Splashscreen isOpen={isSplashscreenOpen} onClose={() => setSetIsSplashscreenOpen.off()} />
 
 			{isRoutesVisible && (
-				<Suspense
-					fallback={
-						<DummyLayout>
-							<Routes />
-						</DummyLayout>
-					}
-				>
+				<Suspense>
 					<Layout>
 						<Routes />
 					</Layout>
