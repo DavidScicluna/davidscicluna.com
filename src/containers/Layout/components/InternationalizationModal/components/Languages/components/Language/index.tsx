@@ -18,15 +18,17 @@ const Language: FC<LanguageProps> = (props) => {
 
 	const { t } = useTranslation();
 
-	const { language, isActive, ...rest } = props;
+	const { language, isActive, isSelected, ...rest } = props;
 	const { name, iso_639_1 } = language;
 
 	return (
 		<Card
 			{...rest}
-			color={isActive ? color : 'gray'}
+			color={isActive || isSelected ? color : 'gray'}
 			colorMode={colorMode}
 			isLight={!isActive}
+			isActive={isActive}
+			isFixed={isActive}
 			isClickable
 			isFullWidth
 			variant={isActive ? 'contained' : 'outlined'}
@@ -36,7 +38,12 @@ const Language: FC<LanguageProps> = (props) => {
 				renderTitle={(props) => (
 					<Text
 						{...props}
-						color={getColor({ theme, colorMode, type: isActive ? 'background' : 'text.primary' })}
+						color={getColor({
+							theme,
+							colorMode,
+							color: !isActive && isSelected ? color : 'gray',
+							type: isActive ? 'background' : !isActive && isSelected ? 'color' : 'text.primary'
+						})}
 						fontSize='md'
 						fontWeight='semibold'
 					>
@@ -46,7 +53,12 @@ const Language: FC<LanguageProps> = (props) => {
 				renderSubtitle={(props) => (
 					<Text
 						{...props}
-						color={getColor({ theme, colorMode, type: isActive ? 'background' : 'text.secondary' })}
+						color={getColor({
+							theme,
+							colorMode,
+							color: !isActive && isSelected ? color : 'gray',
+							type: isActive ? 'background' : !isActive && isSelected ? 'color' : 'text.secondary'
+						})}
 						fontSize='sm'
 						fontWeight='medium'
 					>

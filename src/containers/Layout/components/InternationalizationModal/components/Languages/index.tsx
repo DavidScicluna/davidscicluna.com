@@ -10,7 +10,7 @@ import { Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import allLanguages from '../../../../../../common/content/languages';
-import { useUserTheme } from '../../../../../../common/hooks';
+import { useSelector, useUserTheme } from '../../../../../../common/hooks';
 import { Languages as LanguagesType } from '../../../../../../common/types';
 import SearchBar from '../../../../../../components/SearchBar';
 
@@ -22,6 +22,8 @@ const Languages: FC<LanguagesProps> = ({ form }) => {
 	const { color, colorMode } = useUserTheme();
 
 	const { i18n, t } = useTranslation();
+
+	const language = useSelector((state) => state.app.ui.language);
 
 	const { control, setValue } = form;
 
@@ -64,12 +66,13 @@ const Languages: FC<LanguagesProps> = ({ form }) => {
 					<SimpleGrid width='100%' columns={[1, 2, 3]} spacing={2}>
 						{sort(languages)
 							.asc(({ name }) => name)
-							.map((language) => (
+							.map((l) => (
 								<Language
-									key={language.iso_639_1}
-									language={language}
-									isActive={language.iso_639_1 === value.iso_639_1 || false}
-									onClick={() => setValue(name, language, { shouldDirty: true })}
+									key={l.iso_639_1}
+									language={l}
+									isActive={l.iso_639_1 === value.iso_639_1 || false}
+									isSelected={l.iso_639_1 === language.iso_639_1 || false}
+									onClick={() => setValue(name, l, { shouldDirty: true })}
 								/>
 							))}
 					</SimpleGrid>
