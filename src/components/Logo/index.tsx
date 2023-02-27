@@ -5,6 +5,7 @@ import { useTheme } from '@davidscicluna/component-library';
 import { Center } from '@chakra-ui/react';
 
 import merge from 'lodash/merge';
+import { useTranslation } from 'react-i18next';
 
 import {
 	color as defaultColor,
@@ -19,6 +20,8 @@ import { LogoProps } from './types';
 const Logo: FC<LogoProps> = (props) => {
 	const theme = useTheme();
 
+	const { t } = useTranslation();
+
 	const {
 		color = defaultColor,
 		colorMode = defaultColorMode,
@@ -30,7 +33,7 @@ const Logo: FC<LogoProps> = (props) => {
 
 	const style = useStyles({ theme, color, colorMode, isClickable, size });
 
-	return <Center sx={merge(style.logo, sx)}>{isSquare ? 'ds' : 'davidscicluna'}</Center>;
+	return <Center sx={merge(style.logo, sx)}>{`${t(`components.logo.${isSquare ? 'short' : 'long'}`)}`}</Center>;
 };
 
 export default Logo;
