@@ -1,5 +1,6 @@
 import { Component, ErrorInfo } from 'react';
 
+import i18n from '../../../common/scripts/i18n';
 import Error from '../../../containers/Error';
 
 import ErrorBoundaryActions from './components/ErrorBoundaryActions';
@@ -15,7 +16,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 	}
 
 	public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-		console.error('Uncaught error:', error, errorInfo);
+		console.error(`${i18n.t('components.errorBoundary.console')}`, error, errorInfo);
 	}
 
 	public render() {
@@ -23,8 +24,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 			return (
 				<Error
 					code={404}
-					title='Oh no! 😭'
-					subtitle='Unfortunately, something went wrong when trying to render the application. Please refresh to try again!'
+					title={`${i18n.t('components.errorBoundary.title')}`}
+					subtitle={`${i18n.t('components.errorBoundary.subtitle')}`}
 					renderActions={(props) => <ErrorBoundaryActions {...props} />}
 				/>
 			);
