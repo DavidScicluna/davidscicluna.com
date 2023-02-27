@@ -6,16 +6,14 @@ import { useMediaQuery, useBreakpointValue, useConst, Text, VStack, HStack } fro
 
 import { Transition } from 'framer-motion';
 import { useInView } from 'react-cool-inview';
-import { useWindowSize } from 'rooks';
+import { useTranslation } from 'react-i18next';
 
-import content from '../../../common/content/home';
 import { useSpacing, useUserTheme } from '../../../common/hooks';
-import { useLayoutContext } from '../../../containers/Layout/OriginalLayout/common/hooks';
+import { MailOverlay } from '../../../components';
+import Page from '../../../containers/Page';
 import { HomeCSSIcon, HomeHTMLIcon, HomeJSIcon, HomeReactIcon, HomeTSIcon } from '../components';
 
-const { title, subtitle } = content;
-
-const { getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor, getFontSizeHeight } = utils;
+const { getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor } = utils;
 
 const Home: FC = () => {
 	const theme = useTheme();
@@ -41,138 +39,148 @@ const Home: FC = () => {
 
 	const spacing = useSpacing();
 
-	const { height } = useLayoutContext();
-
-	const { innerHeight: windowHeight } = useWindowSize();
+	const { t } = useTranslation();
 
 	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
 	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }));
 	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration });
 
 	return (
-		<VStack
-			ref={observe}
-			width='100%'
-			minHeight={`calc(${windowHeight ? `${windowHeight}px` : '100vh'} - ${height}px)`}
-			alignItems='flex-start'
-			justifyContent='center'
-			spacing={spacing * 1.5}
-			p={spacing}
-		>
-			<VStack width='100%' alignItems='flex-start' justifyContent='center' spacing={0.5}>
-				<SlideFade
-					in={inView}
-					offsetY={getFontSizeHeight({ theme, fontSize: titleFontSize, lineHeight: 'shorter' })}
-					transition={{
-						enter: { ...config, delay },
-						exit: { ...config, delay }
-					}}
-				>
-					<VStack alignItems='flex-start' justifyContent='center' spacing={0}>
-						{title.map((t, index) => (
-							<Text
-								key={index}
-								align='left'
-								color={getColor({ theme, colorMode, type: 'text.primary' })}
-								fontSize={titleFontSize}
-								fontWeight='bold'
-								lineHeight='shorter'
-								userSelect='none'
-							>
-								{t}
-							</Text>
-						))}
-					</VStack>
-				</SlideFade>
-				<SlideFade
-					in={inView}
-					offsetY={getFontSizeHeight({ theme, fontSize: subtitleFontSize, lineHeight: 'shorter' })}
-					transition={{
-						enter: { ...config, delay: delay * 1.5 },
-						exit: { ...config, delay: delay * 1.5 }
-					}}
-				>
-					<Text
-						align='left'
-						color={getColor({ theme, colorMode, type: 'text.secondary' })}
-						fontSize={subtitleFontSize}
-						lineHeight='shorter'
-						userSelect='none'
+		<Page>
+			<VStack
+				ref={observe}
+				width='100%'
+				minHeight='inherit'
+				alignItems='flex-start'
+				justifyContent='center'
+				spacing={spacing * 1.5}
+				p={spacing}
+			>
+				<VStack width='100%' alignItems='flex-start' justifyContent='center' spacing={0.5}>
+					<SlideFade
+						in={inView}
+						transition={{
+							enter: { ...config, delay },
+							exit: { ...config, delay }
+						}}
 					>
-						{subtitle}
-					</Text>
+						<Text
+							align='left'
+							color={getColor({ theme, colorMode, type: 'text.primary' })}
+							fontSize={titleFontSize}
+							fontWeight='bold'
+							lineHeight='shorter'
+							userSelect='none'
+						>
+							{`${t('home.title1')}`}
+						</Text>
+					</SlideFade>
+
+					<SlideFade
+						in={inView}
+						transition={{
+							enter: { ...config, delay: delay * 1.25 },
+							exit: { ...config, delay: delay * 1.25 }
+						}}
+					>
+						<Text
+							align='left'
+							color={getColor({ theme, colorMode, type: 'text.primary' })}
+							fontSize={titleFontSize}
+							fontWeight='bold'
+							lineHeight='shorter'
+							userSelect='none'
+						>
+							{`${t('home.title2')}`}
+						</Text>
+					</SlideFade>
+
+					<SlideFade
+						in={inView}
+						transition={{
+							enter: { ...config, delay: delay * 1.5 },
+							exit: { ...config, delay: delay * 1.5 }
+						}}
+					>
+						<Text
+							align='left'
+							color={getColor({ theme, colorMode, type: 'text.secondary' })}
+							fontSize={subtitleFontSize}
+							lineHeight='shorter'
+							userSelect='none'
+						>
+							{`${t('home.subtitle')}`}
+						</Text>
+					</SlideFade>
+				</VStack>
+
+				<HStack spacing={2}>
+					<SlideFade
+						in={inView}
+						transition={{
+							enter: { ...config, delay: delay * 1.6 },
+							exit: { ...config, delay: delay * 1.6 }
+						}}
+					>
+						<HomeHTMLIcon />
+					</SlideFade>
+
+					<SlideFade
+						in={inView}
+						transition={{
+							enter: { ...config, delay: delay * 1.7 },
+							exit: { ...config, delay: delay * 1.7 }
+						}}
+					>
+						<HomeCSSIcon />
+					</SlideFade>
+
+					<SlideFade
+						in={inView}
+						transition={{
+							enter: { ...config, delay: delay * 1.8 },
+							exit: { ...config, delay: delay * 1.8 }
+						}}
+					>
+						<HomeJSIcon />
+					</SlideFade>
+
+					<SlideFade
+						in={inView}
+						transition={{
+							enter: { ...config, delay: delay * 1.9 },
+							exit: { ...config, delay: delay * 1.9 }
+						}}
+					>
+						<HomeTSIcon />
+					</SlideFade>
+
+					<SlideFade
+						in={inView}
+						transition={{
+							enter: { ...config, delay: delay * 2 },
+							exit: { ...config, delay: delay * 2 }
+						}}
+					>
+						<HomeReactIcon />
+					</SlideFade>
+				</HStack>
+
+				<SlideFade
+					in={inView}
+					transition={{
+						enter: { ...config, delay: delay * 2.5 },
+						exit: { ...config, delay: delay * 2.5 }
+					}}
+				>
+					<MailOverlay>
+						<Button color={color} colorMode={colorMode} size={isSm ? 'md' : isMd ? 'lg' : 'xl'}>
+							{`${t('home.action')}`}
+						</Button>
+					</MailOverlay>
 				</SlideFade>
 			</VStack>
-
-			<HStack spacing={2}>
-				<SlideFade
-					in={inView}
-					offsetY={theme.fontSizes['2xl']}
-					transition={{
-						enter: { ...config, delay: delay * 1.6 },
-						exit: { ...config, delay: delay * 1.6 }
-					}}
-				>
-					<HomeHTMLIcon />
-				</SlideFade>
-
-				<SlideFade
-					in={inView}
-					offsetY={theme.fontSizes['2xl']}
-					transition={{
-						enter: { ...config, delay: delay * 1.7 },
-						exit: { ...config, delay: delay * 1.7 }
-					}}
-				>
-					<HomeCSSIcon />
-				</SlideFade>
-
-				<SlideFade
-					in={inView}
-					offsetY={theme.fontSizes['2xl']}
-					transition={{
-						enter: { ...config, delay: delay * 1.8 },
-						exit: { ...config, delay: delay * 1.8 }
-					}}
-				>
-					<HomeJSIcon />
-				</SlideFade>
-
-				<SlideFade
-					in={inView}
-					offsetY={theme.fontSizes['2xl']}
-					transition={{
-						enter: { ...config, delay: delay * 1.9 },
-						exit: { ...config, delay: delay * 1.9 }
-					}}
-				>
-					<HomeTSIcon />
-				</SlideFade>
-
-				<SlideFade
-					in={inView}
-					offsetY={theme.fontSizes['2xl']}
-					transition={{
-						enter: { ...config, delay: delay * 2 },
-						exit: { ...config, delay: delay * 2 }
-					}}
-				>
-					<HomeReactIcon />
-				</SlideFade>
-			</HStack>
-
-			<SlideFade
-				in={inView}
-				transition={{
-					enter: { ...config, delay: delay * 2.5 },
-					exit: { ...config, delay: delay * 2.5 }
-				}}
-			>
-				<Button color={color} colorMode={colorMode} size={isSm ? 'md' : isMd ? 'lg' : 'xl'}>
-					Get in touch
-				</Button>
-			</SlideFade>
-		</VStack>
+		</Page>
 	);
 };
 
