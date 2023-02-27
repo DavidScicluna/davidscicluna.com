@@ -30,15 +30,17 @@ import {
 import { dataAttr } from '@chakra-ui/utils';
 import { darken, lighten, transparentize } from 'color2k';
 import { Transition } from 'framer-motion';
+import { useDispatch } from 'react-redux';
 import { useTimeout, useUpdateEffect } from 'usehooks-ts';
 
 import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
 import { useSpacing, useUserTheme } from '../../../../../common/hooks';
 import { Image } from '../../../../../components';
+import { setPlaygroundModal } from '../../../../../store/slices/Modals';
 
 import { ProjectProps } from './types';
 
-const { getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor, getFontSizeHeight } = utils;
+const { getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor } = utils;
 
 const transition = 'none';
 
@@ -66,8 +68,11 @@ const Project: FC<ProjectProps> = (props) => {
 
 	const navigate = useNavigate();
 
+	const dispatch = useDispatch();
+
 	const { id, image, title, description, links, tags, direction, inView = defaultInView, timeout } = props;
 
+	const [canHover, setCanHover] = useBoolean();
 	const [canTriggerAnimation, setCanTriggerAnimation] = useBoolean();
 
 	const [isDisabled, setIsDisabled] = useBoolean();
@@ -79,6 +84,7 @@ const Project: FC<ProjectProps> = (props) => {
 	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }));
 	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration });
 
+	useTimeout(() => setCanHover.on(), timeout * 2);
 	useTimeout(() => setCanTriggerAnimation.on(), timeout);
 
 	useUpdateEffect(() => (!isHovering && isActive ? setIsActive.off() : undefined), [isHovering]);
@@ -104,6 +110,8 @@ const Project: FC<ProjectProps> = (props) => {
 			sx={{
 				'cursor': 'pointer',
 				'background': getColor({ theme, colorMode, type: 'background' }),
+
+				'pointerEvents': canHover ? 'auto' : 'none',
 
 				'transition': transition,
 				'transitionProperty': transition,
@@ -216,11 +224,6 @@ const Project: FC<ProjectProps> = (props) => {
 					>
 						<SlideFade
 							in={inView && canTriggerAnimation}
-							offsetY={`${getFontSizeHeight({
-								theme,
-								fontSize: titleFontSize,
-								lineHeight: 'shorter'
-							})}px`}
 							unmountOnExit={false}
 							transition={{
 								enter: { ...config, delay: delay * 2 },
@@ -243,11 +246,6 @@ const Project: FC<ProjectProps> = (props) => {
 						</SlideFade>
 						<SlideFade
 							in={inView && canTriggerAnimation}
-							offsetY={`${getFontSizeHeight({
-								theme,
-								fontSize: descriptionFontSize,
-								lineHeight: 'shorter'
-							})}px`}
 							unmountOnExit={false}
 							transition={{
 								enter: { ...config, delay: delay * 2.1 },
@@ -285,18 +283,20 @@ const Project: FC<ProjectProps> = (props) => {
 								exit: { ...config, delay: delay * 2.5 }
 							}}
 						>
-							<ExternalLink href={links.web.href} target='_blank'>
-								<Button
-									color={isHovering || isActive ? (colorMode === 'light' ? 'white' : 'black') : color}
-									colorMode={colorMode}
-									onMouseEnter={() => setIsDisabled.on()}
-									onMouseLeave={() => setIsDisabled.off()}
-									size={isMd ? 'md' : 'xs'}
-								>
-									{links.web.label}
-								</Button>
-							</ExternalLink>
+							<Button
+								color={isHovering || isActive ? (colorMode === 'light' ? 'white' : 'black') : color}
+								colorMode={colorMode}
+								onClick={
+									id !== 'cl' ? () => dispatch(setPlaygroundModal({ isOpen: true, id })) : undefined
+								}
+								onMouseEnter={() => setIsDisabled.on()}
+								onMouseLeave={() => setIsDisabled.off()}
+								size={isMd ? 'md' : 'xs'}
+							>
+								{links.playground.label}
+							</Button>
 						</SlideFade>
+
 						<SlideFade
 							in={inView && canTriggerAnimation}
 							unmountOnExit={false}
