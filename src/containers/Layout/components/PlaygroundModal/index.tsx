@@ -262,7 +262,7 @@ const PlaygroundModal: FC = () => {
 					</MotionGrid>
 				</ModalBody>
 				<ModalFooter
-					renderCancel={(props) => <Button {...props}>{`${t('layout.playgroundModal.action')}`}</Button>}
+					renderCancel={(props) => <Button {...props}>{`${t('layout.playgroundModal.cancel')}`}</Button>}
 					renderAction={(props) =>
 						url ? (
 							<ExternalLink href={url} target='_blank'>
