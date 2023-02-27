@@ -1,46 +1,10 @@
 import { FC } from 'react';
 
-import { useTheme, Tooltip } from '@davidscicluna/component-library';
+import { HomeIconCommonProps as HomeCSSIconProps } from '../../common/types';
+import HomeIcon from '../HomeIcon';
 
-import { useBoolean, AspectRatio } from '@chakra-ui/react';
-
-import icons from '../../../../common/assets/icons';
-import { useUserTheme } from '../../../../common/hooks';
-import { Image } from '../../../../components';
-
-const HomeCSSIcon: FC = () => {
-	const theme = useTheme();
-	const { colorMode } = useUserTheme();
-
-	const [isHovering, setIsHovering] = useBoolean();
-
-	return (
-		<Tooltip
-			aria-label='CSS (tooltip)'
-			colorMode={colorMode}
-			isOpen={isHovering}
-			placement='top'
-			label='CSS'
-			gutter={12}
-		>
-			<AspectRatio
-				width={theme.fontSizes['5xl']}
-				height={theme.fontSizes['5xl']}
-				onMouseEnter={() => setIsHovering.on()}
-				onMouseLeave={() => setIsHovering.off()}
-				ratio={1 / 1}
-			>
-				<Image
-					alt='CSS'
-					width='inherit'
-					height='inherit'
-					fit='contain'
-					borderRadius='none'
-					src={{ full: icons[colorMode].css }}
-				/>
-			</AspectRatio>
-		</Tooltip>
-	);
+const HomeCSSIcon: FC<HomeCSSIconProps> = ({ isDummy }) => {
+	return <HomeIcon icon='css' isDummy={isDummy} />;
 };
 
 export default HomeCSSIcon;
