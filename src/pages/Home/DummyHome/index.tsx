@@ -4,14 +4,11 @@ import { FontSize, useTheme, DummyButton, Skeleton } from '@davidscicluna/compon
 
 import { useMediaQuery, useBreakpointValue, Text, VStack, HStack } from '@chakra-ui/react';
 
-import { useWindowSize } from 'rooks';
+import { useTranslation } from 'react-i18next';
 
-import content from '../../../common/content/home';
 import { useSpacing, useUserTheme } from '../../../common/hooks';
-import { useDummyLayoutContext } from '../../../containers/Layout/DummyLayout/common/hooks';
+import Page from '../../../containers/Page';
 import { HomeCSSIcon, HomeHTMLIcon, HomeJSIcon, HomeReactIcon, HomeTSIcon } from '../components';
-
-const { title, subtitle } = content;
 
 const DummyHome: FC = () => {
 	const theme = useTheme();
@@ -35,22 +32,20 @@ const DummyHome: FC = () => {
 
 	const spacing = useSpacing();
 
-	const { height } = useDummyLayoutContext();
-
-	const { innerHeight: windowHeight } = useWindowSize();
+	const { t } = useTranslation();
 
 	return (
-		<VStack
-			width='100%'
-			minHeight={`calc(${windowHeight ? `${windowHeight}px` : '100vh'} - ${height}px)`}
-			alignItems='flex-start'
-			justifyContent='center'
-			spacing={spacing * 1.5}
-			p={spacing}
-		>
-			<VStack width='100%' alignItems='flex-start' justifyContent='center' spacing={0.5}>
-				{title.map((t, index) => (
-					<Skeleton key={index} colorMode={colorMode} isLoaded={false} variant='text'>
+		<Page>
+			<VStack
+				width='100%'
+				minHeight='inherit'
+				alignItems='flex-start'
+				justifyContent='center'
+				spacing={spacing * 1.5}
+				p={spacing}
+			>
+				<VStack width='100%' alignItems='flex-start' justifyContent='center' spacing={0.5}>
+					<Skeleton colorMode={colorMode} isLoaded={false} variant='text'>
 						<Text
 							align='left'
 							fontSize={titleFontSize}
@@ -58,46 +53,58 @@ const DummyHome: FC = () => {
 							lineHeight='shorter'
 							userSelect='none'
 						>
-							{t}
+							{`${t('home.title1')}`}
 						</Text>
 					</Skeleton>
-				))}
 
-				<Skeleton colorMode={colorMode} isLoaded={false} variant='text'>
-					<Text align='left' fontSize={subtitleFontSize} lineHeight='shorter'>
-						{subtitle}
-					</Text>
+					<Skeleton colorMode={colorMode} isLoaded={false} variant='text'>
+						<Text
+							align='left'
+							fontSize={titleFontSize}
+							fontWeight='bold'
+							lineHeight='shorter'
+							userSelect='none'
+						>
+							{`${t('home.title2')}`}
+						</Text>
+					</Skeleton>
+
+					<Skeleton colorMode={colorMode} isLoaded={false} variant='text'>
+						<Text align='left' fontSize={subtitleFontSize} lineHeight='shorter'>
+							{`${t('home.subtitle')}`}
+						</Text>
+					</Skeleton>
+				</VStack>
+
+				<HStack spacing={2}>
+					<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
+						<HomeHTMLIcon isDummy />
+					</Skeleton>
+
+					<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
+						<HomeCSSIcon isDummy />
+					</Skeleton>
+
+					<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
+						<HomeJSIcon isDummy />
+					</Skeleton>
+
+					<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
+						<HomeTSIcon isDummy />
+					</Skeleton>
+
+					<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
+						<HomeReactIcon isDummy />
+					</Skeleton>
+				</HStack>
+
+				<Skeleton color={color} colorMode={colorMode} isLoaded={false} variant='rectangle'>
+					<DummyButton color={color} colorMode={colorMode} size={isSm ? 'md' : isMd ? 'lg' : 'xl'}>
+						{`${t('home.action')}`}
+					</DummyButton>
 				</Skeleton>
 			</VStack>
-
-			<HStack spacing={2}>
-				<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
-					<HomeHTMLIcon />
-				</Skeleton>
-
-				<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
-					<HomeCSSIcon />
-				</Skeleton>
-
-				<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
-					<HomeJSIcon />
-				</Skeleton>
-
-				<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
-					<HomeTSIcon />
-				</Skeleton>
-
-				<Skeleton colorMode={colorMode} isLoaded={false} variant='circle'>
-					<HomeReactIcon />
-				</Skeleton>
-			</HStack>
-
-			<Skeleton color={color} colorMode={colorMode} isLoaded={false} variant='rectangle'>
-				<DummyButton color={color} colorMode={colorMode} size={isSm ? 'md' : isMd ? 'lg' : 'xl'}>
-					Get in touch
-				</DummyButton>
-			</Skeleton>
-		</VStack>
+		</Page>
 	);
 };
 
