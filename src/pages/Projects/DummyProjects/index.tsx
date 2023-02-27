@@ -6,20 +6,24 @@ import { VStack } from '@chakra-ui/react';
 
 import { range } from 'lodash';
 
-import projects from '../../../common/content/projects';
-import { useUserTheme } from '../../../common/hooks';
+import { useGetProjects, useUserTheme } from '../../../common/hooks';
+import Page from '../../../containers/Page';
 
 import DummyProject from './components/DummyProject';
 
 const DummyProjects: FC = () => {
 	const { colorMode } = useUserTheme();
 
+	const projects = useGetProjects();
+
 	return (
-		<VStack width='100%' divider={<Divider colorMode={colorMode} />} spacing={0}>
-			{range(projects.length).map((_dummy, index) => (
-				<DummyProject key={index} direction={index % 2 === 0 ? 'ltr' : 'rtl'} />
-			))}
-		</VStack>
+		<Page>
+			<VStack width='100%' minHeight='inherit' divider={<Divider colorMode={colorMode} />} spacing={0}>
+				{range(projects.length).map((_dummy, index) => (
+					<DummyProject key={index} direction={index % 2 === 0 ? 'ltr' : 'rtl'} />
+				))}
+			</VStack>
+		</Page>
 	);
 };
 

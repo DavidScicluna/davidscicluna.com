@@ -149,7 +149,7 @@ const DummyProject: FC<DummyProjectProps> = (props) => {
 						spacing={0}
 					>
 						<DummyButton color={color} colorMode={colorMode} size={isMd ? 'md' : 'xs'}>
-							Website Label
+							Playground Label
 						</DummyButton>
 
 						<DummyButton color={color} colorMode={colorMode} size={isMd ? 'md' : 'xs'} variant='text'>
