@@ -7,6 +7,7 @@ import { useMediaQuery, useBreakpointValue, useConst, Text, VStack, HStack } fro
 import { Transition } from 'framer-motion';
 import { useInView } from 'react-cool-inview';
 import { useTranslation } from 'react-i18next';
+import { useWindowSize } from 'rooks';
 
 import { useSpacing, useUserTheme } from '../../../common/hooks';
 import { MailOverlay } from '../../../components';
@@ -22,8 +23,6 @@ const Home: FC = () => {
 	const [isSm] = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 	const [isMd] = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
-	const { observe, inView } = useInView({ threshold: 1, unobserveOnEnter: true });
-
 	const titleFontSize = useBreakpointValue<FontSize>({
 		base: '2xl',
 		sm: '3xl',
@@ -36,6 +35,10 @@ const Home: FC = () => {
 		md: 'lg',
 		lg: 'xl'
 	});
+
+	const { innerHeight } = useWindowSize();
+
+	const { observe, inView } = useInView({ unobserveOnEnter: true, rootMargin: `${(innerHeight || 0) / 10}px 0px` });
 
 	const spacing = useSpacing();
 
