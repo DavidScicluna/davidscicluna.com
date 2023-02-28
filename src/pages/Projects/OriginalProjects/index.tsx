@@ -5,6 +5,7 @@ import { useTheme, Divider, utils } from '@davidscicluna/component-library';
 import { VStack } from '@chakra-ui/react';
 
 import { useInView } from 'react-cool-inview';
+import { useWindowSize } from 'rooks';
 
 import { useGetProjects, useUserTheme } from '../../../common/hooks';
 import Page from '../../../containers/Page';
@@ -17,7 +18,9 @@ const Projects: FC = () => {
 	const theme = useTheme();
 	const { colorMode } = useUserTheme();
 
-	const { observe, inView } = useInView({ unobserveOnEnter: true });
+	const { innerHeight } = useWindowSize();
+
+	const { observe, inView } = useInView({ unobserveOnEnter: true, rootMargin: `${(innerHeight || 0) / 10}px 0px` });
 
 	const projects = useGetProjects();
 
