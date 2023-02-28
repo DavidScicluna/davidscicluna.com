@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 
 import {
 	FontSize,
@@ -66,16 +66,18 @@ const Project: FC<ProjectProps> = (props) => {
 
 	const spacing = useSpacing();
 
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const dispatch = useDispatch();
 
 	const { id, image, title, description, links, tags, direction, inView = defaultInView, timeout } = props;
 
-	const [canHover, setCanHover] = useBoolean();
+	// const [canHover, setCanHover] = useBoolean();
 	const [canTriggerAnimation, setCanTriggerAnimation] = useBoolean();
 
-	const [isDisabled, setIsDisabled] = useBoolean();
+	const canHover = false;
+
+	// const [isDisabled, setIsDisabled] = useBoolean(true);
 
 	const [isActive, setIsActive] = useBoolean();
 	const [isHovering, setIsHovering] = useBoolean();
@@ -84,14 +86,14 @@ const Project: FC<ProjectProps> = (props) => {
 	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }));
 	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration });
 
-	useTimeout(() => setCanHover.on(), timeout * 2);
+	// useTimeout(() => setCanHover.on(), timeout * 2);
 	useTimeout(() => setCanTriggerAnimation.on(), timeout);
 
 	useUpdateEffect(() => (!isHovering && isActive ? setIsActive.off() : undefined), [isHovering]);
 
 	return (
 		<Grid
-			data-active={dataAttr(isHovering || isActive)}
+			data-active={dataAttr(canHover && (isHovering || isActive))}
 			width='100%'
 			minHeight={isLg ? '500px' : 'auto'}
 			templateColumns={['1fr', '1fr', '1fr', '50% 1fr']}
@@ -101,17 +103,15 @@ const Project: FC<ProjectProps> = (props) => {
 				'minmax(min-content, max-content) minmax(min-content, max-content)',
 				'minmax(min-content, max-content)'
 			]}
-			onClick={!isDisabled ? () => navigate(`/projects/${id}`) : undefined}
+			// onClick={!isDisabled ? () => navigate(`/projects/${id}`) : undefined}
 			onMouseEnter={() => setIsHovering.on()}
 			onMouseLeave={() => setIsHovering.off()}
 			gap={spacing}
 			px={spacing}
 			py={[spacing, spacing, spacing, spacing * 2]}
 			sx={{
-				'cursor': 'pointer',
+				'cursor': canHover ? 'pointer' : 'default',
 				'background': getColor({ theme, colorMode, type: 'background' }),
-
-				'pointerEvents': canHover ? 'auto' : 'none',
 
 				'transition': transition,
 				'transitionProperty': transition,
@@ -125,18 +125,26 @@ const Project: FC<ProjectProps> = (props) => {
 					transitionTimingFunctio: transition
 				}
 			}}
-			_hover={{
-				background:
-					colorMode === 'light'
-						? darken(getColor({ theme, colorMode, color, type: 'color' }), 0.05)
-						: lighten(getColor({ theme, colorMode, color, type: 'color' }), 0.05)
-			}}
-			_active={{
-				background:
-					colorMode === 'light'
-						? darken(getColor({ theme, colorMode, color, type: 'color' }), 0.1)
-						: lighten(getColor({ theme, colorMode, color, type: 'color' }), 0.1)
-			}}
+			_hover={
+				canHover
+					? {
+							background:
+								colorMode === 'light'
+									? darken(getColor({ theme, colorMode, color, type: 'color' }), 0.05)
+									: lighten(getColor({ theme, colorMode, color, type: 'color' }), 0.05)
+					  }
+					: undefined
+			}
+			_active={
+				canHover
+					? {
+							background:
+								colorMode === 'light'
+									? darken(getColor({ theme, colorMode, color, type: 'color' }), 0.1)
+									: lighten(getColor({ theme, colorMode, color, type: 'color' }), 0.1)
+					  }
+					: undefined
+			}
 		>
 			<GridItem order={isLg ? (direction === 'ltr' ? 0 : 1) : 0}>
 				<Fade
@@ -153,7 +161,7 @@ const Project: FC<ProjectProps> = (props) => {
 						borderRadius: theme.radii.xl,
 						boxShadow: `0px 16px 20px ${transparentize(
 							getColor({ theme, colorMode, type: 'divider' }),
-							isHovering || isActive ? 0.9 : 1
+							canHover && (isHovering || isActive) ? 0.9 : 1
 						)}`
 					}}
 				>
@@ -200,7 +208,7 @@ const Project: FC<ProjectProps> = (props) => {
 								>
 									<Badge
 										color={
-											isHovering || isActive
+											canHover && (isHovering || isActive)
 												? colorMode === 'light'
 													? 'white'
 													: 'black'
@@ -235,11 +243,12 @@ const Project: FC<ProjectProps> = (props) => {
 								color={getColor({
 									theme,
 									colorMode,
-									type: isHovering || isActive ? 'background' : 'text.primary'
+									type: canHover && (isHovering || isActive) ? 'background' : 'text.primary'
 								})}
 								fontSize={titleFontSize}
 								fontWeight='bold'
 								lineHeight='shorter'
+								userSelect='none'
 							>
 								{title}
 							</Text>
@@ -257,10 +266,11 @@ const Project: FC<ProjectProps> = (props) => {
 								color={getColor({
 									theme,
 									colorMode,
-									type: isHovering || isActive ? 'background' : 'text.secondary'
+									type: canHover && (isHovering || isActive) ? 'background' : 'text.secondary'
 								})}
 								fontSize={descriptionFontSize}
 								lineHeight='shorter'
+								userSelect='none'
 								noOfLines={3}
 							>
 								{description}
@@ -284,13 +294,19 @@ const Project: FC<ProjectProps> = (props) => {
 							}}
 						>
 							<Button
-								color={isHovering || isActive ? (colorMode === 'light' ? 'white' : 'black') : color}
+								color={
+									canHover && (isHovering || isActive)
+										? colorMode === 'light'
+											? 'white'
+											: 'black'
+										: color
+								}
 								colorMode={colorMode}
 								onClick={
 									id !== 'cl' ? () => dispatch(setPlaygroundModal({ isOpen: true, id })) : undefined
 								}
-								onMouseEnter={() => setIsDisabled.on()}
-								onMouseLeave={() => setIsDisabled.off()}
+								// onMouseEnter={() => setIsDisabled.on()}
+								// onMouseLeave={() => setIsDisabled.off()}
 								size={isMd ? 'md' : 'xs'}
 							>
 								{links.playground.label}
@@ -307,10 +323,16 @@ const Project: FC<ProjectProps> = (props) => {
 						>
 							<ExternalLink href={links.git.href} target='_blank'>
 								<Button
-									color={isHovering || isActive ? (colorMode === 'light' ? 'white' : 'black') : color}
+									color={
+										canHover && (isHovering || isActive)
+											? colorMode === 'light'
+												? 'white'
+												: 'black'
+											: color
+									}
 									colorMode={colorMode}
-									onMouseEnter={() => setIsDisabled.on()}
-									onMouseLeave={() => setIsDisabled.off()}
+									// onMouseEnter={() => setIsDisabled.on()}
+									// onMouseLeave={() => setIsDisabled.off()}
 									size={isMd ? 'md' : 'xs'}
 									variant='text'
 								>
