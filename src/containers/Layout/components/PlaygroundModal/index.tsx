@@ -56,8 +56,8 @@ const PlaygroundModal: FC = () => {
 	const [isNavExpanded, setIsNavExpanded] = useBoolean();
 	const [isError, setIsError] = useBoolean();
 
-	const [isNavigationTooltip, setIsNavigationTooltip] = useBoolean();
-	const [isFullscreenTooltip, setIsFullscreenTooltip] = useBoolean();
+	const [isHoveringNavigation, setIsHoveringNavigation] = useBoolean();
+	const [isHoveringFullscreen, setIsHoveringFullscreen] = useBoolean();
 
 	const { isFullscreenAvailable, isFullscreenEnabled, toggleFullscreen, disableFullscreen } = useFullscreen();
 
@@ -121,7 +121,7 @@ const PlaygroundModal: FC = () => {
 									}.aria-label.tooltip`
 								)}`}
 								colorMode={colorMode}
-								isOpen={isNavigationTooltip}
+								isOpen={isHoveringNavigation}
 								placement='top'
 								label={`${t(
 									`layout.playgroundModal.navigation.${isNavExpanded ? 'close' : 'open'}.tooltip`
@@ -135,8 +135,8 @@ const PlaygroundModal: FC = () => {
 										}.aria-label.button`
 									)}`}
 									onClick={() => setIsNavExpanded.toggle()}
-									onMouseEnter={() => setIsNavigationTooltip.on()}
-									onMouseLeave={() => setIsNavigationTooltip.off()}
+									onMouseEnter={() => setIsHoveringNavigation.on()}
+									onMouseLeave={() => setIsHoveringNavigation.off()}
 								>
 									<IconButtonIcon icon={isNavExpanded ? 'remove' : 'add'} category={category} />
 								</IconButton>
@@ -149,7 +149,7 @@ const PlaygroundModal: FC = () => {
 										}.aria-label.tooltip`
 									)}`}
 									colorMode={colorMode}
-									isOpen={isFullscreenTooltip}
+									isOpen={isHoveringFullscreen}
 									placement='top'
 									label={`${t(
 										`layout.playgroundModal.fullscreen.${
@@ -165,8 +165,8 @@ const PlaygroundModal: FC = () => {
 											}.aria-label.button`
 										)}`}
 										onClick={() => toggleFullscreen()}
-										onMouseEnter={() => setIsFullscreenTooltip.on()}
-										onMouseLeave={() => setIsFullscreenTooltip.off()}
+										onMouseEnter={() => setIsHoveringFullscreen.on()}
+										onMouseLeave={() => setIsHoveringFullscreen.off()}
 									>
 										<IconButtonIcon
 											icon={isFullscreenEnabled ? 'fullscreen_exit' : 'fullscreen'}
