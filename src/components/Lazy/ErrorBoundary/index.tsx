@@ -1,9 +1,8 @@
 import { Component, ErrorInfo } from 'react';
 
 import i18n from '../../../common/scripts/i18n';
-import Error from '../../../containers/Error';
 
-import ErrorBoundaryActions from './components/ErrorBoundaryActions';
+import Error from './components/ErrorBoundary';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
@@ -21,14 +20,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
 	public render() {
 		if (this.state.hasError) {
-			return (
-				<Error
-					code={404}
-					title={`${i18n.t('components.errorBoundary.title')}`}
-					subtitle={`${i18n.t('components.errorBoundary.subtitle')}`}
-					renderActions={(props) => <ErrorBoundaryActions {...props} />}
-				/>
-			);
+			return <Error />;
 		}
 
 		return this.props.children;
