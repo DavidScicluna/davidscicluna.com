@@ -8,11 +8,11 @@ export type AboutParagraphs = AboutParagraph[];
 const useGetAbout = (): AboutParagraphs => {
 	const { i18n, t } = useTranslation();
 
-	const projects = useMemo<AboutParagraphs>(() => {
+	const paragraphs = useMemo<AboutParagraphs>(() => {
 		return [`${t('common.about.0')}`, `${t('common.about.1')}`, `${t('common.about.2')}`, `${t('common.about.3')}`];
 	}, [i18n.language]);
 
-	return projects;
+	return paragraphs;
 };
 
 export default useGetAbout;
