@@ -16,6 +16,7 @@ type ProjectTags = ProjectTag[];
 export type Project = {
 	id: ProjectID;
 	title: string;
+	short?: string;
 	description: string;
 	links: ProjectLinks;
 	tags: ProjectTags;
@@ -31,6 +32,7 @@ const useGetProjects = (): Projects => {
 			{
 				id: 'edb',
 				title: `${t('common.projects.edb.title')}`,
+				short: `${t('common.projects.edb.short')}`,
 				description: `${t('common.projects.edb.description')}`,
 				links: {
 					web: {
