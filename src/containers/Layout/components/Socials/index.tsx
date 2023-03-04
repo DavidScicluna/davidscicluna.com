@@ -52,7 +52,7 @@ const Socials: FC = () => {
 					</IconButton>
 				</Tooltip>
 			</MailOverlay>
-			<ExternalLink href='https://www.linkedin.com/in/davidscicluna98/'>
+			<ExternalLink href={import.meta.env.VITE_LINKEDIN_URL} target='_blank'>
 				<Tooltip
 					aria-label={`${t('layout.socials.linkedin.aria-label.tooltip')}`}
 					colorMode={colorMode}
@@ -72,7 +72,7 @@ const Socials: FC = () => {
 					</IconButton>
 				</Tooltip>
 			</ExternalLink>
-			<ExternalLink href='https://github.com/DavidScicluna'>
+			<ExternalLink href={import.meta.env.VITE_GITHUB_URL} target='_blank'>
 				<Tooltip
 					aria-label={`${t('layout.socials.github.aria-label.tooltip')}`}
 					colorMode={colorMode}
