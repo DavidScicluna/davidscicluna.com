@@ -205,7 +205,7 @@ const PlaygroundModal: FC = () => {
 										colorMode={colorMode}
 										renderDivider={({ padding }) => <Box p={padding} />}
 									>
-										{projects.map(({ id, title }) => {
+										{projects.map(({ id, title, short }) => {
 											const isActive = id === project?.id;
 											return (
 												<Button
@@ -229,7 +229,7 @@ const PlaygroundModal: FC = () => {
 													onClick={!isActive ? () => handleGetProject(id) : undefined}
 													variant={isActive ? 'contained' : 'outlined'}
 												>
-													{title}
+													{id === 'edb' ? short : title}
 												</Button>
 											);
 										})}
