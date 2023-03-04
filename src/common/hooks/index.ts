@@ -5,6 +5,7 @@ import useGetProjects from './useGetProjects';
 import useGetSkills from './useGetSkills';
 import useSelector from './useSelectorTyped';
 import useSpacing from './useSpacing';
+import useUpdateDocumentMeta from './useUpdateDocumentMeta';
 import useUserTheme from './useUserTheme';
 
 export {
@@ -15,5 +16,6 @@ export {
 	useGetSkills,
 	useSelector,
 	useSpacing,
+	useUpdateDocumentMeta,
 	useUserTheme
 };

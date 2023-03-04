@@ -7,7 +7,7 @@ import { useConst, Container, Center } from '@chakra-ui/react';
 import { useWindowSize } from 'rooks';
 import { useElementSize } from 'usehooks-ts';
 
-import { useUserTheme } from '../../common/hooks';
+import { useUpdateDocumentMeta, useUserTheme } from '../../common/hooks';
 
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -29,6 +29,8 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 	const [navigationRef, { width: navigationWidth, height: navigationHeight }] = useElementSize();
 
 	const containerMaxWidth = useConst<number>(convertREMToPixels(convertStringToNumber(theme.breakpoints.xl, 'em')));
+
+	useUpdateDocumentMeta();
 
 	return (
 		<>
