@@ -1,4 +1,4 @@
-import { ProjectID } from '../../../common/content/projects';
+import { ProjectID } from '../../../common/hooks/useGetProjects';
 
 export type PlaygroundModal = {
 	isOpen: boolean;
