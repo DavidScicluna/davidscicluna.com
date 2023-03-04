@@ -6,6 +6,7 @@ import { useConst, Center, Show } from '@chakra-ui/react';
 
 import { Transition } from 'framer-motion';
 import { useWindowSize } from 'rooks';
+import { useElementSize } from 'usehooks-ts';
 
 import { useUserTheme } from '../../common/hooks';
 
@@ -15,14 +16,14 @@ import { SplashscreenProps } from './types';
 
 const { getTransitionConfig, getTransitionDelay, getTransitionDuration, getColor } = utils;
 
-const labelWidth = 258.15;
-const labelHeight = 18;
-
 const Splashscreen: FC<SplashscreenProps> = ({ isOpen = false, onClose }) => {
 	const theme = useTheme();
 	const { colorMode } = useUserTheme();
 
 	const { innerHeight: windowHeight } = useWindowSize();
+
+	const [leftLabelRef, { width: leftLabelWidth, height: leftLabelHeight }] = useElementSize();
+	const [rightLabelRef, { width: rightLabelWidth, height: rightLabelHeight }] = useElementSize();
 
 	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }) * 6);
 	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
@@ -58,12 +59,12 @@ const Splashscreen: FC<SplashscreenProps> = ({ isOpen = false, onClose }) => {
 							<Center
 								position='absolute'
 								top='50%'
-								left={-(labelWidth / 2 - labelHeight / 2)}
+								left={-(leftLabelWidth / 2 - leftLabelHeight / 2)}
 								transform='translateY(-50%) rotate(-90deg)'
 								p={2}
 							>
 								<ScaleFade in transition={{ enter: { ...config }, exit: { ...config } }}>
-									<SplashscreenLabel />
+									<SplashscreenLabel ref={leftLabelRef} />
 								</ScaleFade>
 							</Center>
 
@@ -71,12 +72,12 @@ const Splashscreen: FC<SplashscreenProps> = ({ isOpen = false, onClose }) => {
 							<Center
 								position='absolute'
 								top='50%'
-								right={-(labelWidth / 2 - labelHeight / 2)}
+								right={-(rightLabelWidth / 2 - rightLabelHeight / 2)}
 								transform='translateY(-50%) rotate(-270deg)'
 								p={2}
 							>
 								<ScaleFade in transition={{ enter: { ...config }, exit: { ...config } }}>
-									<SplashscreenLabel />
+									<SplashscreenLabel ref={rightLabelRef} />
 								</ScaleFade>
 							</Center>
 						</Show>

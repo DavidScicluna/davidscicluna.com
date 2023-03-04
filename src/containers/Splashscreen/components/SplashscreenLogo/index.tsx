@@ -5,6 +5,7 @@ import { useTheme, ScaleFade, utils } from '@davidscicluna/component-library';
 import { useConst, Text } from '@chakra-ui/react';
 
 import { Transition } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 import { useUserTheme } from '../../../../common/hooks';
 
@@ -13,6 +14,8 @@ const { getTransitionConfig, getTransitionDuration, getColor } = utils;
 const SplashscreenLogo: FC = () => {
 	const theme = useTheme();
 	const { colorMode } = useUserTheme();
+
+	const { t } = useTranslation();
 
 	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
 	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration });
@@ -45,7 +48,7 @@ const SplashscreenLogo: FC = () => {
 					'animationTimingFunction': theme.transition.easing['ease-in-out']
 				}}
 			>
-				davidscicluna
+				{`${t('splashscreen.logo')}`}
 			</Text>
 		</ScaleFade>
 	);
