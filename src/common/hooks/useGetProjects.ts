@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 
+import { ImageSrc } from '@davidscicluna/component-library';
+
 import { range } from 'lodash';
 import { useTranslation } from 'react-i18next';
-
-import { ImageProps } from '../../components/Image/types';
 
 export type ProjectID = 'edb' | 'cl' | 'concentration' | 'journal' | 'clock' | 'weather' | 'calculator';
 
@@ -20,7 +20,7 @@ export type Project = {
 	description: string;
 	links: ProjectLinks;
 	tags: ProjectTags;
-	image: ImageProps['src'];
+	image: ImageSrc;
 };
 export type Projects = Project[];
 
