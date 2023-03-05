@@ -1,6 +1,6 @@
 import { FC, useState, useCallback } from 'react';
 
-import { IconButton, IconButtonIcon } from '@davidscicluna/component-library';
+import { SearchBar, IconButton, IconButtonIcon } from '@davidscicluna/component-library';
 
 import { useConst, VStack, SimpleGrid } from '@chakra-ui/react';
 
@@ -12,7 +12,6 @@ import { useTranslation } from 'react-i18next';
 import allLanguages from '../../../../../../common/content/languages';
 import { useSelector, useUserTheme } from '../../../../../../common/hooks';
 import { Languages as LanguagesType } from '../../../../../../common/types';
-import SearchBar from '../../../../../../components/SearchBar';
 
 import Language from './components/Language';
 import { LanguagesProps } from './types';

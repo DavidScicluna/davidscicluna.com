@@ -46,6 +46,7 @@ const Language: FC<LanguageProps> = (props) => {
 						})}
 						fontSize='md'
 						fontWeight='semibold'
+						textTransform='capitalize'
 					>
 						{name}
 					</Text>
@@ -61,6 +62,7 @@ const Language: FC<LanguageProps> = (props) => {
 						})}
 						fontSize='sm'
 						fontWeight='medium'
+						textTransform='capitalize'
 					>
 						{`${t(`layout.internationalizationModal.languages.${iso_639_1}`)}`}
 					</Text>
