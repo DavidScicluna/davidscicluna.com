@@ -31,18 +31,22 @@ import {
 import { dataAttr } from '@chakra-ui/utils';
 import { darken, lighten, transparentize } from 'color2k';
 import { Transition } from 'framer-motion';
+import { shuffle } from 'lodash';
 import { useDispatch } from 'react-redux';
 import { useTimeout, useUpdateEffect } from 'usehooks-ts';
 
 import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
-import { useSpacing, useUserTheme } from '../../../../../common/hooks';
+import { useGetSkills, useSpacing, useUserTheme } from '../../../../../common/hooks';
+import { Skills } from '../../../../../common/hooks/useGetSkills';
 import { setPlaygroundModal } from '../../../../../store/slices/Modals';
 
 import { ProjectProps } from './types';
+import { getProjectSkills } from './utils';
 
 const { getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor } = utils;
 
 const transition = 'none';
+const limit = 5;
 
 const Project: FC<ProjectProps> = (props) => {
 	const theme = useTheme();
@@ -70,7 +74,9 @@ const Project: FC<ProjectProps> = (props) => {
 
 	const dispatch = useDispatch();
 
-	const { id, image, title, description, links, tags, direction, inView = defaultInView, timeout } = props;
+	const allSkills = useGetSkills();
+
+	const { id, image, title, description, links, direction, inView = defaultInView, timeout } = props;
 
 	// const [canHover, setCanHover] = useBoolean();
 	const [canTriggerAnimation, setCanTriggerAnimation] = useBoolean();
@@ -81,6 +87,8 @@ const Project: FC<ProjectProps> = (props) => {
 
 	const [isActive, setIsActive] = useBoolean();
 	const [isHovering, setIsHovering] = useBoolean();
+
+	const skills = useConst<Skills>(shuffle(getProjectSkills({ skills: allSkills, id })));
 
 	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
 	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }));
@@ -186,7 +194,7 @@ const Project: FC<ProjectProps> = (props) => {
 					spacing={spacing}
 					py={[0, 0, 0, spacing * 2]}
 				>
-					{isMd && tags.length > 0 && (
+					{isMd && skills.length > 0 && (
 						<Stack
 							width='100%'
 							direction={isLg ? (direction === 'ltr' ? 'row' : 'row-reverse') : 'row'}
@@ -196,14 +204,41 @@ const Project: FC<ProjectProps> = (props) => {
 							spacing={0}
 							gap={1}
 						>
-							{tags.map(({ label }, index) => (
+							{skills
+								.filter((_skill, index) => index < limit)
+								.map(({ label }, index) => (
+									<SlideFade
+										key={label}
+										in={inView && canTriggerAnimation}
+										unmountOnExit={false}
+										transition={{
+											enter: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) },
+											exit: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) }
+										}}
+									>
+										<Badge
+											color={
+												canHover && (isHovering || isActive)
+													? colorMode === 'light'
+														? 'white'
+														: 'black'
+													: 'gray'
+											}
+											colorMode={colorMode}
+											size='xs'
+										>
+											<BadgeLabel textTransform='uppercase'>{label}</BadgeLabel>
+										</Badge>
+									</SlideFade>
+								))}
+
+							{skills.length > limit && (
 								<SlideFade
-									key={label}
 									in={inView && canTriggerAnimation}
 									unmountOnExit={false}
 									transition={{
-										enter: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) },
-										exit: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) }
+										enter: { ...config, delay: delay * 1.5 * Number(`1.${limit + 1}`) },
+										exit: { ...config, delay: delay * 1.5 * Number(`1.${limit + 1}`) }
 									}}
 								>
 									<Badge
@@ -216,11 +251,12 @@ const Project: FC<ProjectProps> = (props) => {
 										}
 										colorMode={colorMode}
 										size='xs'
+										variant='outlined'
 									>
-										<BadgeLabel textTransform='uppercase'>{label}</BadgeLabel>
+										<BadgeLabel textTransform='uppercase'>{`+${skills.length - limit}`}</BadgeLabel>
 									</Badge>
 								</SlideFade>
-							))}
+							)}
 						</Stack>
 					)}
 
