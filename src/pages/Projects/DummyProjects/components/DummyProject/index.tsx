@@ -21,7 +21,7 @@ import { DummyProjectProps } from './types';
 
 const { getColor, getFontSizeHeight } = utils;
 
-const tags = range(2, 6);
+const skills = range(2, 6);
 const descriptions = range(2, 4);
 
 const DummyProject: FC<DummyProjectProps> = (props) => {
@@ -91,10 +91,10 @@ const DummyProject: FC<DummyProjectProps> = (props) => {
 							spacing={0}
 							gap={1}
 						>
-							{range(sample(tags) || 4).map((_dummy, index) => (
+							{range(sample(skills) || 4).map((_dummy, index) => (
 								<Skeleton key={index} colorMode={colorMode} isLoaded={false} variant='rectangle'>
 									<Badge color='gray' colorMode={colorMode} size='xs'>
-										<BadgeLabel textTransform='uppercase'>Tag Label</BadgeLabel>
+										<BadgeLabel textTransform='uppercase'>Skill Label</BadgeLabel>
 									</Badge>
 								</Skeleton>
 							))}
