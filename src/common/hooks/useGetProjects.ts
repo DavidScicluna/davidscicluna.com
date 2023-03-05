@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 
 import { ImageSrc } from '@davidscicluna/component-library';
 
-import { range } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
 export type ProjectID = 'edb' | 'cl' | 'concentration' | 'journal' | 'clock' | 'weather' | 'calculator';
@@ -10,16 +9,12 @@ export type ProjectID = 'edb' | 'cl' | 'concentration' | 'journal' | 'clock' | '
 type ProjectLink = { label: string; href: string };
 type ProjectLinks = Record<'web' | 'git', ProjectLink> & { playground: Omit<ProjectLink, 'href'> };
 
-type ProjectTag = { label: string };
-type ProjectTags = ProjectTag[];
-
 export type Project = {
 	id: ProjectID;
 	title: string;
 	short?: string;
 	description: string;
 	links: ProjectLinks;
-	tags: ProjectTags;
 	image: ImageSrc;
 };
 export type Projects = Project[];
@@ -47,9 +42,6 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/edb/'
 					}
 				},
-				tags: range(4).map((index) => {
-					return { label: `${t(`common.projects.edb.tags.${index}`)}` };
-				}),
 				image: { full: '', thumbnail: '' }
 			},
 			{
@@ -69,9 +61,6 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/react-concentration/'
 					}
 				},
-				tags: range(5).map((index) => {
-					return { label: `${t(`common.projects.concentration.tags.${index}`)}` };
-				}),
 				image: { full: '', thumbnail: '' }
 			},
 			{
@@ -91,9 +80,6 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/react-journal/'
 					}
 				},
-				tags: range(5).map((index) => {
-					return { label: `${t(`common.projects.journal.tags.${index}`)}` };
-				}),
 				image: { full: '', thumbnail: '' }
 			},
 			{
@@ -113,9 +99,6 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/react-clock/'
 					}
 				},
-				tags: range(7).map((index) => {
-					return { label: `${t(`common.projects.clock.tags.${index}`)}` };
-				}),
 				image: { full: '', thumbnail: '' }
 			},
 			{
@@ -135,9 +118,7 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/react-weather/'
 					}
 				},
-				tags: range(4).map((index) => {
-					return { label: `${t(`common.projects.weather.tags.${index}`)}` };
-				}),
+
 				image: { full: '', thumbnail: '' }
 			},
 			{
@@ -157,9 +138,6 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/react-calculator/'
 					}
 				},
-				tags: range(3).map((index) => {
-					return { label: `${t(`common.projects.calculator.tags.${index}`)}` };
-				}),
 				image: { full: '', thumbnail: '' }
 			}
 		];
