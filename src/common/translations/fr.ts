@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portfolio',
 			description:
-				"Bonjour! Je suis David Scicluna, un développeur frontal basé dans les îles maltaises ensoleillées. Travaille actuellement chez Tain | Eeze et en tant que pigiste. Je suis très passionné par la technologie; J'adore développer des idées en applications et je suis déterminé à créer des produits et services avec une expérience utilisateur exceptionnelle et avec des techniques d'interface utilisateur modernes. Je fais de mon mieux pour continuer à apprendre et à élargir mes connaissances dans ce domaine, car je crois que plus j'en apprends, meilleure est l'expérience que les utilisateurs finaux auront. Vous pouvez me trouver sur LinkedIn et GitHub, ou contacter-moi par e-mail à hello@davidscicluna.com."
+				"Bonjour! Je suis David Scicluna, un développeur frontal basé dans les îles maltaises ensoleillées. Travaille actuellement chez Tain | EEZE et en tant que pigiste. Je suis très passionné par la technologie; J'adore développer des idées en applications et je suis déterminé à créer des produits et services avec une expérience utilisateur exceptionnelle et avec des techniques d'interface utilisateur modernes. Je fais de mon mieux pour continuer à apprendre et à élargir mes connaissances dans ce domaine, car je crois que plus j'en apprends, meilleure est l'expérience que les utilisateurs finaux auront. Vous pouvez me trouver sur LinkedIn et GitHub, ou contacter-moi par e-mail à hello@davidscicluna.com."
 		},
 		common: {
 			about: [
@@ -110,27 +110,27 @@ export default {
 				title: 'langue préférée',
 				subtitle: 'Choisissez la langue préférée de votre choix dans la liste des langues ci-dessous',
 				languages: {
-					ru: 'russe',
+					bg: 'bulgare',
+					cs: 'tchèque',
+					da: 'Danoise',
 					de: 'Allemande',
-					fr: 'Français',
-					it: 'Italienne',
+					el: 'Grecque',
 					en: 'Anglaise',
 					es: 'Espagnole',
-					pl: 'polonais',
-					uk: 'Ukrainienne',
-					ro: 'Roumaine',
-					nl: 'Néerlandaise',
-					tr: 'Turque',
-					el: 'Grecque',
-					hu: 'Hongroise',
-					sv: 'Suédoise',
-					cs: 'tchèque',
-					pt: 'Portugais',
-					sr: 'serbe',
-					bg: 'bulgare',
+					fr: 'Français',
 					hr: 'croate',
-					da: 'Danoise',
-					mt: 'maltais'
+					hu: 'Hongroise',
+					it: 'Italienne',
+					mt: 'maltais',
+					nl: 'Néerlandaise',
+					pl: 'polonais',
+					pt: 'Portugais',
+					ro: 'Roumaine',
+					ru: 'russe',
+					sr: 'serbe',
+					sv: 'Suédoise',
+					tr: 'Turque',
+					uk: 'Ukrainienne'
 				},
 				placeholder: "Essayez '{{language}}'",
 				cancel: 'Annuler',
@@ -239,8 +239,18 @@ export default {
 			action: 'Entrer en contact'
 		},
 		about: {
+			cover: {
+				banner: 'Bannière',
+				portrait: 'Portrait'
+			},
+			labels: {
+				aboutMe: 'Sur moi',
+				certifications: 'Certifications',
+				experience: 'Expérience',
+				skills: 'Compétences'
+			},
 			experiences: [
-				{ place: 'Tain | Eeze', role: 'Développeur frontal' },
+				{ place: 'Tain | EEZE', role: 'Développeur frontal' },
 				{ place: 'davidscicluna.com', role: 'Développeur front-end indépendant' },
 				{ place: 'Ministère de Gozo (Bureau du CIO)', role: 'Développeur frontal (apprenti à temps plein)' },
 				{ place: 'Ministère de Gozo (Bureau du CIO)', role: 'Développeur frontal (apprenti à temps plein)' },

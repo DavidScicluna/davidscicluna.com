@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portfölj',
 			description:
-				'Hallå! Jag är David Scicluna, en front-end-utvecklare baserad på de soliga maltesiska öarna. Arbetar för närvarande på TAIN | Eeze och som frilansare. Jag är mycket passionerad för teknik; Jag älskar att utveckla idéer till applikationer och är engagerad i att skapa produkter och tjänster med exceptionell användarupplevelse och med moderna användargränssnittstekniker. Jag försöker mitt bästa för att fortsätta lära mig och utöka min kunskap på detta område, eftersom jag tror att ju mer jag lär mig, desto bättre är upplevelsen slutanvändarna kommer att ha. Du kan hitta mig på LinkedIn och GitHub, eller nå ut till mig via e -post på hello@davidscicluna.com.'
+				'Hallå! Jag är David Scicluna, en front-end-utvecklare baserad på de soliga maltesiska öarna. Arbetar för närvarande på TAIN | EEZE och som frilansare. Jag är mycket passionerad för teknik; Jag älskar att utveckla idéer till applikationer och är engagerad i att skapa produkter och tjänster med exceptionell användarupplevelse och med moderna användargränssnittstekniker. Jag försöker mitt bästa för att fortsätta lära mig och utöka min kunskap på detta område, eftersom jag tror att ju mer jag lär mig, desto bättre är upplevelsen slutanvändarna kommer att ha. Du kan hitta mig på LinkedIn och GitHub, eller nå ut till mig via e -post på hello@davidscicluna.com.'
 		},
 		common: {
 			about: [
@@ -110,27 +110,27 @@ export default {
 				title: 'Önskat språk',
 				subtitle: 'Välj det föredragna språket du väljer från listan över språk nedan',
 				languages: {
-					ru: 'Rysk',
+					bg: 'Bulgarisk',
+					cs: 'Tjeckisk',
+					da: 'Dansk',
 					de: 'tysk',
-					fr: 'Franska',
-					it: 'Italienare',
+					el: 'grekisk',
 					en: 'engelsk',
 					es: 'Spansk',
-					pl: 'putsa',
-					uk: 'Ukrainare',
-					ro: 'Rumänsk',
-					nl: 'Holländsk',
-					tr: 'Turkisk',
-					el: 'grekisk',
-					hu: 'Ungerska',
-					sv: 'svenska',
-					cs: 'Tjeckisk',
-					pt: 'Portugisisk',
-					sr: 'Serbisk',
-					bg: 'Bulgarisk',
+					fr: 'Franska',
 					hr: 'Kroatisk',
-					da: 'Dansk',
-					mt: 'Maltesisk'
+					hu: 'Ungerska',
+					it: 'Italienare',
+					mt: 'Maltesisk',
+					nl: 'Holländsk',
+					pl: 'putsa',
+					pt: 'Portugisisk',
+					ro: 'Rumänsk',
+					ru: 'Rysk',
+					sr: 'Serbisk',
+					sv: 'svenska',
+					tr: 'Turkisk',
+					uk: 'Ukrainare'
 				},
 				placeholder: "Försök '{{language}}'",
 				cancel: 'Annullera',
@@ -227,8 +227,18 @@ export default {
 			action: 'Komma i kontakt'
 		},
 		about: {
+			cover: {
+				banner: 'Baner',
+				portrait: 'Porträtt'
+			},
+			labels: {
+				aboutMe: 'Om mig',
+				certifications: 'Certifieringar',
+				experience: 'Erfarenhet',
+				skills: 'Kompetens'
+			},
 			experiences: [
-				{ place: 'Tain | Eeze', role: 'Front-end' },
+				{ place: 'Tain | EEZE', role: 'Front-end' },
 				{ place: 'davidscicluna.com', role: 'Frilansfrontutvecklare' },
 				{ place: 'Ministeriet för Gozo (CIO: s kontor)', role: 'Front-End-utvecklare (heltidslärling)' },
 				{ place: 'Ministeriet för Gozo (CIO: s kontor)', role: 'Front-End-utvecklare (heltidslärling)' },

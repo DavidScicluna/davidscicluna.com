@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portfólio',
 			description:
-				'Olá! Sou David Scicluna, desenvolvedor de front-end nas ilhas ensolaradas maltitas. Atualmente trabalhando na Tain | Eeze e como freelancer. Sou muito apaixonado por tecnologia; Adoro desenvolver idéias em aplicativos e estou comprometido em criar produtos e serviços com experiência excepcional do usuário e com técnicas modernas de interface do usuário. Eu tento o meu melhor para continuar aprendendo e expandindo meu conhecimento nesse campo, pois acredito que quanto mais eu aprendo, melhor a experiência que os usuários finais terão. Você pode me encontrar no LinkedIn e Github, ou entrar em contato comigo por e -mail para hello@davidscicluna.com.'
+				'Olá! Sou David Scicluna, desenvolvedor de front-end nas ilhas ensolaradas maltitas. Atualmente trabalhando na Tain | EEZE e como freelancer. Sou muito apaixonado por tecnologia; Adoro desenvolver idéias em aplicativos e estou comprometido em criar produtos e serviços com experiência excepcional do usuário e com técnicas modernas de interface do usuário. Eu tento o meu melhor para continuar aprendendo e expandindo meu conhecimento nesse campo, pois acredito que quanto mais eu aprendo, melhor a experiência que os usuários finais terão. Você pode me encontrar no LinkedIn e Github, ou entrar em contato comigo por e -mail para hello@davidscicluna.com.'
 		},
 		common: {
 			about: [
@@ -118,27 +118,27 @@ export default {
 				title: 'língua preferida',
 				subtitle: 'Escolha o idioma preferido de sua escolha na lista de idiomas abaixo',
 				languages: {
-					ru: 'Russa',
+					bg: 'Búlgara',
+					cs: 'Tcheca',
+					da: 'dinamarquês',
 					de: 'Alemã',
-					fr: 'Francesa',
-					it: 'Italiana',
+					el: 'Grega',
 					en: 'Inglês',
 					es: 'Espanhola',
-					pl: 'polonês',
-					uk: 'Ucraniana',
-					ro: 'Romena',
-					nl: 'Holandês',
-					tr: 'Turca',
-					el: 'Grega',
-					hu: 'Húngara',
-					sv: 'Sueca',
-					cs: 'Tcheca',
-					pt: 'Português',
-					sr: 'Sérvia',
-					bg: 'Búlgara',
+					fr: 'Francesa',
 					hr: 'croata',
-					da: 'dinamarquês',
-					mt: 'maltês'
+					hu: 'Húngara',
+					it: 'Italiana',
+					mt: 'maltês',
+					nl: 'Holandês',
+					pl: 'polonês',
+					pt: 'Português',
+					ro: 'Romena',
+					ru: 'Russa',
+					sr: 'Sérvia',
+					sv: 'Sueca',
+					tr: 'Turca',
+					uk: 'Ucraniana'
 				},
 				placeholder: "Tente '{{language}}'",
 				cancel: 'Cancelar',
@@ -253,8 +253,18 @@ export default {
 			action: 'Entrar em contato'
 		},
 		about: {
+			cover: {
+				banner: 'Bandeira',
+				portrait: 'Retrato'
+			},
+			labels: {
+				aboutMe: 'Sobre mim',
+				certifications: 'Certificações',
+				experience: 'Experiência',
+				skills: 'Habilidades'
+			},
 			experiences: [
-				{ place: 'Tain | Eeze', role: 'Desenvolvedor front-end' },
+				{ place: 'Tain | EEZE', role: 'Desenvolvedor front-end' },
 				{ place: 'davidscicluna.com', role: 'Desenvolvedor de front-end freelance' },
 				{
 					place: 'Ministério para Gozo (Escritório do CIO)',

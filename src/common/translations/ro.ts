@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portofoliu',
 			description:
-				'Buna ziua! Sunt David Scicluna, un dezvoltator front-end cu sediul în Insulele Maltese însorite. În prezent lucrează la Tain | Eeze și ca freelancer. Sunt foarte pasionat de tehnologie; Îmi place să dezvolt idei în aplicații și mă angajez să creez produse și servicii cu experiență de utilizator excepțională și cu tehnici moderne de interfață utilizator. Încerc tot posibilul să continui să învăț și să-mi extind cunoștințele în acest domeniu, deoarece cred că, cu cât învăț mai mult, cu atât experiența va avea mai bine utilizatorii finali. Mă puteți găsi pe LinkedIn și Github, sau să mă contactați prin e -mail la hello@davidscicluna.com.'
+				'Buna ziua! Sunt David Scicluna, un dezvoltator front-end cu sediul în Insulele Maltese însorite. În prezent lucrează la Tain | EEZE și ca freelancer. Sunt foarte pasionat de tehnologie; Îmi place să dezvolt idei în aplicații și mă angajez să creez produse și servicii cu experiență de utilizator excepțională și cu tehnici moderne de interfață utilizator. Încerc tot posibilul să continui să învăț și să-mi extind cunoștințele în acest domeniu, deoarece cred că, cu cât învăț mai mult, cu atât experiența va avea mai bine utilizatorii finali. Mă puteți găsi pe LinkedIn și Github, sau să mă contactați prin e -mail la hello@davidscicluna.com.'
 		},
 		common: {
 			about: [
@@ -110,27 +110,27 @@ export default {
 				title: 'Limba preferată',
 				subtitle: 'Alegeți limba preferată la alegere din lista de limbi de mai jos',
 				languages: {
-					ru: 'Rusă',
+					bg: 'bulgară',
+					cs: 'ceh',
+					da: 'danez',
 					de: 'limba germana',
-					fr: 'limba franceza',
-					it: 'Italiană',
+					el: 'Grec',
 					en: 'Engleză',
 					es: 'Spaniolă',
-					pl: 'Lustrui',
-					uk: 'ucrainean',
-					ro: 'Română',
-					nl: 'Olandez',
-					tr: 'turc',
-					el: 'Grec',
-					hu: 'Maghiar',
-					sv: 'suedez',
-					cs: 'ceh',
-					pt: 'Portugheză',
-					sr: 'sârb',
-					bg: 'bulgară',
+					fr: 'limba franceza',
 					hr: 'croat',
-					da: 'danez',
-					mt: 'Malteză'
+					hu: 'Maghiar',
+					it: 'Italiană',
+					mt: 'Malteză',
+					nl: 'Olandez',
+					pl: 'Lustrui',
+					pt: 'Portugheză',
+					ro: 'Română',
+					ru: 'Rusă',
+					sr: 'sârb',
+					sv: 'suedez',
+					tr: 'turc',
+					uk: 'ucrainean'
 				},
 				placeholder: 'Încercați „{{language}}”',
 				cancel: 'Anulare',
@@ -242,8 +242,18 @@ export default {
 			action: 'Intrați în legătură'
 		},
 		about: {
+			cover: {
+				banner: 'Banner',
+				portrait: 'Portret'
+			},
+			labels: {
+				aboutMe: 'Despre mine',
+				certifications: 'Certificări',
+				experience: 'Experienţă',
+				skills: 'Aptitudini'
+			},
 			experiences: [
-				{ place: 'Tain | Eeze', role: 'Dezvoltator interfețe' },
+				{ place: 'Tain | EEZE', role: 'Dezvoltator interfețe' },
 				{ place: 'davidscicluna.com', role: 'Dezvoltator front-end independent' },
 				{ place: 'Ministerul Gozo (Oficiul CIO)', role: 'Dezvoltator front-end (ucenic cu normă întreagă)' },
 				{ place: 'Ministerul Gozo (Oficiul CIO)', role: 'Dezvoltator front-end (ucenic cu normă întreagă)' },

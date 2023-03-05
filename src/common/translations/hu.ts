@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portfólió',
 			description:
-				'Helló! David Scicluna vagyok, a napsütéses máltai szigeteken székhellyel rendelkező front-end fejlesztő. Jelenleg a TAIN -nál dolgozik Eeze és szabadúszóként. Nagyon szenvedélyesen foglalkozom a technológiával; Szeretem az ötletek kidolgozását az alkalmazásokba, és elkötelezett vagyok a kivételes felhasználói élményű termékek és szolgáltatások létrehozása iránt, valamint a modern felhasználói felület technikáival. Minden tőlem telhetőt megpróbálok folytatni, hogy továbbtanuljak és bővítsem tudásomat ezen a területen, mivel azt hiszem, minél többet tanulok, annál jobb a tapasztalatok a végfelhasználók számára. Megtalálhat engem a LinkedIn -en és a GitHub -on, vagy hozzon hozzám e -mailben a hello@davidscicluna.com címen.'
+				'Helló! David Scicluna vagyok, a napsütéses máltai szigeteken székhellyel rendelkező front-end fejlesztő. Jelenleg a TAIN -nál dolgozik EEZE és szabadúszóként. Nagyon szenvedélyesen foglalkozom a technológiával; Szeretem az ötletek kidolgozását az alkalmazásokba, és elkötelezett vagyok a kivételes felhasználói élményű termékek és szolgáltatások létrehozása iránt, valamint a modern felhasználói felület technikáival. Minden tőlem telhetőt megpróbálok folytatni, hogy továbbtanuljak és bővítsem tudásomat ezen a területen, mivel azt hiszem, minél többet tanulok, annál jobb a tapasztalatok a végfelhasználók számára. Megtalálhat engem a LinkedIn -en és a GitHub -on, vagy hozzon hozzám e -mailben a hello@davidscicluna.com címen.'
 		},
 		common: {
 			about: [
@@ -110,27 +110,27 @@ export default {
 				title: 'Előnyben részesített nyelv',
 				subtitle: 'Válassza ki a választott preferált nyelvet az alábbi nyelvek listájából',
 				languages: {
-					ru: 'orosz',
+					bg: 'bolgár',
+					cs: 'cseh',
+					da: 'dán',
 					de: 'német',
-					fr: 'Francia',
-					it: 'olasz',
+					el: 'görög',
 					en: 'angol',
 					es: 'spanyol',
-					pl: 'fényesít',
-					uk: 'ukrán',
-					ro: 'román',
-					nl: 'holland',
-					tr: 'török',
-					el: 'görög',
-					hu: 'Magyar',
-					sv: 'svéd',
-					cs: 'cseh',
-					pt: 'portugál',
-					sr: 'szerb',
-					bg: 'bolgár',
+					fr: 'Francia',
 					hr: 'horvát',
-					da: 'dán',
-					mt: 'máltai'
+					hu: 'Magyar',
+					it: 'olasz',
+					mt: 'máltai',
+					nl: 'holland',
+					pl: 'fényesít',
+					pt: 'portugál',
+					ro: 'román',
+					ru: 'orosz',
+					sr: 'szerb',
+					sv: 'svéd',
+					tr: 'török',
+					uk: 'ukrán'
 				},
 				placeholder: "Próbálja ki a '{{language}}'",
 				cancel: 'Megszünteti',
@@ -236,8 +236,18 @@ export default {
 			action: 'Felveszi a kapcsolatot'
 		},
 		about: {
+			cover: {
+				banner: 'Transzparens',
+				portrait: 'Portré'
+			},
+			labels: {
+				aboutMe: 'Rólam',
+				certifications: 'Tanúsítások',
+				experience: 'Tapasztalat',
+				skills: 'Készségek'
+			},
 			experiences: [
-				{ place: 'Tain | Ledobás', role: 'Front end fejlesztő' },
+				{ place: 'Tain | EEZE', role: 'Front end fejlesztő' },
 				{ place: 'davidscicluna.com', role: 'Szabadúszó front-end fejlesztő' },
 				{ place: 'Gozo minisztériuma (a CIO irodája)', role: 'Front-end fejlesztő (teljes munkaidős tanuló)' },
 				{ place: 'Gozo minisztériuma (a CIO irodája)', role: 'Front-end fejlesztő (teljes munkaidős tanuló)' },

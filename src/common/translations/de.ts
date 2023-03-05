@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portfolio',
 			description:
-				'Hallo! Ich bin David Scicluna, ein Front-End-Entwickler mit Sitz auf den sonnigen maltesischen Inseln. Derzeit arbeitet bei Tain | Eeze und als Freiberufler. Ich bin sehr leidenschaftlich für Technologie. Ich liebe es, Ideen in Anwendungen zu entwickeln, und bin verpflichtet, Produkte und Dienste mit außergewöhnlicher Benutzererfahrung und mit modernen Benutzeroberflächentechniken zu erstellen. Ich versuche mein Bestes, um mein Wissen auf diesem Gebiet weiter zu lernen und zu erweitern, da ich glaube, je mehr ich lerne, desto besser die Erfahrung, die die Endbenutzer haben werden. Sie finden mich auf LinkedIn und Github oder wenden Sie sich per E -Mail an hello@davidscicluna.com.'
+				'Hallo! Ich bin David Scicluna, ein Front-End-Entwickler mit Sitz auf den sonnigen maltesischen Inseln. Derzeit arbeitet bei Tain | EEZE und als Freiberufler. Ich bin sehr leidenschaftlich für Technologie. Ich liebe es, Ideen in Anwendungen zu entwickeln, und bin verpflichtet, Produkte und Dienste mit außergewöhnlicher Benutzererfahrung und mit modernen Benutzeroberflächentechniken zu erstellen. Ich versuche mein Bestes, um mein Wissen auf diesem Gebiet weiter zu lernen und zu erweitern, da ich glaube, je mehr ich lerne, desto besser die Erfahrung, die die Endbenutzer haben werden. Sie finden mich auf LinkedIn und Github oder wenden Sie sich per E -Mail an hello@davidscicluna.com.'
 		},
 		common: {
 			about: [
@@ -110,27 +110,27 @@ export default {
 				title: 'Bevorzugte Sprache',
 				subtitle: 'Wählen Sie die bevorzugte Sprache Ihrer Wahl aus der Liste der Sprachen unten aus',
 				languages: {
-					ru: 'Russisch',
+					bg: 'bulgarisch',
+					cs: 'Tschechisch',
+					da: 'dänisch',
 					de: 'Deutsch',
-					fr: 'Französisch',
-					it: 'Italienisch',
+					el: 'griechisch',
 					en: 'Englisch',
 					es: 'Spanisch',
-					pl: 'Polieren',
-					uk: 'ukrainisch',
-					ro: 'rumänisch',
-					nl: 'Niederländisch',
-					tr: 'Türkisch',
-					el: 'griechisch',
-					hu: 'ungarisch',
-					sv: 'Schwedisch',
-					cs: 'Tschechisch',
-					pt: 'Portugiesisch',
-					sr: 'serbisch',
-					bg: 'bulgarisch',
+					fr: 'Französisch',
 					hr: 'kroatisch',
-					da: 'dänisch',
-					mt: 'maltesisch'
+					hu: 'ungarisch',
+					it: 'Italienisch',
+					mt: 'maltesisch',
+					nl: 'Niederländisch',
+					pl: 'Polieren',
+					pt: 'Portugiesisch',
+					ro: 'rumänisch',
+					ru: 'Russisch',
+					sr: 'serbisch',
+					sv: 'Schwedisch',
+					tr: 'Türkisch',
+					uk: 'ukrainisch'
 				},
 				placeholder: "Versuchen Sie '{{language}}'",
 				cancel: 'Stornieren',
@@ -236,8 +236,18 @@ export default {
 			action: 'In Kontakt kommen'
 		},
 		about: {
+			cover: {
+				banner: 'Banner',
+				portrait: 'Porträt'
+			},
+			labels: {
+				aboutMe: 'Über mich',
+				certifications: 'Zertifizierungen',
+				experience: 'Erfahrung',
+				skills: 'Fähigkeiten'
+			},
 			experiences: [
-				{ place: 'Tain | Eeze', role: 'Entwickler für Benutzeroberflächen' },
+				{ place: 'Tain | EEZE', role: 'Entwickler für Benutzeroberflächen' },
 				{ place: 'davidscicluna.com', role: 'Freiberuflicher Front-End-Entwickler' },
 				{ place: 'Ministerium für Gozo (Büro des CIO)', role: 'Front-End-Entwickler (Vollzeit-Lehrling)' },
 				{ place: 'Ministerium für Gozo (Büro des CIO)', role: 'Front-End-Entwickler (Vollzeit-Lehrling)' },

@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portfolio',
 			description:
-				'Ahoj! Jsem David Scicluna, vývojář front-end se sídlem na Sunny Maltských ostrovech. V současné době pracuje na Tain | Eeze a jako nezávislý pracovník. Jsem velmi vášnivý pro technologii; Miluji vývoj nápadů do aplikací a jsem odhodlán vytvářet produkty a služby s výjimečnými uživatelskými zkušenostmi a s moderními technikami uživatelského rozhraní. Snažím se co nejlépe pokračovat v učení a rozšiřování svých znalostí v této oblasti, protože věřím, že čím více se učím, tím lepší je zkušenost, kterou budou mít koncoví uživatelé. Najdete mě na LinkedIn a GitHubu, nebo mě oslovit e -mailem na hello@davidscicluna.com.'
+				'Ahoj! Jsem David Scicluna, vývojář front-end se sídlem na Sunny Maltských ostrovech. V současné době pracuje na Tain | EEZE a jako nezávislý pracovník. Jsem velmi vášnivý pro technologii; Miluji vývoj nápadů do aplikací a jsem odhodlán vytvářet produkty a služby s výjimečnými uživatelskými zkušenostmi a s moderními technikami uživatelského rozhraní. Snažím se co nejlépe pokračovat v učení a rozšiřování svých znalostí v této oblasti, protože věřím, že čím více se učím, tím lepší je zkušenost, kterou budou mít koncoví uživatelé. Najdete mě na LinkedIn a GitHubu, nebo mě oslovit e -mailem na hello@davidscicluna.com.'
 		},
 		common: {
 			about: [
@@ -105,27 +105,27 @@ export default {
 				title: 'preferovaný jazyk',
 				subtitle: 'Vyberte si preferovaný jazyk podle vašeho výběru ze seznamu jazyků níže',
 				languages: {
-					ru: 'ruština',
+					bg: 'bulharský',
+					cs: 'čeština',
+					da: 'dánština',
 					de: 'Němec',
-					fr: 'francouzština',
-					it: 'italština',
+					el: 'řecký',
 					en: 'Angličtina',
 					es: 'španělština',
-					pl: 'polština',
-					uk: 'ukrajinština',
-					ro: 'rumunština',
-					nl: 'holandský',
-					tr: 'turečtina',
-					el: 'řecký',
-					hu: 'maďarský',
-					sv: 'švédský',
-					cs: 'čeština',
-					pt: 'portugalština',
-					sr: 'srbština',
-					bg: 'bulharský',
+					fr: 'francouzština',
 					hr: 'chorvatský',
-					da: 'dánština',
-					mt: 'maltština'
+					hu: 'maďarský',
+					it: 'italština',
+					mt: 'maltština',
+					nl: 'holandský',
+					pl: 'polština',
+					pt: 'portugalština',
+					ro: 'rumunština',
+					ru: 'ruština',
+					sr: 'srbština',
+					sv: 'švédský',
+					tr: 'turečtina',
+					uk: 'ukrajinština'
 				},
 				placeholder: "Zkuste '{{language}}'",
 				cancel: 'zrušení',
@@ -234,8 +234,18 @@ export default {
 			action: 'Být v kontaktu'
 		},
 		about: {
+			cover: {
+				banner: 'Prapor',
+				portrait: 'Portrét'
+			},
+			labels: {
+				aboutMe: 'O mně',
+				certifications: 'Certifikace',
+				experience: 'Zkušenosti',
+				skills: 'Dovednosti'
+			},
 			experiences: [
-				{ place: 'Tain | Eeze', role: 'Vývojář front-end' },
+				{ place: 'Tain | EEZE', role: 'Vývojář front-end' },
 				{ place: 'davidscicluna.com', role: 'Front-End Developer na volné noze' },
 				{
 					place: 'Ministerstvo pro Gozo (Office of CIO)',

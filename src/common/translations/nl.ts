@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portfolio',
 			description:
-				'Hallo! Ik ben David Scicluna, een front-end ontwikkelaar gevestigd in de zonnige Maltese eilanden. Momenteel werken bij Tain | Eeze en als freelancer. Ik ben erg gepassioneerd door technologie; Ik ben dol op het ontwikkelen van ideeën in applicaties en ben toegewijd aan het maken van producten en diensten met uitzonderlijke gebruikerservaring en met moderne technieken voor gebruikersinterfaces. Ik doe mijn best om te blijven leren en mijn kennis op dit gebied uit te breiden, omdat ik geloof dat hoe meer ik leer, hoe beter de ervaring de eindgebruikers zullen hebben. Je kunt me vinden op LinkedIn en GitHub, of contact met me opnemen via e -mail op hello@davidscicluna.com.'
+				'Hallo! Ik ben David Scicluna, een front-end ontwikkelaar gevestigd in de zonnige Maltese eilanden. Momenteel werken bij Tain | EEZE en als freelancer. Ik ben erg gepassioneerd door technologie; Ik ben dol op het ontwikkelen van ideeën in applicaties en ben toegewijd aan het maken van producten en diensten met uitzonderlijke gebruikerservaring en met moderne technieken voor gebruikersinterfaces. Ik doe mijn best om te blijven leren en mijn kennis op dit gebied uit te breiden, omdat ik geloof dat hoe meer ik leer, hoe beter de ervaring de eindgebruikers zullen hebben. Je kunt me vinden op LinkedIn en GitHub, of contact met me opnemen via e -mail op hello@davidscicluna.com.'
 		},
 		common: {
 			about: [
@@ -110,27 +110,27 @@ export default {
 				title: 'Voorkeurstaal',
 				subtitle: 'Kies de voorkeurstaal naar keuze uit de onderstaande lijst met talen',
 				languages: {
-					ru: 'Russisch',
+					bg: 'Bulgaars',
+					cs: 'Tsjechisch',
+					da: 'Deens',
 					de: 'Duits',
-					fr: 'Frans',
-					it: 'Italiaans',
+					el: 'Grieks',
 					en: 'Engels',
 					es: 'Spaans',
-					pl: 'Pools',
-					uk: 'Oekraïens',
-					ro: 'Roemeense',
-					nl: 'Nederlands',
-					tr: 'Turks',
-					el: 'Grieks',
-					hu: 'Hongaars',
-					sv: 'Zweeds',
-					cs: 'Tsjechisch',
-					pt: 'Portugees',
-					sr: 'Servisch',
-					bg: 'Bulgaars',
+					fr: 'Frans',
 					hr: 'Kroatisch',
-					da: 'Deens',
-					mt: 'Maltees'
+					hu: 'Hongaars',
+					it: 'Italiaans',
+					mt: 'Maltees',
+					nl: 'Nederlands',
+					pl: 'Pools',
+					pt: 'Portugees',
+					ro: 'Roemeense',
+					ru: 'Russisch',
+					sr: 'Servisch',
+					sv: 'Zweeds',
+					tr: 'Turks',
+					uk: 'Oekraïens'
 				},
 				placeholder: "Probeer '{{language}}'",
 				cancel: 'Annuleren',
@@ -236,8 +236,18 @@ export default {
 			action: 'Contact opnemen'
 		},
 		about: {
+			cover: {
+				banner: 'Banner',
+				portrait: 'Portret'
+			},
+			labels: {
+				aboutMe: 'Over mij',
+				certifications: 'Certificeringen',
+				experience: 'Ervaring',
+				skills: 'Vaardigheden'
+			},
 			experiences: [
-				{ place: 'Tain | Eeze', role: 'Front-end ontwikkelaar' },
+				{ place: 'Tain | EEZE', role: 'Front-end ontwikkelaar' },
 				{ place: 'davidscicluna.com', role: 'Freelance front-end ontwikkelaar' },
 				{
 					place: 'Ministerie voor Gozo (Office of the CIO)',

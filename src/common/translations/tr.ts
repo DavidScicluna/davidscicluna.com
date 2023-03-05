@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portföy',
 			description:
-				"Merhaba! Ben güneşli Malta adalarında bulunan bir ön uç geliştirici olan David Scicluna. Şu anda Tain'de çalışıyor | Eeze ve serbest çalışan olarak. Teknoloji konusunda çok tutkuluyum; Uygulamalara fikir geliştirmeyi seviyorum ve olağanüstü kullanıcı deneyimi ve modern kullanıcı arayüzü teknikleriyle ürün ve hizmetler oluşturmaya kararlıyım. Bu alandaki bilgimi öğrenmeye ve genişletmeye devam etmek için elimden geleni yapıyorum, çünkü ne kadar çok öğrenirsem, son kullanıcıların deneyimine o kadar iyi olur. Beni LinkedIn ve GitHub'da bulabilir veya hello@davidscicluna.com adresinden e -posta yoluyla bana ulaşabilirsiniz."
+				"Merhaba! Ben güneşli Malta adalarında bulunan bir ön uç geliştirici olan David Scicluna. Şu anda Tain'de çalışıyor | EEZE ve serbest çalışan olarak. Teknoloji konusunda çok tutkuluyum; Uygulamalara fikir geliştirmeyi seviyorum ve olağanüstü kullanıcı deneyimi ve modern kullanıcı arayüzü teknikleriyle ürün ve hizmetler oluşturmaya kararlıyım. Bu alandaki bilgimi öğrenmeye ve genişletmeye devam etmek için elimden geleni yapıyorum, çünkü ne kadar çok öğrenirsem, son kullanıcıların deneyimine o kadar iyi olur. Beni LinkedIn ve GitHub'da bulabilir veya hello@davidscicluna.com adresinden e -posta yoluyla bana ulaşabilirsiniz."
 		},
 		common: {
 			about: [
@@ -108,27 +108,27 @@ export default {
 				title: 'tercih edilen dil',
 				subtitle: 'Aşağıdaki diller listesinden seçtiğiniz tercih edilen dili seçin',
 				languages: {
-					ru: 'Rusça',
+					bg: 'Bulgarca',
+					cs: 'Çek',
+					da: 'Danimarkalı',
 					de: 'Almanca',
-					fr: 'Fransızca',
-					it: 'İtalyan',
+					el: 'Yunan',
 					en: 'İngilizce',
 					es: 'İspanyol',
-					pl: 'Lehçe',
-					uk: 'Ukrayna',
-					ro: 'Romanya',
-					nl: 'Flemenkçe',
-					tr: 'Türkçe',
-					el: 'Yunan',
-					hu: 'Macarca',
-					sv: 'İsveççe',
-					cs: 'Çek',
-					pt: 'Portekizce',
-					sr: 'Sırpça',
-					bg: 'Bulgarca',
+					fr: 'Fransızca',
 					hr: 'Hırvat',
-					da: 'Danimarkalı',
-					mt: 'Maltalı'
+					hu: 'Macarca',
+					it: 'İtalyan',
+					mt: 'Maltalı',
+					nl: 'Flemenkçe',
+					pl: 'Lehçe',
+					pt: 'Portekizce',
+					ro: 'Romanya',
+					ru: 'Rusça',
+					sr: 'Sırpça',
+					sv: 'İsveççe',
+					tr: 'Türkçe',
+					uk: 'Ukrayna'
 				},
 				placeholder: "'{{language}}' dene",
 				cancel: 'İptal etmek',
@@ -228,8 +228,18 @@ export default {
 			action: 'Temasta olmak'
 		},
 		about: {
+			cover: {
+				banner: 'Banner',
+				portrait: 'Vesika'
+			},
+			labels: {
+				aboutMe: 'Benim hakkımda',
+				certifications: 'Sertifikalar',
+				experience: 'Deneyim',
+				skills: 'Yetenekler'
+			},
 			experiences: [
-				{ place: 'Tain | Eeze', role: 'Ön uç geliştirici' },
+				{ place: 'Tain | EEZE', role: 'Ön uç geliştirici' },
 				{ place: 'davidscicluna.com', role: 'Serbest ön uç geliştirici' },
 				{ place: 'Gozo Bakanlığı (CIO Ofisi)', role: 'Ön uç geliştirici (tam zamanlı çırak)' },
 				{ place: 'Gozo Bakanlığı (CIO Ofisi)', role: 'Ön uç geliştirici (tam zamanlı çırak)' },

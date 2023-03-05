@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portfelj',
 			description:
-				'Zdravo! Ja sam David Scicluna, prednji programer sa sjedištem na sunčanim malteškim otocima. Trenutno radi u Tain | Eeze i kao freelancer. Jako sam strastven u tehnologiji; Obožavam razvijati ideje u aplikacije i posvećen sam stvaranju proizvoda i usluga s izuzetnim korisničkim iskustvom i modernim tehnikama korisničkog sučelja. Trudim se da nastavim učiti i proširiti svoje znanje na ovom polju, jer vjerujem da što više učim, to će bolje iskustvo imati krajnji korisnici. Možete me pronaći na LinkedIn -u i GitHub -u ili mi se obratiti putem e -maila na hello@davidscicluna.com.'
+				'Zdravo! Ja sam David Scicluna, prednji programer sa sjedištem na sunčanim malteškim otocima. Trenutno radi u Tain | EEZE i kao freelancer. Jako sam strastven u tehnologiji; Obožavam razvijati ideje u aplikacije i posvećen sam stvaranju proizvoda i usluga s izuzetnim korisničkim iskustvom i modernim tehnikama korisničkog sučelja. Trudim se da nastavim učiti i proširiti svoje znanje na ovom polju, jer vjerujem da što više učim, to će bolje iskustvo imati krajnji korisnici. Možete me pronaći na LinkedIn -u i GitHub -u ili mi se obratiti putem e -maila na hello@davidscicluna.com.'
 		},
 		common: {
 			about: [
@@ -110,27 +110,27 @@ export default {
 				title: 'preferirani jezik',
 				subtitle: 'Odaberite preferirani jezik po vašem izboru s popisa u nastavku',
 				languages: {
-					ru: 'ruski',
+					bg: 'Bugarski',
+					cs: 'češki',
+					da: 'danski',
 					de: 'njemački',
-					fr: 'francuski',
-					it: 'talijanski',
+					el: 'grčki',
 					en: 'Engleski',
 					es: 'Španjolski',
-					pl: 'Polirati',
-					uk: 'ukrajinski',
-					ro: 'Rumun',
-					nl: 'Nizozemski',
-					tr: 'turski',
-					el: 'grčki',
-					hu: 'Mađarski',
-					sv: 'švedski',
-					cs: 'češki',
-					pt: 'Portugalski',
-					sr: 'Srbin',
-					bg: 'Bugarski',
+					fr: 'francuski',
 					hr: 'Hrvatski',
-					da: 'danski',
-					mt: 'malteški'
+					hu: 'Mađarski',
+					it: 'talijanski',
+					mt: 'malteški',
+					nl: 'Nizozemski',
+					pl: 'Polirati',
+					pt: 'Portugalski',
+					ro: 'Rumun',
+					ru: 'ruski',
+					sr: 'Srbin',
+					sv: 'švedski',
+					tr: 'turski',
+					uk: 'ukrajinski'
 				},
 				placeholder: "Pokušajte '{{language}}'",
 				cancel: 'Otkazati',
@@ -239,8 +239,18 @@ export default {
 			action: 'Stupiti u kontakt'
 		},
 		about: {
+			cover: {
+				banner: 'Banner',
+				portrait: 'Portret'
+			},
+			labels: {
+				aboutMe: 'O meni',
+				certifications: 'Certifikati',
+				experience: 'Iskustvo',
+				skills: 'Vještine'
+			},
 			experiences: [
-				{ place: 'Tain | Eeza', role: 'Prednji programer' },
+				{ place: 'Tain | EEZE', role: 'Prednji programer' },
 				{ place: 'davidscicluna.com', role: 'Slobodni prednji programer' },
 				{ place: 'Ministarstvo za Gozo (Ured CIO -a)', role: 'Front-End Developer (stalni pripravnik)' },
 				{ place: 'Ministarstvo za Gozo (Ured CIO -a)', role: 'Front-End Developer (stalni pripravnik)' },

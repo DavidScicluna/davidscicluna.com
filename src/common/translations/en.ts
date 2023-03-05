@@ -147,27 +147,27 @@ export default {
 				title: 'Preferred Language',
 				subtitle: 'Pick the preferred language of your choice from the list of languages below',
 				languages: {
-					ru: 'Russian',
+					bg: 'Bulgarian',
+					cs: 'Czech',
+					da: 'Danish',
 					de: 'German',
-					fr: 'French',
-					it: 'Italian',
+					el: 'Greek',
 					en: 'English',
 					es: 'Spanish',
-					pl: 'Polish',
-					uk: 'Ukrainian',
-					ro: 'Romanian',
-					nl: 'Dutch',
-					tr: 'Turkish',
-					el: 'Greek',
-					hu: 'Hungarian',
-					sv: 'Swedish',
-					cs: 'Czech',
-					pt: 'Portuguese',
-					sr: 'Serbian',
-					bg: 'Bulgarian',
+					fr: 'French',
 					hr: 'Croatian',
-					da: 'Danish',
-					mt: 'Maltese'
+					hu: 'Hungarian',
+					it: 'Italian',
+					mt: 'Maltese',
+					nl: 'Dutch',
+					pl: 'Polish',
+					pt: 'Portuguese',
+					ro: 'Romanian',
+					ru: 'Russian',
+					sr: 'Serbian',
+					sv: 'Swedish',
+					tr: 'Turkish',
+					uk: 'Ukrainian'
 				},
 				placeholder: "Try '{{language}}'",
 				cancel: 'Cancel',
@@ -311,6 +311,16 @@ export default {
 			action: 'Get in touch'
 		},
 		about: {
+			cover: {
+				banner: 'Banner',
+				portrait: 'Portrait'
+			},
+			labels: {
+				aboutMe: 'About Me',
+				certifications: 'Certifications',
+				experience: 'Experience',
+				skills: 'Skills'
+			},
 			experiences: [
 				{
 					place: 'Tain | EEZE',

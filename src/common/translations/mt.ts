@@ -3,7 +3,7 @@ export default {
 		page: {
 			title: 'David Scicluna • Portafoll',
 			description:
-				"Bongu! Jien David Scicluna, żviluppatur front-end ibbażat fil-Gżejjer Sunny Maltese. Bħalissa qed jaħdem f'Tain | Eeze u bħala freelancer. Jiena passjonat ħafna dwar it-teknoloġija; Inħobb niżviluppa ideat f'applikazzjonijiet u ninsab impenjat li noħloq prodotti u servizzi b'esperjenza eċċezzjonali ta 'l-utent u ma' tekniki moderni ta 'interface ta' l-utent. Nipprova l-almu tiegħi biex nibqa 'nitgħallem u nespandi l-għarfien tiegħi f'dan il-qasam, billi nemmen li iktar ma nitgħallem, aħjar tkun l-esperjenza li l-utenti finali se jkollhom. Tista 'ssibni fuq LinkedIn, u Github, jew tasal lili permezz ta' email fuq hello@davidscicluna.com."
+				"Bongu! Jien David Scicluna, żviluppatur front-end ibbażat fil-Gżejjer Sunny Maltese. Bħalissa qed jaħdem f'Tain | EEZE u bħala freelancer. Jiena passjonat ħafna dwar it-teknoloġija; Inħobb niżviluppa ideat f'applikazzjonijiet u ninsab impenjat li noħloq prodotti u servizzi b'esperjenza eċċezzjonali ta 'l-utent u ma' tekniki moderni ta 'interface ta' l-utent. Nipprova l-almu tiegħi biex nibqa 'nitgħallem u nespandi l-għarfien tiegħi f'dan il-qasam, billi nemmen li iktar ma nitgħallem, aħjar tkun l-esperjenza li l-utenti finali se jkollhom. Tista 'ssibni fuq LinkedIn, u Github, jew tasal lili permezz ta' email fuq hello@davidscicluna.com."
 		},
 		common: {
 			about: [
@@ -110,27 +110,27 @@ export default {
 				title: 'Lingwa preferuta',
 				subtitle: 'Agħżel il-lingwa preferuta tal-għażla tiegħek mil-lista tal-lingwi hawn taħt',
 				languages: {
-					ru: 'Russu',
+					bg: 'Bulgaru',
+					cs: 'Ċek',
+					da: 'Daniż',
 					de: 'Ġermaniż',
-					fr: 'Franċiż',
-					it: 'Taljan',
+					el: 'Grieg',
 					en: 'Ingliż',
 					es: 'Spanjol',
-					pl: 'Pollakk',
-					uk: 'Ukraina',
-					ro: 'Rumen',
-					nl: 'Olandiż',
-					tr: 'Tork',
-					el: 'Grieg',
-					hu: 'Ungeriż',
-					sv: 'Svediż',
-					cs: 'Ċek',
-					pt: 'Portugiż',
-					sr: 'Serb',
-					bg: 'Bulgaru',
+					fr: 'Franċiż',
 					hr: 'Kroat',
-					da: 'Daniż',
-					mt: 'Malti'
+					hu: 'Ungeriż',
+					it: 'Taljan',
+					mt: 'Malti',
+					nl: 'Olandiż',
+					pl: 'Pollakk',
+					pt: 'Portugiż',
+					ro: 'Rumen',
+					ru: 'Russu',
+					sr: 'Serb',
+					sv: 'Svediż',
+					tr: 'Tork',
+					uk: 'Ukraina'
 				},
 				placeholder: 'Ipprova "{{language}}"',
 				cancel: 'Ikkanċella',
@@ -236,8 +236,18 @@ export default {
 			action: 'Ikkuntattjani'
 		},
 		about: {
+			cover: {
+				banner: 'Banner',
+				portrait: 'Ritratt'
+			},
+			labels: {
+				aboutMe: 'Dwari',
+				certifications: 'Ċertifikazzjonijiet',
+				experience: 'Esperjenza',
+				skills: 'Ħiliet'
+			},
 			experiences: [
-				{ place: 'Tain | Eeze', role: 'Żviluppatur front-end' },
+				{ place: 'Tain | EEZE', role: 'Żviluppatur front-end' },
 				{ place: 'davidscicluna.com', role: 'Freelance Front-End Developer' },
 				{ place: 'Ministeru għal Gozo (Uffiċċju tas-CIO)', role: 'Front-End Developer (Full-Time Apprentice)' },
 				{ place: 'Ministeru għal Gozo (Uffiċċju tas-CIO)', role: 'Front-End Developer (Full-Time Apprentice)' },
