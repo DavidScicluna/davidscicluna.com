@@ -5,6 +5,7 @@ import { FC } from 'react';
 import {
 	FontSize,
 	useTheme,
+	Image,
 	ExternalLink,
 	Button,
 	Badge,
@@ -35,7 +36,6 @@ import { useTimeout, useUpdateEffect } from 'usehooks-ts';
 
 import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
 import { useSpacing, useUserTheme } from '../../../../../common/hooks';
-import { Image } from '../../../../../components';
 import { setPlaygroundModal } from '../../../../../store/slices/Modals';
 
 import { ProjectProps } from './types';

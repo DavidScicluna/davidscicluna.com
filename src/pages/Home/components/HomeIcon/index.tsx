@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { useTheme, Tooltip } from '@davidscicluna/component-library';
+import { useTheme, Tooltip, Image } from '@davidscicluna/component-library';
 
 import { useBoolean, AspectRatio } from '@chakra-ui/react';
 
@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 
 import icons from '../../../../common/assets/icons';
 import { useUserTheme } from '../../../../common/hooks';
-import { Image } from '../../../../components';
 
 import { HomeIconProps } from './types';
 

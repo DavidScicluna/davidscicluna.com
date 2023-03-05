@@ -1,13 +1,21 @@
 import { FC } from 'react';
 
-import { FontSize, useTheme, Skeleton, DummyButton, Badge, BadgeLabel, utils } from '@davidscicluna/component-library';
+import {
+	FontSize,
+	useTheme,
+	Skeleton,
+	Image,
+	DummyButton,
+	Badge,
+	BadgeLabel,
+	utils
+} from '@davidscicluna/component-library';
 
 import { useMediaQuery, useBreakpointValue, Grid, GridItem, VStack, Stack, AspectRatio, Text } from '@chakra-ui/react';
 
 import { range, sample } from 'lodash';
 
 import { useSpacing, useUserTheme } from '../../../../../common/hooks';
-import { Image } from '../../../../../components';
 
 import { DummyProjectProps } from './types';
 
