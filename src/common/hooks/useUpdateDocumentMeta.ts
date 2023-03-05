@@ -6,7 +6,7 @@ import { compact } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
 const useUpdateDocumentMeta = (): void => {
-	const { t } = useTranslation();
+	const { i18n, t } = useTranslation();
 
 	const location = useLocation();
 
@@ -20,7 +20,7 @@ const useUpdateDocumentMeta = (): void => {
 		}
 	};
 
-	useEffect(() => handleUpdateDocument(), [location.pathname]);
+	useEffect(() => handleUpdateDocument(), [location.pathname, i18n.language]);
 };
 
 export default useUpdateDocumentMeta;
