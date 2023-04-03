@@ -272,6 +272,9 @@ export default {
 				udacity: 'Преден уеб разработчик Nanodegree',
 				freecodecamp: 'Отзивчиво сертифициране на уеб дизайн'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

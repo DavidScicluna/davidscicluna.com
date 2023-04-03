@@ -261,6 +261,9 @@ export default {
 				udacity: 'Front-end webový vývojář Nanodegree',
 				freecodecamp: 'Responzivní certifikace webového designu'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

@@ -260,6 +260,9 @@ export default {
 				udacity: 'Front-end webfejlesztő Nanodegree',
 				freecodecamp: 'Reagáló webdesign tanúsítás'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

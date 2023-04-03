@@ -347,6 +347,9 @@ export default {
 				udacity: 'Front-End Web Developer Nanodegree',
 				freecodecamp: 'Responsive Web Design Certification'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

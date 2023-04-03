@@ -257,6 +257,9 @@ export default {
 				udacity: 'Front-End-Webentwickler NanodeGree',
 				freecodecamp: 'Responsive Web Design -Zertifizierung'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

@@ -248,6 +248,9 @@ export default {
 				udacity: 'Front-End Web Developer Nanodegree',
 				freecodecamp: 'Lyhörd webbdesigncertifiering'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

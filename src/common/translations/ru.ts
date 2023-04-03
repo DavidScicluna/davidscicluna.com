@@ -269,6 +269,9 @@ export default {
 				udacity: 'Фронт-элитный веб-разработчик nanodegree',
 				freecodecamp: 'Адаптивная сертификация веб -дизайна'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

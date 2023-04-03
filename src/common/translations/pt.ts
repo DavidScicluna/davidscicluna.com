@@ -283,6 +283,9 @@ export default {
 				udacity: 'Nanodegree do desenvolvedor da web front-end',
 				freecodecamp: 'Certificação responsiva da web design'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

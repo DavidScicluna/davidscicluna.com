@@ -260,6 +260,9 @@ export default {
 				udacity: 'Front-end web programer nanodegree',
 				freecodecamp: 'Certifikacija za responzivno'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

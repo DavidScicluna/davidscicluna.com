@@ -266,6 +266,9 @@ export default {
 				udacity: 'Front-end Web Developer NanodeGree',
 				freecodecamp: 'Ανταποκρινόμενη πιστοποίηση σχεδιασμού ιστοσελίδων'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

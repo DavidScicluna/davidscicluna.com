@@ -263,6 +263,9 @@ export default {
 				udacity: 'Dezvoltatorul web front-end nanodegree',
 				freecodecamp: 'Certificare de proiectare web receptivă'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

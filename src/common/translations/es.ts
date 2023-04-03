@@ -280,6 +280,9 @@ export default {
 				udacity: 'Desarrollador web delantero Nanodegree',
 				freecodecamp: 'Certificación de diseño web receptivo'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

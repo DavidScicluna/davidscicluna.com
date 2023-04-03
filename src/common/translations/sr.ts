@@ -263,6 +263,9 @@ export default {
 				udacity: 'Предњи веб програмер нанодегрее',
 				freecodecamp: 'Одговарајуће сертификат веб дизајна'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

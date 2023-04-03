@@ -275,6 +275,9 @@ export default {
 				udacity: 'Nanodegree twórca stron internetowych',
 				freecodecamp: 'Responsywny certyfikat projektowania stron internetowych'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

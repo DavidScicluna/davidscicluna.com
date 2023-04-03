@@ -257,6 +257,9 @@ export default {
 				{ place: 'Міністерство Гозо (Управління CIO)', role: 'ІТ-технічна підтримка (штатний учень)' }
 			],
 			certifications: { udacity: 'Передній веб-розробник Nanodegree', freecodecamp: 'Сертифікація веб -дизайну' }
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

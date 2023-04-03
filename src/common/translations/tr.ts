@@ -249,6 +249,9 @@ export default {
 				udacity: 'Ön uç web geliştiricisi Nanodegree',
 				freecodecamp: 'Duyarlı Web Tasarım Sertifikasyonu'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

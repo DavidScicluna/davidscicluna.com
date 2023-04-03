@@ -260,6 +260,9 @@ export default {
 				udacity: 'Front-End Web Developer Nanodegree',
 				freecodecamp: 'Ċertifikazzjoni tad-Disinn tal-Web Responsiva'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };

@@ -263,6 +263,9 @@ export default {
 				udacity: 'Développeur Web frontal Nanodegree',
 				freecodecamp: 'Certification de conception Web réactive'
 			}
+		},
+		project: {
+			status: 'Work in progress'
 		}
 	}
 };
