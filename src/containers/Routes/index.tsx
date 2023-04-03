@@ -7,12 +7,14 @@ import { AnimatePresence, PageTransition } from '@davidscicluna/component-librar
 import { Suspense } from '../../components';
 import DummyAbout from '../../pages/About/DummyAbout';
 import DummyHome from '../../pages/Home/DummyHome';
+// import DummyProject from '../../pages/Project/DummyProject';
 import DummyProjects from '../../pages/Projects/DummyProjects';
 
 import NoMatch from './components/NoMatch';
 
 const Home = lazy(() => import('../../pages/Home/OriginalHome'));
 const About = lazy(() => import('../../pages/About/OriginalAbout'));
+// const Project = lazy(() => import('../../pages/Project/OriginalProject'));
 const Projects = lazy(() => import('../../pages/Projects/OriginalProjects'));
 
 const Routes: FC = () => {
@@ -55,6 +57,17 @@ const Routes: FC = () => {
 						</PageTransition>
 					}
 				/>
+
+				{/* <Route
+					path='/projects/:id'
+					element={
+						<PageTransition>
+							<Suspense fallback={<DummyProject />}>
+								<Project />
+							</Suspense>
+						</PageTransition>
+					}
+				/> */}
 
 				<Route
 					path='*'
