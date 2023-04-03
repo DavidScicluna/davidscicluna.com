@@ -9,6 +9,8 @@ export type ProjectID = 'edb' | 'cl' | 'concentration' | 'journal' | 'clock' | '
 type ProjectLink = { label: string; href: string };
 type ProjectLinks = Record<'web' | 'git', ProjectLink> & { playground: Omit<ProjectLink, 'href'> };
 
+type ProjectStatus = 'finished' | 'ongoing';
+
 export type Project = {
 	id: ProjectID;
 	title: string;
@@ -16,6 +18,7 @@ export type Project = {
 	description: string;
 	links: ProjectLinks;
 	image: ImageSrc;
+	status: ProjectStatus;
 };
 export type Projects = Project[];
 
@@ -42,7 +45,8 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/edb/'
 					}
 				},
-				image: { full: '', thumbnail: '' }
+				image: { full: '', thumbnail: '' },
+				status: 'ongoing'
 			},
 			{
 				id: 'concentration',
@@ -61,7 +65,8 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/react-concentration/'
 					}
 				},
-				image: { full: '', thumbnail: '' }
+				image: { full: '', thumbnail: '' },
+				status: 'finished'
 			},
 			{
 				id: 'journal',
@@ -80,7 +85,8 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/react-journal/'
 					}
 				},
-				image: { full: '', thumbnail: '' }
+				image: { full: '', thumbnail: '' },
+				status: 'finished'
 			},
 			{
 				id: 'clock',
@@ -99,7 +105,8 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/react-clock/'
 					}
 				},
-				image: { full: '', thumbnail: '' }
+				image: { full: '', thumbnail: '' },
+				status: 'finished'
 			},
 			{
 				id: 'weather',
@@ -118,8 +125,8 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/react-weather/'
 					}
 				},
-
-				image: { full: '', thumbnail: '' }
+				image: { full: '', thumbnail: '' },
+				status: 'finished'
 			},
 			{
 				id: 'calculator',
@@ -138,7 +145,8 @@ const useGetProjects = (): Projects => {
 						href: 'https://github.com/davidscicluna/react-calculator/'
 					}
 				},
-				image: { full: '', thumbnail: '' }
+				image: { full: '', thumbnail: '' },
+				status: 'finished'
 			}
 		];
 	}, [i18n.language]);
