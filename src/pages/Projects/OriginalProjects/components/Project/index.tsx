@@ -241,8 +241,8 @@ const Project: FC<ProjectProps> = (props) => {
 										in={inView && canTriggerAnimation}
 										unmountOnExit={false}
 										transition={{
-											enter: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) },
-											exit: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) }
+											enter: { ...config, delay: delay * 1.5 * Number(index + 1) },
+											exit: { ...config, delay: delay * 1.5 * Number(index + 1) }
 										}}
 									>
 										<Badge
@@ -266,8 +266,8 @@ const Project: FC<ProjectProps> = (props) => {
 									in={inView && canTriggerAnimation}
 									unmountOnExit={false}
 									transition={{
-										enter: { ...config, delay: delay * 1.5 * Number(`1.${limit + 1}`) },
-										exit: { ...config, delay: delay * 1.5 * Number(`1.${limit + 1}`) }
+										enter: { ...config, delay: delay * 1.5 * Number(limit + 1) },
+										exit: { ...config, delay: delay * 1.5 * Number(limit + 1) }
 									}}
 								>
 									<Tooltip

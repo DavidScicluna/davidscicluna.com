@@ -59,8 +59,8 @@ const Certifications: FC<CertificationsProps> = ({ inView = defaultInView, timeo
 											in={inView && canTriggerAnimation}
 											unmountOnExit={false}
 											transition={{
-												enter: { ...config, delay: delay * 1.25 * Number(`1.${index + 1}`) },
-												exit: { ...config, delay: delay * 1.25 * Number(`1.${index + 1}`) }
+												enter: { ...config, delay: delay * 1.25 * Number(index + 1) },
+												exit: { ...config, delay: delay * 1.25 * Number(index + 1) }
 											}}
 										>
 											<Text
@@ -83,8 +83,8 @@ const Certifications: FC<CertificationsProps> = ({ inView = defaultInView, timeo
 											in={inView && canTriggerAnimation}
 											unmountOnExit={false}
 											transition={{
-												enter: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) },
-												exit: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) }
+												enter: { ...config, delay: delay * 1.5 * Number(index + 1) },
+												exit: { ...config, delay: delay * 1.5 * Number(index + 1) }
 											}}
 										>
 											<Text
@@ -109,8 +109,8 @@ const Certifications: FC<CertificationsProps> = ({ inView = defaultInView, timeo
 										in={inView && canTriggerAnimation}
 										unmountOnExit={false}
 										transition={{
-											enter: { ...config, delay: delay * 1.75 * Number(`1.${index + 1}`) },
-											exit: { ...config, delay: delay * 1.75 * Number(`1.${index + 1}`) }
+											enter: { ...config, delay: delay * 1.75 * Number(index + 1) },
+											exit: { ...config, delay: delay * 1.75 * Number(index + 1) }
 										}}
 									>
 										<Center width='100%' justifyContent='flex-start'>
