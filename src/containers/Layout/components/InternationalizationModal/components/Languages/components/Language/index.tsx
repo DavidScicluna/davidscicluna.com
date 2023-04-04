@@ -26,7 +26,7 @@ const Language: FC<LanguageProps> = (props) => {
 			{...rest}
 			color={isActive || isSelected ? color : 'gray'}
 			colorMode={colorMode}
-			isLight={!isActive}
+			isLight={!isActive && !isSelected}
 			isActive={isActive}
 			isFixed={isActive}
 			isClickable
@@ -68,13 +68,18 @@ const Language: FC<LanguageProps> = (props) => {
 					</Text>
 				)}
 				actions={
-					<ScaleFade in={isActive} unmountOnExit={false}>
+					<ScaleFade in={isActive || isSelected} unmountOnExit={false}>
 						<Icon
 							width={theme.fontSizes['2xl']}
 							height={theme.fontSizes['2xl']}
 							fontSize={theme.fontSizes['2xl']}
-							icon='check'
-							color={getColor({ theme, colorMode, type: 'background' })}
+							icon={isActive ? 'check' : isSelected ? 'done_all' : 'square'}
+							color={getColor({
+								theme,
+								colorMode,
+								color: !isActive && isSelected ? color : 'gray',
+								type: !isActive && isSelected ? 'color' : 'background'
+							})}
 						/>
 					</ScaleFade>
 				}
