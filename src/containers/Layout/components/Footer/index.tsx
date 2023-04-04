@@ -6,10 +6,10 @@ import { useTheme, InternalLink, Divider, utils } from '@davidscicluna/component
 
 import { useMediaQuery, VStack, Text, HStack } from '@chakra-ui/react';
 
-import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
 
 import { useSpacing, useUserTheme } from '../../../../common/hooks';
+import dayjs from '../../../../common/scripts/dayjs';
 import { Logo } from '../../../../components';
 import Socials from '../Socials';
 

@@ -4,18 +4,13 @@ import { useTheme, Divider, utils } from '@davidscicluna/component-library';
 
 import { VStack, Text } from '@chakra-ui/react';
 
-import dayjs from 'dayjs';
-import duration from 'dayjs/plugin/duration';
-import relativeTime from 'dayjs/plugin/relativeTime';
 import { useTranslation } from 'react-i18next';
 
 import { useSpacing, useUserTheme } from '../../../../../common/hooks';
+import dayjs from '../../../../../common/scripts/dayjs';
 import Structure from '../Structure';
 
 import { Experiences } from './types';
-
-dayjs.extend(duration);
-dayjs.extend(relativeTime);
 
 const { getColor } = utils;
 
