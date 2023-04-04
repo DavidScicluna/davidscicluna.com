@@ -106,6 +106,7 @@ export default {
 			logo: { long: 'DavidScicluna', short: 'DS' }
 		},
 		layout: {
+			scrollToTop: 'Görgessen a tetejére',
 			internationalizationModal: {
 				title: 'Előnyben részesített nyelv',
 				subtitle: 'Válassza ki a választott preferált nyelvet az alábbi nyelvek listájából',

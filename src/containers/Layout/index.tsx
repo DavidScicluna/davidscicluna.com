@@ -4,6 +4,7 @@ import { useTheme, ScrollToTop, utils } from '@davidscicluna/component-library';
 
 import { useConst, Container, Center } from '@chakra-ui/react';
 
+import { useTranslation } from 'react-i18next';
 import { useWindowSize } from 'rooks';
 import { useElementSize } from 'usehooks-ts';
 
@@ -27,6 +28,8 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 	const { innerWidth: windowWidth, innerHeight: windowHeight } = useWindowSize();
 
 	const [navigationRef, { width: navigationWidth, height: navigationHeight }] = useElementSize();
+
+	const { t } = useTranslation();
 
 	const containerMaxWidth = useConst<number>(convertREMToPixels(convertStringToNumber(theme.breakpoints.xl, 'em')));
 
@@ -52,7 +55,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 					zIndex={theme.zIndices.overlay}
 					background='transparent'
 				>
-					<ScrollToTop color={color} colorMode={colorMode} />
+					<ScrollToTop color={color} colorMode={colorMode} label={t('layout.scrollToTop')} />
 				</Center>
 
 				<Center

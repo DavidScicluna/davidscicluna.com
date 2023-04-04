@@ -104,6 +104,7 @@ export default {
 			logo: { long: 'Davidscicluna', short: 'ds' }
 		},
 		layout: {
+			scrollToTop: 'Yukarı kaydır',
 			internationalizationModal: {
 				title: 'tercih edilen dil',
 				subtitle: 'Aşağıdaki diller listesinden seçtiğiniz tercih edilen dili seçin',

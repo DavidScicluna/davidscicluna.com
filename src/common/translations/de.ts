@@ -106,6 +106,7 @@ export default {
 			logo: { long: 'Davidscicluna', short: 'ds' }
 		},
 		layout: {
+			scrollToTop: 'Scrollen Sie nach oben',
 			internationalizationModal: {
 				title: 'Bevorzugte Sprache',
 				subtitle: 'Wählen Sie die bevorzugte Sprache Ihrer Wahl aus der Liste der Sprachen unten aus',

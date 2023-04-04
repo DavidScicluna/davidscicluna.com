@@ -112,6 +112,7 @@ export default {
 			logo: { long: 'DavidScicluna', short: 'ds' }
 		},
 		layout: {
+			scrollToTop: 'Przewiń do góry',
 			internationalizationModal: {
 				title: 'preferowany język',
 				subtitle: 'Wybierz preferowany język wyboru z poniższej listy języków',

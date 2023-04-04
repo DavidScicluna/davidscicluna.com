@@ -143,6 +143,7 @@ export default {
 			}
 		},
 		layout: {
+			scrollToTop: 'Scroll to the top',
 			internationalizationModal: {
 				title: 'Preferred Language',
 				subtitle: 'Pick the preferred language of your choice from the list of languages below',

@@ -106,6 +106,7 @@ export default {
 			logo: { long: 'Davidscicluna', short: 'ds' }
 		},
 		layout: {
+			scrollToTop: 'Bläddra till toppen',
 			internationalizationModal: {
 				title: 'Önskat språk',
 				subtitle: 'Välj det föredragna språket du väljer från listan över språk nedan',

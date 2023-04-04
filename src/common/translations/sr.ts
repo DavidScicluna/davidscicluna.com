@@ -106,6 +106,7 @@ export default {
 			logo: { long: 'давидсцицлуна', short: 'дс' }
 		},
 		layout: {
+			scrollToTop: 'Померите се до врха',
 			internationalizationModal: {
 				title: 'Језик којем дајете предност',
 				subtitle: 'Изаберите жељени језик по вашем избору са листе језика у наставку',

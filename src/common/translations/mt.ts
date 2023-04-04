@@ -106,6 +106,7 @@ export default {
 			logo: { long: 'Davidscicluna', short: 'ds' }
 		},
 		layout: {
+			scrollToTop: 'Skrollja lejn il-quċċata',
 			internationalizationModal: {
 				title: 'Lingwa preferuta',
 				subtitle: 'Agħżel il-lingwa preferuta tal-għażla tiegħek mil-lista tal-lingwi hawn taħt',
