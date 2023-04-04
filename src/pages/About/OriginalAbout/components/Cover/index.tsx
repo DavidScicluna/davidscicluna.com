@@ -1,21 +1,25 @@
 import { FC, Fragment } from 'react';
 
-import { useTheme, Image, utils } from '@davidscicluna/component-library';
+import { useTheme, Image, Fade, utils } from '@davidscicluna/component-library';
 
-import { useBreakpointValue, Center, AspectRatio } from '@chakra-ui/react';
+import { useBreakpointValue, useBoolean, useConst, Center, AspectRatio } from '@chakra-ui/react';
 
+import { Transition } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useTimeout } from 'usehooks-ts';
 
 import banner from '../../../../../common/assets/banner';
 import portrait from '../../../../../common/assets/portrait';
+import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
 import { useUserTheme } from '../../../../../common/hooks';
 import { HoveringOverlay } from '../../../../../components';
+import { CommonAboutProps as CoverProps } from '../../common/types';
 
-const { checkIsTouchDevice, getColor } = utils;
+const { checkIsTouchDevice, getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor } = utils;
 
 const isTouchDevice = checkIsTouchDevice();
 
-const Cover: FC = () => {
+const Cover: FC<CoverProps> = ({ inView = defaultInView, timeout }) => {
 	const theme = useTheme();
 	const { colorMode } = useUserTheme();
 
@@ -38,6 +42,14 @@ const Cover: FC = () => {
 
 	const { t } = useTranslation();
 
+	const [canTriggerAnimation, setCanTriggerAnimation] = useBoolean();
+
+	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
+	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }));
+	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration });
+
+	useTimeout(() => setCanTriggerAnimation.on(), timeout);
+
 	return (
 		<HoveringOverlay
 			as={Center}
@@ -51,44 +63,61 @@ const Cover: FC = () => {
 		>
 			{(isHovering) => (
 				<Fragment>
-					<AspectRatio width='100%' height='auto' ratio={21 / 9}>
-						<Image
-							alt={`${t('about.cover.banner')}`}
-							width='inherit'
-							height='inherit'
-							borderRadius='none'
-							src={{
-								full: bannerSize ? banner[bannerSize][colorMode] : undefined,
-								thumbnail: banner.thumbnail[colorMode]
-							}}
-						/>
-					</AspectRatio>
-
-					<AspectRatio width='35%' height='auto' position='absolute' bottom={0} zIndex={1} ratio={1 / 1}>
-						{portraitSize ? (
+					<Fade
+						in={inView && canTriggerAnimation}
+						unmountOnExit={false}
+						transition={{ enter: { ...config, delay }, exit: { ...config, delay } }}
+						style={{ width: '100%', height: 'auto' }}
+					>
+						<AspectRatio width='100%' height='100%' ratio={21 / 9}>
 							<Image
 								alt={`${t('about.cover.banner')}`}
 								width='inherit'
 								height='inherit'
-								fit='contain'
 								borderRadius='none'
 								src={{
-									full: portrait[portraitSize][!isTouchDevice && isHovering ? 'pose' : 'still']
+									full: bannerSize ? banner[bannerSize][colorMode] : undefined,
+									thumbnail: banner.thumbnail[colorMode]
 								}}
 							/>
-						) : (
-							<Image
-								alt={`${t('about.cover.portrait')}`}
-								width='inherit'
-								height='inherit'
-								fit='contain'
-								borderRadius='none'
-								src={{
-									thumbnail: portrait.thumbnail[!isTouchDevice && isHovering ? 'pose' : 'still']
-								}}
-							/>
-						)}
-					</AspectRatio>
+						</AspectRatio>
+					</Fade>
+
+					<Fade
+						in={inView && canTriggerAnimation}
+						unmountOnExit={false}
+						transition={{
+							enter: { ...config, delay: delay * 1.5 },
+							exit: { ...config, delay: delay * 1.5 }
+						}}
+						style={{ width: '35%', height: 'auto', position: 'absolute', bottom: 0, zIndex: 1 }}
+					>
+						<AspectRatio width='100%' height='100%' ratio={1 / 1}>
+							{portraitSize ? (
+								<Image
+									alt={`${t('about.cover.banner')}`}
+									width='inherit'
+									height='inherit'
+									fit='contain'
+									borderRadius='none'
+									src={{
+										full: portrait[portraitSize][!isTouchDevice && isHovering ? 'pose' : 'still']
+									}}
+								/>
+							) : (
+								<Image
+									alt={`${t('about.cover.portrait')}`}
+									width='inherit'
+									height='inherit'
+									fit='contain'
+									borderRadius='none'
+									src={{
+										thumbnail: portrait.thumbnail[!isTouchDevice && isHovering ? 'pose' : 'still']
+									}}
+								/>
+							)}
+						</AspectRatio>
+					</Fade>
 				</Fragment>
 			)}
 		</HoveringOverlay>

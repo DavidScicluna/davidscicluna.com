@@ -1,17 +1,20 @@
 import { FC } from 'react';
 
-import { useTheme, Badge, BadgeLabel, Divider, utils } from '@davidscicluna/component-library';
+import { useTheme, Badge, BadgeLabel, Divider, Fade, SlideFade, utils } from '@davidscicluna/component-library';
 
 import { VStack, HStack, Text } from '@chakra-ui/react';
 
 import { useTranslation } from 'react-i18next';
 
+import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
 import { useGetSkills, useSpacing, useUserTheme } from '../../../../../common/hooks';
+import { useGetTransitionMeta } from '../../common/hooks';
+import { CommonAboutProps as SkillsProps } from '../../common/types';
 import Structure from '../Structure';
 
 const { getColor } = utils;
 
-const Skills: FC = () => {
+const Skills: FC<SkillsProps> = ({ inView = defaultInView, timeout }) => {
 	const theme = useTheme();
 	const { colorMode } = useUserTheme();
 
@@ -21,8 +24,10 @@ const Skills: FC = () => {
 
 	const skills = useGetSkills();
 
+	const [canTriggerAnimation, { delay = 0, ...config }] = useGetTransitionMeta({ timeout });
+
 	return (
-		<Structure label={`${t('about.labels.skills')}`}>
+		<Structure inView={inView} timeout={timeout} label={`${t('about.labels.skills')}`}>
 			<VStack
 				width='100%'
 				alignItems='stretch'
@@ -30,22 +35,40 @@ const Skills: FC = () => {
 				divider={<Divider colorMode={colorMode} />}
 				spacing={spacing}
 			>
-				{skills.map(({ label, skills }, index) => (
-					<VStack key={index} width='100%' alignItems='stretch' justifyContent='stretch'>
+				{skills.map(({ label, skills }, groupIndex) => (
+					<VStack key={groupIndex} width='100%' alignItems='stretch' justifyContent='stretch'>
 						<HStack width='100%' alignItems='center' justifyContent='stretch' spacing={2}>
-							<Text
-								align='left'
-								color={getColor({ theme, colorMode, type: 'text.primary' })}
-								fontSize='2xl'
-								fontWeight='semibold'
-								lineHeight='shorter'
+							<SlideFade
+								in={inView && canTriggerAnimation}
+								unmountOnExit={false}
+								transition={{
+									enter: { ...config, delay: delay * 1.25 * Number(`1.${groupIndex + 1}`) },
+									exit: { ...config, delay: delay * 1.25 * Number(`1.${groupIndex + 1}`) }
+								}}
 							>
-								{label}
-							</Text>
+								<Text
+									align='left'
+									color={getColor({ theme, colorMode, type: 'text.primary' })}
+									fontSize='2xl'
+									fontWeight='semibold'
+									lineHeight='shorter'
+								>
+									{label}
+								</Text>
+							</SlideFade>
 
-							<Badge key={index} color='gray' colorMode={colorMode} size='xs' variant='outlined'>
-								<BadgeLabel>{skills.length}</BadgeLabel>
-							</Badge>
+							<Fade
+								in={inView && canTriggerAnimation}
+								unmountOnExit={false}
+								transition={{
+									enter: { ...config, delay: delay * 1.5 * Number(`1.${groupIndex + 1}`) },
+									exit: { ...config, delay: delay * 1.5 * Number(`1.${groupIndex + 1}`) }
+								}}
+							>
+								<Badge key={groupIndex} color='gray' colorMode={colorMode} size='xs' variant='outlined'>
+									<BadgeLabel>{skills.length}</BadgeLabel>
+								</Badge>
+							</Fade>
 						</HStack>
 
 						<HStack
@@ -56,10 +79,34 @@ const Skills: FC = () => {
 							spacing={0}
 							gap={1}
 						>
-							{skills.map(({ label }, index) => (
-								<Badge key={index} color='gray' colorMode={colorMode} size='xs'>
-									<BadgeLabel textTransform='uppercase'>{label}</BadgeLabel>
-								</Badge>
+							{skills.map(({ label }, skillIndex) => (
+								<Fade
+									key={skillIndex}
+									in={inView && canTriggerAnimation}
+									unmountOnExit={false}
+									transition={{
+										enter: {
+											...config,
+											delay:
+												delay *
+												2 *
+												Number(`1.${groupIndex + 1}`) *
+												Number(`1.${skillIndex + 1}`)
+										},
+										exit: {
+											...config,
+											delay:
+												delay *
+												2 *
+												Number(`1.${groupIndex + 1}`) *
+												Number(`1.${skillIndex + 1}`)
+										}
+									}}
+								>
+									<Badge color='gray' colorMode={colorMode} size='xs'>
+										<BadgeLabel textTransform='uppercase'>{label}</BadgeLabel>
+									</Badge>
+								</Fade>
 							))}
 						</HStack>
 					</VStack>

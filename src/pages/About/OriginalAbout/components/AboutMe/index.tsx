@@ -1,18 +1,21 @@
 import { FC } from 'react';
 
-import { useTheme, utils } from '@davidscicluna/component-library';
+import { useTheme, SlideFade, utils } from '@davidscicluna/component-library';
 
 import { VStack, Text } from '@chakra-ui/react';
 
 import parser from 'react-html-parser';
 import { useTranslation } from 'react-i18next';
 
+import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
 import { useGetAbout, useSpacing, useUserTheme } from '../../../../../common/hooks';
+import { useGetTransitionMeta } from '../../common/hooks';
+import { CommonAboutProps as AboutMeProps } from '../../common/types';
 import Structure from '../Structure';
 
 const { getColor } = utils;
 
-const AboutMe: FC = () => {
+const AboutMe: FC<AboutMeProps> = ({ inView = defaultInView, timeout }) => {
 	const theme = useTheme();
 	const { color, colorMode } = useUserTheme();
 
@@ -22,21 +25,32 @@ const AboutMe: FC = () => {
 
 	const paragraphs = useGetAbout();
 
+	const [canTriggerAnimation, { delay = 0, ...config }] = useGetTransitionMeta({ timeout });
+
 	return (
-		<Structure label={`${t('about.labels.aboutMe')}`}>
+		<Structure inView={inView} timeout={timeout} label={`${t('about.labels.aboutMe')}`}>
 			<VStack width='100%' alignItems='stretch' justifyContent='stretch' spacing={spacing}>
 				{paragraphs.map((paragraph, index) => (
-					<Text
+					<SlideFade
 						key={index}
-						align='left'
-						color={getColor({ theme, colorMode, type: 'text.secondary' })}
-						fontSize='xl'
-						lineHeight='shorter'
-						userSelect='none'
-						sx={{ '& a': { color: getColor({ theme, colorMode, color, type: 'color' }) } }}
+						in={inView && canTriggerAnimation}
+						unmountOnExit={false}
+						transition={{
+							enter: { ...config, delay: delay * Number(`1.${index + 1}`) },
+							exit: { ...config, delay: delay * Number(`1.${index + 1}`) }
+						}}
 					>
-						{parser(paragraph)}
-					</Text>
+						<Text
+							align='left'
+							color={getColor({ theme, colorMode, type: 'text.secondary' })}
+							fontSize='xl'
+							lineHeight='shorter'
+							userSelect='none'
+							sx={{ '& a': { color: getColor({ theme, colorMode, color, type: 'color' }) } }}
+						>
+							{parser(paragraph)}
+						</Text>
+					</SlideFade>
 				))}
 			</VStack>
 		</Structure>

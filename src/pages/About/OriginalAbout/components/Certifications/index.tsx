@@ -1,20 +1,22 @@
 import { FC, useMemo } from 'react';
 
-import { useTheme, ExternalLink, Button, Divider, utils } from '@davidscicluna/component-library';
+import { useTheme, ExternalLink, Button, Divider, Fade, SlideFade, utils } from '@davidscicluna/component-library';
 
 import { VStack, Center, Text } from '@chakra-ui/react';
 
 import { useTranslation } from 'react-i18next';
 
+import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
 import { useSpacing, useUserTheme } from '../../../../../common/hooks';
 import { HoveringOverlay } from '../../../../../components';
+import { useGetTransitionMeta } from '../../common/hooks';
 import Structure from '../Structure';
 
-import { Certifications as CertificationsType } from './types';
+import { CertificationsProps, Certifications as CertificationsType } from './types';
 
 const { getColor } = utils;
 
-const Certifications: FC = () => {
+const Certifications: FC<CertificationsProps> = ({ inView = defaultInView, timeout }) => {
 	const theme = useTheme();
 	const { color, colorMode } = useUserTheme();
 
@@ -37,8 +39,10 @@ const Certifications: FC = () => {
 		];
 	}, [i18n.language]);
 
+	const [canTriggerAnimation, { delay = 0, ...config }] = useGetTransitionMeta({ timeout });
+
 	return (
-		<Structure label={`${t('about.labels.certifications')}`}>
+		<Structure inView={inView} timeout={timeout} label={`${t('about.labels.certifications')}`}>
 			<VStack
 				width='100%'
 				alignItems='stretch'
@@ -52,48 +56,75 @@ const Certifications: FC = () => {
 							<ExternalLink isFullWidth href={url} target='_blank'>
 								<VStack width='100%' alignItems='stretch' justifyContent='stretch' spacing={2}>
 									<VStack width='100%' alignItems='stretch' justifyContent='stretch'>
-										<Text
-											align='left'
-											color={getColor({
-												theme,
-												colorMode,
-												color: isHovering ? color : 'gray',
-												type: isHovering ? 'color' : 'text.primary'
-											})}
-											fontSize='2xl'
-											fontWeight='semibold'
-											lineHeight='shorter'
+										<SlideFade
+											in={inView && canTriggerAnimation}
+											unmountOnExit={false}
+											transition={{
+												enter: { ...config, delay: delay * 1.25 * Number(`1.${index + 1}`) },
+												exit: { ...config, delay: delay * 1.25 * Number(`1.${index + 1}`) }
+											}}
 										>
-											{title}
-										</Text>
+											<Text
+												align='left'
+												color={getColor({
+													theme,
+													colorMode,
+													color: isHovering ? color : 'gray',
+													type: isHovering ? 'color' : 'text.primary'
+												})}
+												fontSize='2xl'
+												fontWeight='semibold'
+												lineHeight='shorter'
+											>
+												{title}
+											</Text>
+										</SlideFade>
 
-										<Text
-											align='left'
-											color={getColor({
-												theme,
-												colorMode,
-												color: isHovering ? color : 'gray',
-												type: isHovering ? 'color' : 'text.secondary'
-											})}
-											fontSize='md'
-											fontWeight='medium'
-											lineHeight='shorter'
-											textTransform='uppercase'
+										<SlideFade
+											in={inView && canTriggerAnimation}
+											unmountOnExit={false}
+											transition={{
+												enter: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) },
+												exit: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) }
+											}}
 										>
-											{company}
-										</Text>
+											<Text
+												align='left'
+												color={getColor({
+													theme,
+													colorMode,
+													color: isHovering ? color : 'gray',
+													type: isHovering ? 'color' : 'text.secondary'
+												})}
+												fontSize='md'
+												fontWeight='medium'
+												lineHeight='shorter'
+												textTransform='uppercase'
+											>
+												{company}
+											</Text>
+										</SlideFade>
 									</VStack>
 
-									<Center width='100%' justifyContent='flex-start'>
-										<Button
-											color={color}
-											colorMode={colorMode}
-											variant='text'
-											sx={{ height: 'auto', p: '0px !important' }}
-										>
-											See Credential
-										</Button>
-									</Center>
+									<Fade
+										in={inView && canTriggerAnimation}
+										unmountOnExit={false}
+										transition={{
+											enter: { ...config, delay: delay * 1.75 * Number(`1.${index + 1}`) },
+											exit: { ...config, delay: delay * 1.75 * Number(`1.${index + 1}`) }
+										}}
+									>
+										<Center width='100%' justifyContent='flex-start'>
+											<Button
+												color={color}
+												colorMode={colorMode}
+												variant='text'
+												sx={{ height: 'auto', p: '0px !important' }}
+											>
+												See Credential
+											</Button>
+										</Center>
+									</Fade>
 								</VStack>
 							</ExternalLink>
 						)}

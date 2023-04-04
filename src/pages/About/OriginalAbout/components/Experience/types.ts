@@ -1,3 +1,5 @@
+import { CommonAboutProps } from '../../common/types';
+
 export type Experience = {
 	startedAt: string;
 	endedAt?: string;
@@ -5,3 +7,5 @@ export type Experience = {
 	role: string;
 };
 export type Experiences = Experience[];
+
+export type ExperienceProps = CommonAboutProps;

@@ -1,20 +1,22 @@
 import { FC, useMemo } from 'react';
 
-import { useTheme, Divider, utils } from '@davidscicluna/component-library';
+import { useTheme, Divider, SlideFade, utils } from '@davidscicluna/component-library';
 
 import { VStack, Text } from '@chakra-ui/react';
 
 import { useTranslation } from 'react-i18next';
 
+import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
 import { useSpacing, useUserTheme } from '../../../../../common/hooks';
 import dayjs from '../../../../../common/scripts/dayjs';
+import { useGetTransitionMeta } from '../../common/hooks';
 import Structure from '../Structure';
 
-import { Experiences } from './types';
+import { ExperienceProps, Experiences } from './types';
 
 const { getColor } = utils;
 
-const Experience: FC = () => {
+const Experience: FC<ExperienceProps> = ({ inView = defaultInView, timeout }) => {
 	const theme = useTheme();
 	const { colorMode } = useUserTheme();
 
@@ -55,8 +57,10 @@ const Experience: FC = () => {
 		];
 	}, [i18n.language]);
 
+	const [canTriggerAnimation, { delay = 0, ...config }] = useGetTransitionMeta({ timeout });
+
 	return (
-		<Structure label={`${t('about.labels.experience')}`}>
+		<Structure inView={inView} timeout={timeout} label={`${t('about.labels.experience')}`}>
 			<VStack
 				width='100%'
 				alignItems='stretch'
@@ -66,38 +70,65 @@ const Experience: FC = () => {
 			>
 				{experiences.map(({ startedAt, endedAt, place, role }, index) => (
 					<VStack key={index} width='100%' alignItems='stretch' justifyContent='stretch'>
-						<Text
-							align='left'
-							color={getColor({ theme, colorMode, type: 'text.secondary' })}
-							fontSize='md'
-							lineHeight='shorter'
+						<SlideFade
+							in={inView && canTriggerAnimation}
+							unmountOnExit={false}
+							transition={{
+								enter: { ...config, delay: delay * 1.25 * Number(`1.${index + 1}`) },
+								exit: { ...config, delay: delay * 1.25 * Number(`1.${index + 1}`) }
+							}}
 						>
-							{`${[
-								dayjs(startedAt).format('MMMM YYYY'),
-								endedAt ? dayjs(endedAt).format('MMMM YYYY') : 'Present'
-							].join(' - ')} (${dayjs
-								.duration(dayjs(startedAt).diff(dayjs(endedAt || new Date())))
-								.humanize()})`}
-						</Text>
+							<Text
+								align='left'
+								color={getColor({ theme, colorMode, type: 'text.secondary' })}
+								fontSize='md'
+								lineHeight='shorter'
+							>
+								{`${[
+									dayjs(startedAt).format('MMMM YYYY'),
+									endedAt ? dayjs(endedAt).format('MMMM YYYY') : 'Present'
+								].join(' - ')} (${dayjs
+									.duration(dayjs(startedAt).diff(dayjs(endedAt || new Date())))
+									.humanize()})`}
+							</Text>
+						</SlideFade>
 
-						<Text
-							align='left'
-							color={getColor({ theme, colorMode, type: 'text.primary' })}
-							fontSize='2xl'
-							fontWeight='semibold'
-							lineHeight='shorter'
+						<SlideFade
+							in={inView && canTriggerAnimation}
+							unmountOnExit={false}
+							transition={{
+								enter: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) },
+								exit: { ...config, delay: delay * 1.5 * Number(`1.${index + 1}`) }
+							}}
 						>
-							{place}
-						</Text>
+							<Text
+								align='left'
+								color={getColor({ theme, colorMode, type: 'text.primary' })}
+								fontSize='2xl'
+								fontWeight='semibold'
+								lineHeight='shorter'
+							>
+								{place}
+							</Text>
+						</SlideFade>
 
-						<Text
-							align='left'
-							color={getColor({ theme, colorMode, type: 'text.secondary' })}
-							fontSize='md'
-							lineHeight='shorter'
+						<SlideFade
+							in={inView && canTriggerAnimation}
+							unmountOnExit={false}
+							transition={{
+								enter: { ...config, delay: delay * 1.75 * Number(`1.${index + 1}`) },
+								exit: { ...config, delay: delay * 1.75 * Number(`1.${index + 1}`) }
+							}}
 						>
-							{role}
-						</Text>
+							<Text
+								align='left'
+								color={getColor({ theme, colorMode, type: 'text.secondary' })}
+								fontSize='md'
+								lineHeight='shorter'
+							>
+								{role}
+							</Text>
+						</SlideFade>
 					</VStack>
 				))}
 			</VStack>

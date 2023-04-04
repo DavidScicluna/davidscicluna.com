@@ -1,3 +1,7 @@
 import { StackProps } from '@chakra-ui/react';
 
-export type StructureProps = Pick<StackProps, 'children'> & { label: string };
+import { CommonAboutProps } from '../../common/types';
+
+export type StructureProps = Pick<StackProps, 'children'> & {
+	label: string;
+} & CommonAboutProps;
