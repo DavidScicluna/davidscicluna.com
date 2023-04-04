@@ -35,8 +35,8 @@ const AboutMe: FC<AboutMeProps> = ({ inView = defaultInView, timeout }) => {
 						in={inView && canTriggerAnimation}
 						unmountOnExit={false}
 						transition={{
-							enter: { ...config, delay: delay * Number(index + 1) },
-							exit: { ...config, delay: delay * Number(index + 1) }
+							enter: { ...config, delay: delay * Number(`1.${index * 2}`) },
+							exit: { ...config, delay: delay * Number(`1.${index * 2}`) }
 						}}
 					>
 						<Text

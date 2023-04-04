@@ -2,19 +2,18 @@ import { FC } from 'react';
 
 import { FontSize, useTheme, Button, SlideFade, utils } from '@davidscicluna/component-library';
 
-import { useMediaQuery, useBreakpointValue, useConst, Text, VStack, HStack } from '@chakra-ui/react';
+import { useMediaQuery, useBreakpointValue, Text, VStack, HStack } from '@chakra-ui/react';
 
-import { Transition } from 'framer-motion';
 import { useInView } from 'react-cool-inview';
 import { useTranslation } from 'react-i18next';
 import { useWindowSize } from 'rooks';
 
-import { useSpacing, useUserTheme } from '../../../common/hooks';
+import { useGetTransitionMeta, useSpacing, useUserTheme } from '../../../common/hooks';
 import { MailOverlay } from '../../../components';
 import Page from '../../../containers/Page';
 import { HomeCSSIcon, HomeHTMLIcon, HomeJSIcon, HomeReactIcon, HomeTSIcon } from '../components';
 
-const { getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor } = utils;
+const { getColor } = utils;
 
 const Home: FC = () => {
 	const theme = useTheme();
@@ -44,9 +43,7 @@ const Home: FC = () => {
 
 	const { t } = useTranslation();
 
-	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
-	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }));
-	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration });
+	const [canTriggerAnimation, { delay = 0, ...config }] = useGetTransitionMeta({ timeout: 0 });
 
 	return (
 		<Page>
@@ -61,7 +58,7 @@ const Home: FC = () => {
 			>
 				<VStack width='100%' alignItems='flex-start' justifyContent='center' spacing={0.5}>
 					<SlideFade
-						in={inView}
+						in={inView && canTriggerAnimation}
 						transition={{
 							enter: { ...config, delay },
 							exit: { ...config, delay }
@@ -80,7 +77,7 @@ const Home: FC = () => {
 					</SlideFade>
 
 					<SlideFade
-						in={inView}
+						in={inView && canTriggerAnimation}
 						transition={{
 							enter: { ...config, delay: delay * 1.25 },
 							exit: { ...config, delay: delay * 1.25 }
@@ -99,7 +96,7 @@ const Home: FC = () => {
 					</SlideFade>
 
 					<SlideFade
-						in={inView}
+						in={inView && canTriggerAnimation}
 						transition={{
 							enter: { ...config, delay: delay * 1.5 },
 							exit: { ...config, delay: delay * 1.5 }
@@ -119,7 +116,7 @@ const Home: FC = () => {
 
 				<HStack spacing={2}>
 					<SlideFade
-						in={inView}
+						in={inView && canTriggerAnimation}
 						transition={{
 							enter: { ...config, delay: delay * 1.6 },
 							exit: { ...config, delay: delay * 1.6 }
@@ -129,7 +126,7 @@ const Home: FC = () => {
 					</SlideFade>
 
 					<SlideFade
-						in={inView}
+						in={inView && canTriggerAnimation}
 						transition={{
 							enter: { ...config, delay: delay * 1.7 },
 							exit: { ...config, delay: delay * 1.7 }
@@ -139,7 +136,7 @@ const Home: FC = () => {
 					</SlideFade>
 
 					<SlideFade
-						in={inView}
+						in={inView && canTriggerAnimation}
 						transition={{
 							enter: { ...config, delay: delay * 1.8 },
 							exit: { ...config, delay: delay * 1.8 }
@@ -149,7 +146,7 @@ const Home: FC = () => {
 					</SlideFade>
 
 					<SlideFade
-						in={inView}
+						in={inView && canTriggerAnimation}
 						transition={{
 							enter: { ...config, delay: delay * 1.9 },
 							exit: { ...config, delay: delay * 1.9 }
@@ -159,7 +156,7 @@ const Home: FC = () => {
 					</SlideFade>
 
 					<SlideFade
-						in={inView}
+						in={inView && canTriggerAnimation}
 						transition={{
 							enter: { ...config, delay: delay * 2 },
 							exit: { ...config, delay: delay * 2 }
@@ -170,7 +167,7 @@ const Home: FC = () => {
 				</HStack>
 
 				<SlideFade
-					in={inView}
+					in={inView && canTriggerAnimation}
 					transition={{
 						enter: { ...config, delay: delay * 2.5 },
 						exit: { ...config, delay: delay * 2.5 }

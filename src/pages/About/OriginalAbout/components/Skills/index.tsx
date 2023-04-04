@@ -41,8 +41,8 @@ const Skills: FC<SkillsProps> = ({ inView = defaultInView, timeout }) => {
 								in={inView && canTriggerAnimation}
 								unmountOnExit={false}
 								transition={{
-									enter: { ...config, delay: delay * 1.25 * Number(groupIndex + 1) },
-									exit: { ...config, delay: delay * 1.25 * Number(groupIndex + 1) }
+									enter: { ...config, delay: delay * 1.25 * Number(`1.${groupIndex * 2}`) },
+									exit: { ...config, delay: delay * 1.25 * Number(`1.${groupIndex * 2}`) }
 								}}
 							>
 								<Text
@@ -60,8 +60,8 @@ const Skills: FC<SkillsProps> = ({ inView = defaultInView, timeout }) => {
 								in={inView && canTriggerAnimation}
 								unmountOnExit={false}
 								transition={{
-									enter: { ...config, delay: delay * 1.5 * Number(groupIndex + 1) },
-									exit: { ...config, delay: delay * 1.5 * Number(groupIndex + 1) }
+									enter: { ...config, delay: delay * 1.5 * Number(`1.${groupIndex * 2}`) },
+									exit: { ...config, delay: delay * 1.5 * Number(`1.${groupIndex * 2}`) }
 								}}
 							>
 								<Badge key={groupIndex} color='gray' colorMode={colorMode} size='xs' variant='outlined'>
@@ -86,11 +86,19 @@ const Skills: FC<SkillsProps> = ({ inView = defaultInView, timeout }) => {
 									transition={{
 										enter: {
 											...config,
-											delay: delay * 2 * Number(groupIndex + 1) * Number(skillIndex + 1)
+											delay:
+												delay *
+												2 *
+												Number(`1.${groupIndex * 2}`) *
+												Number(`1.${skillIndex * 2}`)
 										},
 										exit: {
 											...config,
-											delay: delay * 2 * Number(groupIndex + 1) * Number(skillIndex + 1)
+											delay:
+												delay *
+												2 *
+												Number(`1.${groupIndex * 2}`) *
+												Number(`1.${skillIndex * 2}`)
 										}
 									}}
 								>

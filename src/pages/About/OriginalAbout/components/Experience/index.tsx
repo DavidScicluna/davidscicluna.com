@@ -73,8 +73,8 @@ const Experience: FC<ExperienceProps> = ({ inView = defaultInView, timeout }) =>
 							in={inView && canTriggerAnimation}
 							unmountOnExit={false}
 							transition={{
-								enter: { ...config, delay: delay * 1.25 * Number(index + 1) },
-								exit: { ...config, delay: delay * 1.25 * Number(index + 1) }
+								enter: { ...config, delay: delay * 1.25 * Number(`1.${index * 2}`) },
+								exit: { ...config, delay: delay * 1.25 * Number(`1.${index * 2}`) }
 							}}
 						>
 							<Text
@@ -96,8 +96,8 @@ const Experience: FC<ExperienceProps> = ({ inView = defaultInView, timeout }) =>
 							in={inView && canTriggerAnimation}
 							unmountOnExit={false}
 							transition={{
-								enter: { ...config, delay: delay * 1.5 * Number(index + 1) },
-								exit: { ...config, delay: delay * 1.5 * Number(index + 1) }
+								enter: { ...config, delay: delay * 1.5 * Number(`1.${index * 2}`) },
+								exit: { ...config, delay: delay * 1.5 * Number(`1.${index * 2}`) }
 							}}
 						>
 							<Text
@@ -115,8 +115,8 @@ const Experience: FC<ExperienceProps> = ({ inView = defaultInView, timeout }) =>
 							in={inView && canTriggerAnimation}
 							unmountOnExit={false}
 							transition={{
-								enter: { ...config, delay: delay * 1.75 * Number(index + 1) },
-								exit: { ...config, delay: delay * 1.75 * Number(index + 1) }
+								enter: { ...config, delay: delay * 1.75 * Number(`1.${index * 2}`) },
+								exit: { ...config, delay: delay * 1.75 * Number(`1.${index * 2}`) }
 							}}
 						>
 							<Text
