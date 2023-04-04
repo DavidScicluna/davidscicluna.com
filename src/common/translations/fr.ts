@@ -110,6 +110,11 @@ export default {
 			internationalizationModal: {
 				title: 'langue préférée',
 				subtitle: 'Choisissez la langue préférée de votre choix dans la liste des langues ci-dessous',
+				empty: {
+					title: 'Aucune langue trouvée',
+					subtitle: 'Aucune langue trouvée avec la requête "{{query}}"',
+					action: 'Effacer la recherche'
+				},
 				languages: {
 					bg: 'bulgare',
 					cs: 'tchèque',

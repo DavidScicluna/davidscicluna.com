@@ -147,6 +147,11 @@ export default {
 			internationalizationModal: {
 				title: 'Preferred Language',
 				subtitle: 'Pick the preferred language of your choice from the list of languages below',
+				empty: {
+					title: 'No Languages Found',
+					subtitle: 'No languages found with query "{{query}}"',
+					action: 'Clear Search'
+				},
 				languages: {
 					bg: 'Bulgarian',
 					cs: 'Czech',

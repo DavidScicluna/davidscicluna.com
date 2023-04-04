@@ -116,6 +116,11 @@ export default {
 			internationalizationModal: {
 				title: 'предпочитан език',
 				subtitle: 'Изберете предпочитания език по ваш избор от списъка с езици по -долу',
+				empty: {
+					title: 'Няма намерени езици',
+					subtitle: 'Няма намерени езици със заявка "{{query}}"',
+					action: 'Изчистване на търсенето'
+				},
 				languages: {
 					bg: 'български',
 					cs: 'Чех',

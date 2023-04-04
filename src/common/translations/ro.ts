@@ -110,6 +110,11 @@ export default {
 			internationalizationModal: {
 				title: 'Limba preferată',
 				subtitle: 'Alegeți limba preferată la alegere din lista de limbi de mai jos',
+				empty: {
+					title: 'Nu s-au găsit limbi',
+					subtitle: 'Nu s-au găsit limbi cu interogarea "{{query}}"',
+					action: 'Șterge căutarea'
+				},
 				languages: {
 					bg: 'bulgară',
 					cs: 'ceh',

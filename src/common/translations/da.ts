@@ -110,6 +110,11 @@ export default {
 			internationalizationModal: {
 				title: 'foretrukne sprog',
 				subtitle: 'Vælg det foretrukne sprog efter eget valg fra listen over sprog nedenfor',
+				empty: {
+					title: 'Ingen sprog fundet',
+					subtitle: 'Ingen sprog fundet med forespørgslen "{{query}}"',
+					action: 'Ryd søgning'
+				},
 				languages: {
 					bg: 'Bulgarsk',
 					cs: 'Tjekkisk',

@@ -105,6 +105,11 @@ export default {
 			internationalizationModal: {
 				title: 'preferovaný jazyk',
 				subtitle: 'Vyberte si preferovaný jazyk podle vašeho výběru ze seznamu jazyků níže',
+				empty: {
+					title: 'Nenalezeny žádné jazyky',
+					subtitle: 'Na dotaz "{{query}}" nebyly nalezeny žádné jazyky',
+					action: 'Vymazat vyhledávání'
+				},
 				languages: {
 					bg: 'bulharský',
 					cs: 'čeština',

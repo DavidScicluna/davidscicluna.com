@@ -110,6 +110,11 @@ export default {
 			internationalizationModal: {
 				title: 'предпочтительный язык',
 				subtitle: 'Выберите предпочтительный язык по вашему выбору из списка языков ниже',
+				empty: {
+					title: 'Языки не найдены',
+					subtitle: 'Не найдено языков с запросом "{{query}}"',
+					action: 'Очистить поиск'
+				},
 				languages: {
 					bg: 'болгарский',
 					cs: 'Чешский',

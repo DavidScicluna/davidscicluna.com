@@ -110,6 +110,11 @@ export default {
 			internationalizationModal: {
 				title: 'Бажана мова',
 				subtitle: 'Виберіть бажану мову на ваш вибір зі списку мов нижче',
+				empty: {
+					title: 'Мови не знайдено',
+					subtitle: 'Не знайдено мов із запитом "{{query}}"',
+					action: 'Очистити пошук'
+				},
 				languages: {
 					bg: 'Болгарський',
 					cs: 'Чеський',

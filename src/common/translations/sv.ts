@@ -110,6 +110,11 @@ export default {
 			internationalizationModal: {
 				title: 'Önskat språk',
 				subtitle: 'Välj det föredragna språket du väljer från listan över språk nedan',
+				empty: {
+					title: 'Inga språk hittades',
+					subtitle: 'Inga språk hittades med frågan "{{query}}"',
+					action: 'Rensa sökning'
+				},
 				languages: {
 					bg: 'Bulgarisk',
 					cs: 'Tjeckisk',

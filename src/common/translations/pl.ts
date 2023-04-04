@@ -116,6 +116,11 @@ export default {
 			internationalizationModal: {
 				title: 'preferowany język',
 				subtitle: 'Wybierz preferowany język wyboru z poniższej listy języków',
+				empty: {
+					title: 'Nie znaleziono języków',
+					subtitle: 'Nie znaleziono języków dla zapytania "{{query}}"',
+					action: 'Wyczyść wyszukiwanie'
+				},
 				languages: {
 					bg: 'bułgarski',
 					cs: 'Czech',

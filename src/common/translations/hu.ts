@@ -110,6 +110,11 @@ export default {
 			internationalizationModal: {
 				title: 'Előnyben részesített nyelv',
 				subtitle: 'Válassza ki a választott preferált nyelvet az alábbi nyelvek listájából',
+				empty: {
+					title: 'Nem található nyelv',
+					subtitle: 'Nem található nyelv a "{{query}}" lekérdezéssel',
+					action: 'Keresés törlése'
+				},
 				languages: {
 					bg: 'bolgár',
 					cs: 'cseh',

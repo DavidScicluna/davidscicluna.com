@@ -110,6 +110,11 @@ export default {
 			internationalizationModal: {
 				title: 'preferirani jezik',
 				subtitle: 'Odaberite preferirani jezik po vašem izboru s popisa u nastavku',
+				empty: {
+					title: 'Nije pronađen nijedan jezik',
+					subtitle: 'Nijedan jezik nije pronađen s upitom "{{query}}"',
+					action: 'Očisti pretragu'
+				},
 				languages: {
 					bg: 'Bugarski',
 					cs: 'češki',

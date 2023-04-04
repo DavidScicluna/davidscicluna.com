@@ -108,6 +108,11 @@ export default {
 			internationalizationModal: {
 				title: 'tercih edilen dil',
 				subtitle: 'Aşağıdaki diller listesinden seçtiğiniz tercih edilen dili seçin',
+				empty: {
+					title: 'Dil Bulunamadı',
+					subtitle: '"{{query}}" sorgusuna sahip dil bulunamadı',
+					action: 'Aramayı Temizle'
+				},
 				languages: {
 					bg: 'Bulgarca',
 					cs: 'Çek',

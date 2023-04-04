@@ -110,6 +110,11 @@ export default {
 			internationalizationModal: {
 				title: 'Lingwa preferuta',
 				subtitle: 'Agħżel il-lingwa preferuta tal-għażla tiegħek mil-lista tal-lingwi hawn taħt',
+				empty: {
+					title: 'L-ebda Lingwi misjuba',
+					subtitle: 'L-ebda lingwa ma nstabet bil-mistoqsija "{{query}}"',
+					action: 'Tiftix ċar'
+				},
 				languages: {
 					bg: 'Bulgaru',
 					cs: 'Ċek',

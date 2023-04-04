@@ -110,6 +110,11 @@ export default {
 			internationalizationModal: {
 				title: 'Voorkeurstaal',
 				subtitle: 'Kies de voorkeurstaal naar keuze uit de onderstaande lijst met talen',
+				empty: {
+					title: 'Geen talen gevonden',
+					subtitle: 'Geen talen gevonden met zoekopdracht "{{query}}"',
+					action: 'Duidelijke zoek'
+				},
 				languages: {
 					bg: 'Bulgaars',
 					cs: 'Tsjechisch',

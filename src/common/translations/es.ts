@@ -118,6 +118,11 @@ export default {
 			internationalizationModal: {
 				title: 'Idioma preferido',
 				subtitle: 'Elija el idioma preferido de su elección de la lista de idiomas a continuación',
+				empty: {
+					title: 'No se encontraron idiomas',
+					subtitle: 'No se encontraron idiomas con la consulta "{{query}}"',
+					action: 'Borrar búsqueda'
+				},
 				languages: {
 					bg: 'Búlgara',
 					cs: 'Checa',
