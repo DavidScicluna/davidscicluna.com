@@ -7,8 +7,7 @@ import { VStack, HStack, Text } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
 import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
-import { useGetSkills, useSpacing, useUserTheme } from '../../../../../common/hooks';
-import { useGetTransitionMeta } from '../../common/hooks';
+import { useGetSkills, useGetTransitionMeta, useSpacing, useUserTheme } from '../../../../../common/hooks';
 import { CommonAboutProps as SkillsProps } from '../../common/types';
 import Structure from '../Structure';
 

@@ -4,8 +4,7 @@ import { useTheme, SlideFade, utils } from '@davidscicluna/component-library';
 
 import { VStack, Text } from '@chakra-ui/react';
 
-import { useSpacing, useUserTheme } from '../../../../../common/hooks';
-import { useGetTransitionMeta } from '../../common/hooks';
+import { useGetTransitionMeta, useSpacing, useUserTheme } from '../../../../../common/hooks';
 
 import { StructureProps } from './types';
 

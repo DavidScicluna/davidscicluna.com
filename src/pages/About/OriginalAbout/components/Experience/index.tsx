@@ -7,9 +7,8 @@ import { VStack, Text } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
 import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
-import { useSpacing, useUserTheme } from '../../../../../common/hooks';
+import { useGetTransitionMeta, useSpacing, useUserTheme } from '../../../../../common/hooks';
 import dayjs from '../../../../../common/scripts/dayjs';
-import { useGetTransitionMeta } from '../../common/hooks';
 import Structure from '../Structure';
 
 import { ExperienceProps, Experiences } from './types';

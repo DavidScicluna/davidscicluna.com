@@ -8,8 +8,7 @@ import parser from 'react-html-parser';
 import { useTranslation } from 'react-i18next';
 
 import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
-import { useGetAbout, useSpacing, useUserTheme } from '../../../../../common/hooks';
-import { useGetTransitionMeta } from '../../common/hooks';
+import { useGetAbout, useGetTransitionMeta, useSpacing, useUserTheme } from '../../../../../common/hooks';
 import { CommonAboutProps as AboutMeProps } from '../../common/types';
 import Structure from '../Structure';
 

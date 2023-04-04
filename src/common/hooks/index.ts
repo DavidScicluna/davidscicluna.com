@@ -3,6 +3,7 @@ import useGetAbout from './useGetAbout';
 import useGetNavItems from './useGetNavItems';
 import useGetProjects from './useGetProjects';
 import useGetSkills from './useGetSkills';
+import useGetTransitionMeta from './useGetTransitionMeta';
 import useSelector from './useSelectorTyped';
 import useSpacing from './useSpacing';
 import useUpdateDocumentMeta from './useUpdateDocumentMeta';
@@ -14,6 +15,7 @@ export {
 	useGetNavItems,
 	useGetProjects,
 	useGetSkills,
+	useGetTransitionMeta,
 	useSelector,
 	useSpacing,
 	useUpdateDocumentMeta,

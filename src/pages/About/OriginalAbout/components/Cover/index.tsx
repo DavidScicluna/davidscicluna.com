@@ -2,20 +2,18 @@ import { FC, Fragment } from 'react';
 
 import { useTheme, Image, Fade, utils } from '@davidscicluna/component-library';
 
-import { useBreakpointValue, useBoolean, useConst, Center, AspectRatio } from '@chakra-ui/react';
+import { useBreakpointValue, Center, AspectRatio } from '@chakra-ui/react';
 
-import { Transition } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { useTimeout } from 'usehooks-ts';
 
 import banner from '../../../../../common/assets/banner';
 import portrait from '../../../../../common/assets/portrait';
 import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
-import { useUserTheme } from '../../../../../common/hooks';
+import { useGetTransitionMeta, useUserTheme } from '../../../../../common/hooks';
 import { HoveringOverlay } from '../../../../../components';
 import { CommonAboutProps as CoverProps } from '../../common/types';
 
-const { checkIsTouchDevice, getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor } = utils;
+const { checkIsTouchDevice, getColor } = utils;
 
 const isTouchDevice = checkIsTouchDevice();
 
@@ -42,13 +40,7 @@ const Cover: FC<CoverProps> = ({ inView = defaultInView, timeout }) => {
 
 	const { t } = useTranslation();
 
-	const [canTriggerAnimation, setCanTriggerAnimation] = useBoolean();
-
-	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
-	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }));
-	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration });
-
-	useTimeout(() => setCanTriggerAnimation.on(), timeout);
+	const [canTriggerAnimation, { delay = 0, ...config }] = useGetTransitionMeta({ timeout });
 
 	return (
 		<HoveringOverlay
