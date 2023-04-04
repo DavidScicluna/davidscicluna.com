@@ -2,6 +2,7 @@
   "name": "vite-project-bootstrap",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://davidscicluna.com",
   "author": {
     "name": "David Scicluna",
     "github": "https://github.com/DavidScicluna",
@@ -14,7 +15,6 @@
     "cleanup": "rimraf node_modules && yarn cache clean --all",
     "prebuild": "yarn run cleanup && yarn install && yarn run lint --fix && sudo yarn run format && rimraf build",
     "build": "yarn run prebuild && vite build",
-    "deploy": "yarn run build && gh-pages -d build",
     "serve": "vite preview"
   },
   "eslintConfig": {
