@@ -13,7 +13,5 @@ export const getProjectSkills = memoizee(({ skills: allSkills, id }: GetProjectS
 		selectedSkills = [...selectedSkills, ...skills.filter(({ projects }) => includes(projects, id))];
 	});
 
-	console.log(selectedSkills);
-
 	return selectedSkills;
 });

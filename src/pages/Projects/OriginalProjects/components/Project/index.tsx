@@ -1,14 +1,14 @@
-import { FC } from 'react';
-
-// import { useNavigate } from 'react-router';
+import { FC, useMemo } from 'react';
 
 import {
 	FontSize,
 	useTheme,
 	Image,
 	ExternalLink,
+	Tooltip,
 	Button,
 	Badge,
+	BadgeIcon,
 	BadgeLabel,
 	Fade,
 	SlideFade,
@@ -19,7 +19,6 @@ import {
 	useMediaQuery,
 	useBreakpointValue,
 	useBoolean,
-	useConst,
 	Grid,
 	GridItem,
 	VStack,
@@ -30,23 +29,23 @@ import {
 
 import { dataAttr } from '@chakra-ui/utils';
 import { darken, lighten, transparentize } from 'color2k';
-import { Transition } from 'framer-motion';
 import { shuffle } from 'lodash';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { useTimeout, useUpdateEffect } from 'usehooks-ts';
+import { useUpdateEffect } from 'usehooks-ts';
 
 import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
-import { useGetSkills, useSpacing, useUserTheme } from '../../../../../common/hooks';
+import { useGetSkills, useGetTransitionMeta, useSpacing, useUserTheme } from '../../../../../common/hooks';
 import { Skills } from '../../../../../common/hooks/useGetSkills';
 import { setPlaygroundModal } from '../../../../../store/slices/Modals';
 
 import { ProjectProps } from './types';
 import { getProjectSkills } from './utils';
 
-const { getTransitionConfig, getTransitionDuration, getTransitionDelay, getColor } = utils;
+const { getColor } = utils;
 
 const transition = 'none';
-const limit = 5;
+const limit = 3;
 
 const Project: FC<ProjectProps> = (props) => {
 	const theme = useTheme();
@@ -68,6 +67,8 @@ const Project: FC<ProjectProps> = (props) => {
 		lg: 'sm'
 	});
 
+	const { i18n, t } = useTranslation();
+
 	const spacing = useSpacing();
 
 	// const navigate = useNavigate();
@@ -76,32 +77,34 @@ const Project: FC<ProjectProps> = (props) => {
 
 	const allSkills = useGetSkills();
 
-	const { id, image, title, description, links, direction, inView = defaultInView, timeout } = props;
+	const { id, image, title, description, links, direction, inView = defaultInView, timeout, status } = props;
 
 	// const [canHover, setCanHover] = useBoolean();
-	const [canTriggerAnimation, setCanTriggerAnimation] = useBoolean();
 
 	const canHover = false;
 
 	// const [isDisabled, setIsDisabled] = useBoolean(true);
 
-	const [isActive, setIsActive] = useBoolean();
-	const [isHovering, setIsHovering] = useBoolean();
+	const [isProjectActive, setIsProjectActive] = useBoolean();
+	const [isHoveringProject, setIsHoveringProject] = useBoolean();
 
-	const skills = useConst<Skills>(shuffle(getProjectSkills({ skills: allSkills, id })));
+	const [isHoveringSkillsPlus, setIsHoveringSkillsPlus] = useBoolean();
 
-	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
-	const delay = useConst<number>(getTransitionDelay({ theme, duration: 'slow' }));
-	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration });
+	const skills = useMemo<Skills>(() => shuffle(getProjectSkills({ skills: allSkills, id })), [i18n.language]);
+
+	const [canTriggerAnimation, { delay = 0, ...config }] = useGetTransitionMeta({ timeout });
 
 	// useTimeout(() => setCanHover.on(), timeout * 2);
-	useTimeout(() => setCanTriggerAnimation.on(), timeout);
 
-	useUpdateEffect(() => (!isHovering && isActive ? setIsActive.off() : undefined), [isHovering]);
+	useUpdateEffect(() => {
+		if (!isHoveringProject && isProjectActive) {
+			setIsProjectActive.off();
+		}
+	}, [isHoveringProject]);
 
 	return (
 		<Grid
-			data-active={dataAttr(canHover && (isHovering || isActive))}
+			data-active={dataAttr(canHover && (isHoveringProject || isProjectActive))}
 			width='100%'
 			minHeight={isLg ? '500px' : 'auto'}
 			templateColumns={['1fr', '1fr', '1fr', '50% 1fr']}
@@ -112,8 +115,8 @@ const Project: FC<ProjectProps> = (props) => {
 				'minmax(min-content, max-content)'
 			]}
 			// onClick={!isDisabled ? () => navigate(`/projects/${id}`) : undefined}
-			onMouseEnter={() => setIsHovering.on()}
-			onMouseLeave={() => setIsHovering.off()}
+			onMouseEnter={() => setIsHoveringProject.on()}
+			onMouseLeave={() => setIsHoveringProject.off()}
 			gap={spacing}
 			px={spacing}
 			py={[spacing, spacing, spacing, spacing * 2]}
@@ -169,7 +172,7 @@ const Project: FC<ProjectProps> = (props) => {
 						borderRadius: theme.radii.xl,
 						boxShadow: `0px 16px 20px ${transparentize(
 							getColor({ theme, colorMode, type: 'divider' }),
-							canHover && (isHovering || isActive) ? 0.9 : 1
+							canHover && (isHoveringProject || isProjectActive) ? 0.9 : 1
 						)}`
 					}}
 				>
@@ -194,7 +197,7 @@ const Project: FC<ProjectProps> = (props) => {
 					spacing={spacing}
 					py={[0, 0, 0, spacing * 2]}
 				>
-					{isMd && skills.length > 0 && (
+					{isMd && (status === 'ongoing' || skills.length > 0) && (
 						<Stack
 							width='100%'
 							direction={isLg ? (direction === 'ltr' ? 'row' : 'row-reverse') : 'row'}
@@ -204,6 +207,32 @@ const Project: FC<ProjectProps> = (props) => {
 							spacing={0}
 							gap={1}
 						>
+							{status === 'ongoing' && (
+								<SlideFade
+									in={inView && canTriggerAnimation}
+									unmountOnExit={false}
+									transition={{
+										enter: { ...config, delay: delay * 1.5 },
+										exit: { ...config, delay: delay * 1.5 }
+									}}
+								>
+									<Badge
+										color={
+											canHover && (isHoveringProject || isProjectActive)
+												? colorMode === 'light'
+													? 'white'
+													: 'black'
+												: 'yellow'
+										}
+										colorMode={colorMode}
+										size='xs'
+									>
+										<BadgeIcon icon='warning' />
+										<BadgeLabel textTransform='uppercase'>{`${t('project.status')}`}</BadgeLabel>
+									</Badge>
+								</SlideFade>
+							)}
+
 							{skills
 								.filter((_skill, index) => index < limit)
 								.map(({ label }, index) => (
@@ -218,7 +247,7 @@ const Project: FC<ProjectProps> = (props) => {
 									>
 										<Badge
 											color={
-												canHover && (isHovering || isActive)
+												canHover && (isHoveringProject || isProjectActive)
 													? colorMode === 'light'
 														? 'white'
 														: 'black'
@@ -241,20 +270,43 @@ const Project: FC<ProjectProps> = (props) => {
 										exit: { ...config, delay: delay * 1.5 * Number(`1.${limit + 1}`) }
 									}}
 								>
-									<Badge
-										color={
-											canHover && (isHovering || isActive)
-												? colorMode === 'light'
-													? 'white'
-													: 'black'
-												: 'gray'
+									<Tooltip
+										aria-label={
+											// 	`${t(
+											// 	`layout.playgroundModal.fullscreen.${
+											// 		isFullscreenEnabled ? 'close' : 'open'
+											// 	}.aria-label.tooltip`
+											// )}`
+											''
 										}
 										colorMode={colorMode}
-										size='xs'
-										variant='outlined'
+										isOpen={isHoveringSkillsPlus}
+										placement='top'
+										label={skills
+											.filter((_skill, index) => index >= limit)
+											.map(({ label }) => label)
+											.join(', ')}
 									>
-										<BadgeLabel textTransform='uppercase'>{`+${skills.length - limit}`}</BadgeLabel>
-									</Badge>
+										<Badge
+											color={
+												canHover && (isHoveringProject || isProjectActive)
+													? colorMode === 'light'
+														? 'white'
+														: 'black'
+													: 'gray'
+											}
+											colorMode={colorMode}
+											onMouseEnter={() => setIsHoveringSkillsPlus.on()}
+											onMouseLeave={() => setIsHoveringSkillsPlus.off()}
+											size='xs'
+											variant={isHoveringSkillsPlus ? 'contained' : 'outlined'}
+											sx={{ pointerEvents: 'auto' }}
+										>
+											<BadgeLabel textTransform='uppercase' sx={{ pointerEvents: 'auto' }}>
+												{`+${skills.length - limit}`}
+											</BadgeLabel>
+										</Badge>
+									</Tooltip>
 								</SlideFade>
 							)}
 						</Stack>
@@ -279,7 +331,10 @@ const Project: FC<ProjectProps> = (props) => {
 								color={getColor({
 									theme,
 									colorMode,
-									type: canHover && (isHovering || isActive) ? 'background' : 'text.primary'
+									type:
+										canHover && (isHoveringProject || isProjectActive)
+											? 'background'
+											: 'text.primary'
 								})}
 								fontSize={titleFontSize}
 								fontWeight='bold'
@@ -302,7 +357,10 @@ const Project: FC<ProjectProps> = (props) => {
 								color={getColor({
 									theme,
 									colorMode,
-									type: canHover && (isHovering || isActive) ? 'background' : 'text.secondary'
+									type:
+										canHover && (isHoveringProject || isProjectActive)
+											? 'background'
+											: 'text.secondary'
 								})}
 								fontSize={descriptionFontSize}
 								lineHeight='shorter'
@@ -331,7 +389,7 @@ const Project: FC<ProjectProps> = (props) => {
 						>
 							<Button
 								color={
-									canHover && (isHovering || isActive)
+									canHover && (isHoveringProject || isProjectActive)
 										? colorMode === 'light'
 											? 'white'
 											: 'black'
@@ -360,7 +418,7 @@ const Project: FC<ProjectProps> = (props) => {
 							<ExternalLink href={links.git.href} target='_blank'>
 								<Button
 									color={
-										canHover && (isHovering || isActive)
+										canHover && (isHoveringProject || isProjectActive)
 											? colorMode === 'light'
 												? 'white'
 												: 'black'
