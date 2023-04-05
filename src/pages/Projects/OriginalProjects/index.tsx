@@ -2,10 +2,9 @@ import { FC } from 'react';
 
 import { useTheme, Divider, utils } from '@davidscicluna/component-library';
 
-import { VStack } from '@chakra-ui/react';
+import { useConst, VStack } from '@chakra-ui/react';
 
 import { useInView } from 'react-cool-inview';
-import { useWindowSize } from 'rooks';
 
 import { useGetProjects, useUserTheme } from '../../../common/hooks';
 import Page from '../../../containers/Page';
@@ -18,11 +17,16 @@ const Projects: FC = () => {
 	const theme = useTheme();
 	const { colorMode } = useUserTheme();
 
-	const { innerHeight } = useWindowSize();
+	// const { innerHeight } = useWindowSize();
 
-	const { observe, inView } = useInView({ unobserveOnEnter: true, rootMargin: `${(innerHeight || 0) / 10}px 0px` });
+	const { observe, inView } = useInView<HTMLDivElement>({
+		unobserveOnEnter: true
+		// rootMargin: `${(innerHeight || 0) / 10}px 0px`
+	});
 
 	const projects = useGetProjects();
+
+	const timeout = useConst<number>(getTransitionDuration({ theme, duration: 'slower' }));
 
 	return (
 		<Page>
@@ -39,7 +43,7 @@ const Projects: FC = () => {
 						{...project}
 						direction={index % 2 === 0 ? 'ltr' : 'rtl'}
 						inView={inView}
-						timeout={getTransitionDuration({ theme, duration: 'slower' }) * 1000 * (index + 1)}
+						timeout={timeout * ((index + 1) * 1000)}
 					/>
 				))}
 			</VStack>

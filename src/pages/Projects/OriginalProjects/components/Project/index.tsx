@@ -32,7 +32,7 @@ import { darken, lighten, transparentize } from 'color2k';
 import { shuffle } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { useUpdateEffect } from 'usehooks-ts';
+import { useClickAnyWhere, useUpdateEffect } from 'usehooks-ts';
 
 import { inView as defaultInView } from '../../../../../common/data/defaultPropValues';
 import { useGetSkills, useGetTransitionMeta, useSpacing, useUserTheme } from '../../../../../common/hooks';
@@ -88,6 +88,7 @@ const Project: FC<ProjectProps> = (props) => {
 	const [isProjectActive, setIsProjectActive] = useBoolean();
 	const [isHoveringProject, setIsHoveringProject] = useBoolean();
 
+	const [isFocusingSkillsPlus, setIsFocusingSkillsPlus] = useBoolean();
 	const [isHoveringSkillsPlus, setIsHoveringSkillsPlus] = useBoolean();
 
 	const skills = useMemo<Skills>(() => shuffle(getProjectSkills({ skills: allSkills, id })), [i18n.language]);
@@ -95,6 +96,12 @@ const Project: FC<ProjectProps> = (props) => {
 	const [canTriggerAnimation, { delay = 0, ...config }] = useGetTransitionMeta({ timeout });
 
 	// useTimeout(() => setCanHover.on(), timeout * 2);
+
+	useClickAnyWhere(() => {
+		if (isFocusingSkillsPlus && !isHoveringSkillsPlus) {
+			setIsFocusingSkillsPlus.off();
+		}
+	});
 
 	useUpdateEffect(() => {
 		if (!isHoveringProject && isProjectActive) {
@@ -271,16 +278,8 @@ const Project: FC<ProjectProps> = (props) => {
 									}}
 								>
 									<Tooltip
-										aria-label={
-											// 	`${t(
-											// 	`layout.playgroundModal.fullscreen.${
-											// 		isFullscreenEnabled ? 'close' : 'open'
-											// 	}.aria-label.tooltip`
-											// )}`
-											''
-										}
 										colorMode={colorMode}
-										isOpen={isHoveringSkillsPlus}
+										isOpen={isFocusingSkillsPlus || isHoveringSkillsPlus}
 										placement='top'
 										label={skills
 											.filter((_skill, index) => index >= limit)
@@ -289,18 +288,23 @@ const Project: FC<ProjectProps> = (props) => {
 									>
 										<Badge
 											color={
-												canHover && (isHoveringProject || isProjectActive)
+												isFocusingSkillsPlus || isHoveringSkillsPlus
+													? color
+													: canHover && (isHoveringProject || isProjectActive)
 													? colorMode === 'light'
 														? 'white'
 														: 'black'
 													: 'gray'
 											}
 											colorMode={colorMode}
+											onClick={() => setIsFocusingSkillsPlus.toggle()}
 											onMouseEnter={() => setIsHoveringSkillsPlus.on()}
 											onMouseLeave={() => setIsHoveringSkillsPlus.off()}
 											size='xs'
-											variant={isHoveringSkillsPlus ? 'contained' : 'outlined'}
-											sx={{ pointerEvents: 'auto' }}
+											variant={
+												isFocusingSkillsPlus || isHoveringSkillsPlus ? 'contained' : 'outlined'
+											}
+											sx={{ cursor: 'pointer', pointerEvents: 'auto' }}
 										>
 											<BadgeLabel textTransform='uppercase' sx={{ pointerEvents: 'auto' }}>
 												{`+${skills.length - limit}`}
