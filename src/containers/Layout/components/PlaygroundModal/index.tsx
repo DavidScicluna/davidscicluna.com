@@ -16,6 +16,7 @@ import {
 	StateLabelTitle,
 	StateLabelSubtitle,
 	StateLabelActions,
+	Alert,
 	HorizontalScroll,
 	Tooltip,
 	ExternalLink,
@@ -29,7 +30,18 @@ import {
 	utils
 } from '@davidscicluna/component-library';
 
-import { useMediaQuery, useBoolean, useConst, HStack, Grid, GridItem, Box, Text, Collapse } from '@chakra-ui/react';
+import {
+	useMediaQuery,
+	useToast,
+	useBoolean,
+	useConst,
+	HStack,
+	Grid,
+	GridItem,
+	Box,
+	Text,
+	Collapse
+} from '@chakra-ui/react';
 
 import { Transition, motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -46,6 +58,8 @@ const MotionGrid = motion(Grid);
 
 const spacing: Space = 2;
 
+const toastID = 'ds-layout-playground-modal-toast';
+
 const PlaygroundModal: FC = () => {
 	const theme = useTheme();
 	const { color, colorMode } = useUserTheme();
@@ -56,6 +70,8 @@ const PlaygroundModal: FC = () => {
 
 	const dispatch = useDispatch();
 	const { isOpen: isPlaygroundOpen = false, id } = useSelector((state) => state.modals.ui.playgroundModal);
+
+	const toast = useToast();
 
 	const projects = useGetProjects();
 
@@ -97,7 +113,26 @@ const PlaygroundModal: FC = () => {
 			setUrl(project.links.web.href);
 		} else {
 			handleClose();
-			// TODO: Open Alert
+
+			if (!toast.isActive(toastID)) {
+				toast({
+					id: toastID,
+					// duration: convertDurationToMS({ duration: 15 }),
+					duration: 15000,
+					position: 'bottom-left',
+					render: () => (
+						<Alert
+							duration={15}
+							title={`${t('layout.playgroundModal.error.title')}`}
+							description={`${t('layout.playgroundModal.error.subtitle', {
+								project: t('layout.playgroundModal.error.project')
+							})}`}
+							status='error'
+							onClose={() => toast.close(toastID)}
+						/>
+					)
+				});
+			}
 		}
 	};
 
