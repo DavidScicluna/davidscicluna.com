@@ -164,6 +164,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Blízké hřiště', 'tooltip': 'Zavřít' },
+				error: {
+					title: 'Aplikaci se nepodařilo načíst',
+					subtitle: 'Bohužel se něco pokazilo při pokusu o načtení {{project}}',
+					project: 'projekt',
+					action: 'Zavřít'
+				},
 				cancel: 'zrušení',
 				action: 'Otevřete se na nové kartě'
 			},

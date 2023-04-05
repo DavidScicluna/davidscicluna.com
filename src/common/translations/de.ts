@@ -166,6 +166,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Schließen Spielplatz', 'tooltip': 'Schließen' },
+				error: {
+					title: 'App konnte nicht geladen werden',
+					subtitle: 'Leider ist beim Laden von {{project}} etwas schief gelaufen',
+					project: 'Projekt',
+					action: 'Schließen'
+				},
 				cancel: 'Stornieren',
 				action: 'Offen in neuer Registerkarte'
 			},

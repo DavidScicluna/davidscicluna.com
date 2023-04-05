@@ -172,6 +172,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Închideți locul de joacă', 'tooltip': 'Închide' },
+				error: {
+					title: 'Aplicația nu s-a încărcat',
+					subtitle: 'Din păcate, ceva a mers prost când am încercat să încărcați {{project}}',
+					project: 'proiect',
+					action: 'Închide'
+				},
 				cancel: 'Anulare',
 				action: 'Deschideți în fila nouă'
 			},

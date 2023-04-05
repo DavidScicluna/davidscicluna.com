@@ -186,6 +186,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Fechar o playground', 'tooltip': 'Fechar' },
+				error: {
+					title: 'Aplicativo falhou ao carregar',
+					subtitle: 'Infelizmente, algo deu errado ao tentar carregar {{project}}',
+					project: 'projeto',
+					action: 'Fechar'
+				},
 				cancel: 'Cancelar',
 				action: 'Abrir na nova guia'
 			},

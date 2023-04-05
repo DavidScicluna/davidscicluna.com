@@ -175,6 +175,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Zamknięty plac zabaw', 'tooltip': 'Zamknąć' },
+				error: {
+					title: 'Nie udało się załadować aplikacji',
+					subtitle: 'Niestety coś poszło nie tak podczas próby załadowania {{project}}',
+					project: 'projekt',
+					action: 'Zamknąć'
+				},
 				cancel: 'Anulować',
 				action: 'Otwórz w nowej karcie'
 			},

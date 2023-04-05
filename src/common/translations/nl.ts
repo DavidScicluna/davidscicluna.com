@@ -166,6 +166,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Sluit de speeltuin', 'tooltip': 'Dichtbij' },
+				error: {
+					title: 'App kan niet worden geladen',
+					subtitle: 'Helaas ging er iets mis bij het laden van {{project}}',
+					project: 'project',
+					action: 'Dichtbij'
+				},
 				cancel: 'Annuleren',
 				action: 'Openen in nieuw tabblad'
 			},

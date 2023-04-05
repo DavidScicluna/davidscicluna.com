@@ -169,6 +169,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Close Playground', 'tooltip': 'Vicina' },
+				error: {
+					title: "Impossibile caricare l'app",
+					subtitle: 'Sfortunatamente, qualcosa è andato storto durante il tentativo di caricare {{project}}',
+					project: 'progetto',
+					action: 'Vicino'
+				},
 				cancel: 'Annulla',
 				action: 'Apri in una nuova scheda'
 			},

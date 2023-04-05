@@ -166,6 +166,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Lekplats', 'tooltip': 'Stänga' },
+				error: {
+					title: 'Appen kunde inte laddas',
+					subtitle: 'Tyvärr gick något fel när du försökte ladda {{project}}',
+					project: 'projekt',
+					action: 'Stänga'
+				},
 				cancel: 'Annullera',
 				action: 'Öppet i ny flik'
 			},

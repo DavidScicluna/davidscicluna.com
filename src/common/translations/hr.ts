@@ -169,6 +169,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Blisko igralište', 'tooltip': 'Zatvoriti' },
+				error: {
+					title: 'Aplikacija se nije uspjela učitati',
+					subtitle: 'Nažalost, nešto je pošlo po zlu prilikom pokušaja učitavanja {{project}}',
+					project: 'projekt',
+					action: 'Zatvoriti'
+				},
 				cancel: 'Otkazati',
 				action: 'Otvoreno na novoj kartici'
 			},

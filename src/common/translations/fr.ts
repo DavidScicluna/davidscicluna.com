@@ -169,6 +169,13 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Aire de jeux fermer', 'tooltip': 'Fermer' },
+				error: {
+					title: "Échec du chargement de l'application",
+					subtitle:
+						"Malheureusement, quelque chose s'est mal passé lors de la tentative de chargement de {{project}}",
+					project: 'projet',
+					action: 'Fermer'
+				},
 				cancel: 'Annuler',
 				action: 'Ouvrir dans un nouvel onglet'
 			},

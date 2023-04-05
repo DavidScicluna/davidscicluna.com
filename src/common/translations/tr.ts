@@ -164,6 +164,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Kapat Oyun Alanı', 'tooltip': 'Kapalı' },
+				error: {
+					title: 'Uygulama yüklenemedi',
+					subtitle: 'Maalesef, {{project}} yüklenmeye çalışılırken bir şeyler ters gitti',
+					project: 'proje',
+					action: 'Kapalı'
+				},
 				cancel: 'İptal etmek',
 				action: 'Yeni sekmede aç'
 			},

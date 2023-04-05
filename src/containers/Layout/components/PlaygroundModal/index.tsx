@@ -9,6 +9,13 @@ import {
 	ModalHeader,
 	ModalBody,
 	ModalFooter,
+	StateLabel,
+	StateLabelStack,
+	StateLabelIcon,
+	StateLabelBody,
+	StateLabelTitle,
+	StateLabelSubtitle,
+	StateLabelActions,
 	HorizontalScroll,
 	Tooltip,
 	ExternalLink,
@@ -22,7 +29,7 @@ import {
 	utils
 } from '@davidscicluna/component-library';
 
-import { useBoolean, useConst, HStack, Grid, GridItem, Box, Text, Collapse } from '@chakra-ui/react';
+import { useMediaQuery, useBoolean, useConst, HStack, Grid, GridItem, Box, Text, Collapse } from '@chakra-ui/react';
 
 import { Transition, motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -42,6 +49,8 @@ const spacing: Space = 2;
 const PlaygroundModal: FC = () => {
 	const theme = useTheme();
 	const { color, colorMode } = useUserTheme();
+
+	const [isSm] = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
 	const { t } = useTranslation();
 
@@ -255,8 +264,63 @@ const PlaygroundModal: FC = () => {
 									<Skeleton width='100%' colorMode={colorMode} isLoaded={false} variant='rectangle' />
 								)
 							) : (
-								// TODO: Show Error
-								<div>Error</div>
+								<StateLabel
+									width='100%'
+									height='100%'
+									color='red'
+									colorMode={colorMode}
+									borderRadius='base'
+									borderWidth='2px'
+									borderStyle='dashed'
+									borderColor={getColor({ theme, colorMode, type: 'divider' })}
+								>
+									<StateLabelStack
+										width='100%'
+										height='100%'
+										alignItems='center'
+										justifyContent='center'
+										p={0}
+									>
+										<StateLabelIcon
+											width={theme.fontSizes['8xl']}
+											height={theme.fontSizes['8xl']}
+											fontSize={theme.fontSizes['6xl']}
+											icon='close'
+											p={2}
+										/>
+
+										<StateLabelBody>
+											<StateLabelTitle
+												fontSize={['xl', '4xl']}
+												textTransform='capitalize'
+												noOfLines={0}
+											>
+												{t('layout.playgroundModal.error.title')}
+											</StateLabelTitle>
+											<StateLabelSubtitle fontSize={['xs', 'lg']}>
+												{t('layout.playgroundModal.error.subtitle', {
+													project:
+														project && project?.title
+															? `"${project.title}"`
+															: t('layout.playgroundModal.error.project')
+												})}
+											</StateLabelSubtitle>
+										</StateLabelBody>
+
+										<StateLabelActions
+											renderActions={(props) => (
+												<Button
+													{...props}
+													isFullWidth={isSm}
+													onClick={handleClose}
+													size={isSm ? 'md' : 'xl'}
+												>
+													{`${t('layout.playgroundModal.error.action')}`}
+												</Button>
+											)}
+										/>
+									</StateLabelStack>
+								</StateLabel>
 							)}
 						</GridItem>
 					</MotionGrid>
@@ -265,8 +329,8 @@ const PlaygroundModal: FC = () => {
 					renderCancel={(props) => <Button {...props}>{`${t('layout.playgroundModal.cancel')}`}</Button>}
 					renderAction={(props) =>
 						url ? (
-							<ExternalLink href={url} target='_blank'>
-								<Button {...props} color={color} onClick={handleClose}>
+							<ExternalLink href={url} target='_blank' isFullWidth={isSm}>
+								<Button {...props} color={color} isDisabled={!project} onClick={handleClose}>
 									{`${t('layout.playgroundModal.action')}`}
 								</Button>
 							</ExternalLink>

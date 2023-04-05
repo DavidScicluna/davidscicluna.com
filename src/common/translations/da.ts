@@ -166,6 +166,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Luk legeplads', 'tooltip': 'Tæt' },
+				error: {
+					title: 'Appen kunne ikke indlæses',
+					subtitle: 'Desværre gik noget galt, da du forsøgte at indlæse {{project}}',
+					project: 'projekt',
+					action: 'Tæt'
+				},
 				cancel: 'Afbestille',
 				action: 'Åben i ny fane'
 			},

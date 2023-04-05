@@ -172,6 +172,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Közeli játszótér', 'tooltip': 'Bezárás' },
+				error: {
+					title: 'Az alkalmazást nem sikerült betölteni',
+					subtitle: 'Sajnos valami hiba történt a {{project}} betöltésekor',
+					project: 'projekt',
+					action: 'Bezárás'
+				},
 				cancel: 'Megszünteti',
 				action: 'Nyissa meg az új lapon'
 			},

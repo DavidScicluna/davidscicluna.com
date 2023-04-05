@@ -166,6 +166,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Playground mill-qrib', 'tooltip': 'Viċin' },
+				error: {
+					title: 'App naqset milli tgħabbi',
+					subtitle: 'Sfortunatament, xi ħaġa marret ħażin meta ppruvat tagħbija {{project}}',
+					project: 'proġett',
+					action: 'Agħlaq'
+				},
 				cancel: 'Ikkanċella',
 				action: 'Miftuħ fit-tab Ġdid'
 			},

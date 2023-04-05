@@ -177,6 +177,12 @@ export default {
 					}
 				},
 				close: { 'aria-label': 'Cerrar el patio de recreo', 'tooltip': 'Cerca' },
+				error: {
+					title: 'La aplicación no se pudo cargar',
+					subtitle: 'Desafortunadamente, algo salió mal al intentar cargar {{project}}',
+					project: 'proyecto',
+					action: 'Cerca'
+				},
 				cancel: 'Cancelar',
 				action: 'Abrir en una pestaña nueva'
 			},

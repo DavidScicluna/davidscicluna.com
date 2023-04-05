@@ -218,6 +218,12 @@ export default {
 					'aria-label': 'Close Playground',
 					'tooltip': 'Close'
 				},
+				error: {
+					title: 'App failed to load',
+					subtitle: 'Unfortunately, something went wrong when trying to load {{project}}',
+					project: 'project',
+					action: 'Close'
+				},
 				cancel: 'Cancel',
 				action: 'Open in new tab'
 			},
