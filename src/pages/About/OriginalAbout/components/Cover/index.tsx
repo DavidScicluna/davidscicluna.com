@@ -1,6 +1,6 @@
 import { FC, Fragment } from 'react';
 
-import { useTheme, Image, Fade, utils } from '@davidscicluna/component-library';
+import { Image, Fade, utils } from '@davidscicluna/component-library';
 
 import { useBreakpointValue, Center, AspectRatio } from '@chakra-ui/react';
 
@@ -13,12 +13,11 @@ import { useGetTransitionMeta, useUserTheme } from '../../../../../common/hooks'
 import { HoveringOverlay } from '../../../../../components';
 import { CommonAboutProps as CoverProps } from '../../common/types';
 
-const { checkIsTouchDevice, getColor } = utils;
+const { checkIsTouchDevice } = utils;
 
 const isTouchDevice = checkIsTouchDevice();
 
 const Cover: FC<CoverProps> = ({ inView = defaultInView, timeout }) => {
-	const theme = useTheme();
 	const { colorMode } = useUserTheme();
 
 	const bannerSize = useBreakpointValue<keyof typeof banner>({
@@ -43,16 +42,7 @@ const Cover: FC<CoverProps> = ({ inView = defaultInView, timeout }) => {
 	const [canTriggerAnimation, { delay = 0, ...config }] = useGetTransitionMeta({ timeout });
 
 	return (
-		<HoveringOverlay
-			as={Center}
-			width='100%'
-			position='relative'
-			borderBottomWidth='2px'
-			borderBottomStyle='solid'
-			borderBottomColor={getColor({ theme, colorMode, type: 'divider' })}
-			overflowX='hidden'
-			overflowY='hidden'
-		>
+		<HoveringOverlay as={Center} width='100%' position='relative' overflowX='hidden' overflowY='hidden'>
 			{(isHovering) => (
 				<Fragment>
 					<Fade
