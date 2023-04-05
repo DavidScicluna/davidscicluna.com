@@ -6,7 +6,6 @@ import { useMediaQuery, useBreakpointValue, Text, VStack, HStack } from '@chakra
 
 import { useInView } from 'react-cool-inview';
 import { useTranslation } from 'react-i18next';
-import { useWindowSize } from 'rooks';
 
 import { useGetTransitionMeta, useSpacing, useUserTheme } from '../../../common/hooks';
 import { MailOverlay } from '../../../components';
@@ -35,9 +34,12 @@ const Home: FC = () => {
 		lg: 'xl'
 	});
 
-	const { innerHeight } = useWindowSize();
+	// const { innerHeight } = useWindowSize();
 
-	const { observe, inView } = useInView({ unobserveOnEnter: true, rootMargin: `${(innerHeight || 0) / 10}px 0px` });
+	const { observe, inView } = useInView<HTMLDivElement>({
+		unobserveOnEnter: true
+		// rootMargin: `${(innerHeight || 0) / 10}px 0px`
+	});
 
 	const spacing = useSpacing();
 
