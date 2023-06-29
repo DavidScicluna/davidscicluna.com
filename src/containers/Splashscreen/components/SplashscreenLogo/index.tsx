@@ -1,30 +1,29 @@
 import { FC } from 'react';
 
-import { useTheme, ScaleFade, utils } from '@davidscicluna/component-library';
+import { useTheme, ScaleFade, utils, useGetColor } from '@davidscicluna/component-library';
 
 import { useConst, Text } from '@chakra-ui/react';
 
 import { Transition } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
-import { useUserTheme } from '../../../../common/hooks';
-
-const { getTransitionConfig, getTransitionDuration, getColor } = utils;
+const { getTransitionConfig, getTransitionDuration } = utils;
 
 const SplashscreenLogo: FC = () => {
 	const theme = useTheme();
-	const { colorMode } = useUserTheme();
 
 	const { t } = useTranslation();
 
 	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
 	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration });
 
+	const color = useGetColor({ color: 'gray', type: 'text.primary' });
+
 	return (
 		<ScaleFade in transition={{ enter: { ...config }, exit: { ...config } }}>
 			<Text
 				align='center'
-				color={getColor({ theme, colorMode, type: 'text.primary' })}
+				color={color}
 				fontFamily='Raleway, sans-serif'
 				fontSize={['3xl', '4xl', '5xl', '6xl', '7xl', '8xl']}
 				fontWeight='bold'
