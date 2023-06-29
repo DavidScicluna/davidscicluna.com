@@ -102,5 +102,5 @@
     "vite-tsconfig-paths": "^4.0.8"
   },
   "license": "MIT",
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.6.0"
 }
