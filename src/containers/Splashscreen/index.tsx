@@ -1,6 +1,14 @@
 import { FC } from 'react';
 
-import { useTheme, Modal, ModalStack, ModalBody, ScaleFade, utils } from '@davidscicluna/component-library';
+import {
+	useTheme,
+	Modal,
+	ModalStack,
+	ModalBody,
+	ScaleFade,
+	utils,
+	useGetColor
+} from '@davidscicluna/component-library';
 
 import { useConst, Center, Show } from '@chakra-ui/react';
 
@@ -8,19 +16,16 @@ import { Transition } from 'framer-motion';
 import { useWindowSize } from 'rooks';
 import { useElementSize } from 'usehooks-ts';
 
-import { useUserTheme } from '../../common/hooks';
-
+import { SplashscreenProps } from './common/types';
 import SplashscreenLabel from './components/SplashscreenLabel';
 import SplashscreenLogo from './components/SplashscreenLogo';
-import { SplashscreenProps } from './types';
 
-const { getTransitionConfig, getTransitionDelay, getTransitionDuration, getColor } = utils;
+const { getTransitionConfig, getTransitionDelay, getTransitionDuration } = utils;
 
 const Splashscreen: FC<SplashscreenProps> = ({ isOpen = false, onClose }) => {
 	const theme = useTheme();
-	const { colorMode } = useUserTheme();
 
-	const { innerHeight: windowHeight } = useWindowSize();
+	const { innerHeight: windowHeight = 0 } = useWindowSize();
 
 	const [leftLabelRef, { width: leftLabelWidth, height: leftLabelHeight }] = useElementSize();
 	const [rightLabelRef, { width: rightLabelWidth, height: rightLabelHeight }] = useElementSize();
@@ -29,10 +34,12 @@ const Splashscreen: FC<SplashscreenProps> = ({ isOpen = false, onClose }) => {
 	const duration = useConst<number>(getTransitionDuration({ theme, duration: 'slow' }));
 	const config = useConst<Transition>({ ...getTransitionConfig({ theme }), duration, delay });
 
+	const backgroundColor = useGetColor({ color: 'gray', type: 'background' });
+
 	return (
 		<Modal isOpen={isOpen} closeOnEsc={false} closeOnOverlayClick={false} onClose={onClose} size='full' spacing={0}>
 			<ModalStack>
-				<ModalBody background={getColor({ theme, colorMode, type: 'background' })} sx={{ transition: 'none' }}>
+				<ModalBody background={backgroundColor} sx={{ transition: 'none' }}>
 					<Center width='100%' height={windowHeight ? `${windowHeight}px` : '100vh'}>
 						{/* Top Label */}
 						<Center position='absolute' top={0} left='50%' transform='translateX(-50%)' p={2}>
