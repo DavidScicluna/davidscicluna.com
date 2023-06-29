@@ -1,29 +1,23 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ReactElement, forwardRef } from 'react';
 
-import { useTheme, utils } from '@davidscicluna/component-library';
+import { useGetColor } from '@davidscicluna/component-library';
 
 import { Text } from '@chakra-ui/react';
 
 import { useTranslation } from 'react-i18next';
 
-import { useUserTheme } from '../../../../common/hooks';
-
-import { SplashscreenLabelRef } from './types';
-
-const { getColor } = utils;
+import { SplashscreenLabelRef } from './common/types';
 
 const SplashscreenLabel = forwardRef<SplashscreenLabelRef>(function SplashscreenLabel(_props, ref): ReactElement {
-	const theme = useTheme();
-	const { colorMode } = useUserTheme();
-
 	const { t } = useTranslation();
+
+	const color = useGetColor({ color: 'gray', type: 'text.secondary' });
 
 	return (
 		<Text
 			ref={ref}
 			align='center'
-			color={getColor({ theme, colorMode, type: 'text.secondary' })}
+			color={color}
 			fontSize='xs'
 			fontWeight='semibold'
 			userSelect='none'
