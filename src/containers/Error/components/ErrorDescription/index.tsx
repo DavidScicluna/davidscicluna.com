@@ -1,36 +1,21 @@
 import { FC } from 'react';
 
-import { useTheme, utils } from '@davidscicluna/component-library';
+import { useGetColor } from '@davidscicluna/component-library';
 
 import { VStack, Text } from '@chakra-ui/react';
 
-import { useUserTheme } from '../../../../common/hooks';
-
-import { ErrorDescriptionProps } from './types';
-
-const { getColor } = utils;
+import { ErrorDescriptionProps } from './common/types';
 
 const ErrorDescription: FC<ErrorDescriptionProps> = ({ title, subtitle }) => {
-	const theme = useTheme();
-	const { colorMode } = useUserTheme();
+	const textPrimaryColor = useGetColor({ color: 'gray', type: 'text.primary' });
+	const textSecondaryColor = useGetColor({ color: 'gray', type: 'text.secondary' });
 
 	return (
 		<VStack alignItems='flex-start' justifyContent='center' spacing={0.5}>
-			<Text
-				align='left'
-				color={getColor({ theme, colorMode, type: 'text.primary' })}
-				fontSize='4xl'
-				fontWeight='bold'
-				lineHeight='shorter'
-			>
+			<Text align='left' color={textPrimaryColor} fontSize='4xl' fontWeight='bold' lineHeight='shorter'>
 				{title}
 			</Text>
-			<Text
-				align='left'
-				color={getColor({ theme, colorMode, type: 'text.secondary' })}
-				fontSize='md'
-				lineHeight='shorter'
-			>
+			<Text align='left' color={textSecondaryColor} fontSize='md' lineHeight='shorter'>
 				{subtitle}
 			</Text>
 		</VStack>
