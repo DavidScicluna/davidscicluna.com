@@ -1,25 +1,26 @@
 import { FC } from 'react';
 
-import { useTheme, Button } from '@davidscicluna/component-library';
+import { useTheme, Button, useBoolean, useGetThemeAppearance, HoverOverlay } from '@davidscicluna/component-library';
 
-import { useMediaQuery, useBoolean, VStack, Text } from '@chakra-ui/react';
+import { useMediaQuery, VStack, Text } from '@chakra-ui/react';
 
 import { dataAttr } from '@chakra-ui/utils';
 import { useTranslation } from 'react-i18next';
 
-import { useSpacing, useUserTheme } from '../../../../common/hooks';
-import { HoveringOverlay, MailOverlay } from '../../../../components';
+import { useSpacing } from '../../../../common/hooks';
+import { MailOverlay } from '../../../../components';
 
 import useStyles from './common/styles';
 
 const Contact: FC = () => {
 	const theme = useTheme();
-	const { color, colorMode } = useUserTheme();
+
+	const { color, colorMode } = useGetThemeAppearance();
 
 	const [isSm] = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 	const [isMd] = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
-	const spacing = useSpacing();
+	const [spacing] = useSpacing();
 
 	const { t } = useTranslation();
 
@@ -29,8 +30,8 @@ const Contact: FC = () => {
 
 	return (
 		<MailOverlay>
-			<HoveringOverlay>
-				{(isHovering) => (
+			<HoverOverlay>
+				{({ isHovering }) => (
 					<VStack
 						data-active={dataAttr(isHovering && isActive)}
 						width='100%'
@@ -68,7 +69,7 @@ const Contact: FC = () => {
 						</Button>
 					</VStack>
 				)}
-			</HoveringOverlay>
+			</HoverOverlay>
 		</MailOverlay>
 	);
 };
