@@ -1,10 +1,12 @@
-import { Style, Theme } from '@davidscicluna/component-library';
+import { Style, Theme, AppColor, AppColorMode } from '@davidscicluna/component-library';
 
-import { LogoProps } from '../../types';
+import { LogoProps } from '../types';
 
-export type LogoStyleProps = {
+export type LogoStyleProps = Pick<LogoProps, 'isClickable' | 'size'> & {
 	theme: Theme;
-} & Pick<LogoProps, 'color' | 'colorMode' | 'isClickable' | 'size'>;
+	color: AppColor;
+	colorMode: AppColorMode;
+};
 
 export type LogoStyleReturn = {
 	logo: Style;

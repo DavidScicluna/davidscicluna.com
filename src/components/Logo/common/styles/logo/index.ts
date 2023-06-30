@@ -1,6 +1,6 @@
 import { Style, utils } from '@davidscicluna/component-library';
 
-import { isClickable as defaultIsClickable, size as defaultSize } from '../../data/defaultPropValues';
+import { isClickable as defaultIsClickable, size as defaultSize } from '../../default/props';
 import { getSizeConfig } from '../../utils';
 
 import { LogoStyleProps } from './types';

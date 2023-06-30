@@ -2,15 +2,14 @@ import { FontSize, Space } from '@davidscicluna/component-library';
 
 import { memoize } from 'lodash';
 
-import { LogoProps } from '../../types';
-import { size as defaultSize } from '../data/defaultPropValues';
+import { size as defaultSize } from '../default/props';
+import { LogoProps } from '../types';
 
 type GetSizeConfigReturn = {
 	fontSize: FontSize; // In FontSize (Theme) Values
 	offset: number; // In Pixels
 	padding: Space; // In Space (Theme) Values
 };
-
 type GetSizeConfigProps = Pick<LogoProps, 'size'>;
 
 export const getSizeConfig = memoize(({ size = defaultSize }: GetSizeConfigProps): GetSizeConfigReturn => {
@@ -47,15 +46,3 @@ export const getSizeConfig = memoize(({ size = defaultSize }: GetSizeConfigProps
 			};
 	}
 });
-
-type GetAmountReturn = {
-	hover: number;
-	active: number;
-};
-
-export const getAmount = (): GetAmountReturn => {
-	return {
-		hover: 0.05,
-		active: 0.1
-	};
-};

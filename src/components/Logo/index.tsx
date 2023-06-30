@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { useTheme } from '@davidscicluna/component-library';
+import { useGetThemeAppearance, useTheme } from '@davidscicluna/component-library';
 
 import { Center } from '@chakra-ui/react';
 
@@ -8,28 +8,21 @@ import merge from 'lodash/merge';
 import { useTranslation } from 'react-i18next';
 
 import {
-	color as defaultColor,
-	colorMode as defaultColorMode,
 	isClickable as defaultIsClickable,
 	isSquare as defaultIsSquare,
 	size as defaultSize
-} from './common/data/defaultPropValues';
+} from './common/default/props';
 import useStyles from './common/styles';
-import { LogoProps } from './types';
+import { LogoProps } from './common/types';
 
 const Logo: FC<LogoProps> = (props) => {
 	const theme = useTheme();
 
+	const { color, colorMode } = useGetThemeAppearance();
+
 	const { t } = useTranslation();
 
-	const {
-		color = defaultColor,
-		colorMode = defaultColorMode,
-		isClickable = defaultIsClickable,
-		isSquare = defaultIsSquare,
-		size = defaultSize,
-		sx
-	} = props;
+	const { isClickable = defaultIsClickable, isSquare = defaultIsSquare, size = defaultSize, sx } = props;
 
 	const style = useStyles({ theme, color, colorMode, isClickable, size });
 

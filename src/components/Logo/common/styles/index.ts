@@ -1,16 +1,15 @@
+import { defaults } from '@davidscicluna/component-library';
+
 import { memoize, merge } from 'lodash';
 
-import {
-	color as defaultColor,
-	colorMode as defaultColorMode,
-	isClickable as defaultIsClickable,
-	size as defaultSize
-} from '../data/defaultPropValues';
+import { isClickable as defaultIsClickable, size as defaultSize } from '../default/props';
 
 import dark from './dark';
 import light from './light';
 import logo from './logo';
 import { LogoStyleProps, LogoStyleReturn } from './types';
+
+const { defaultColor, defaultColorMode } = defaults.props;
 
 export default memoize((props: LogoStyleProps): LogoStyleReturn => {
 	const {
@@ -18,7 +17,6 @@ export default memoize((props: LogoStyleProps): LogoStyleReturn => {
 		color = defaultColor,
 		colorMode = defaultColorMode,
 		isClickable = defaultIsClickable,
-
 		size = defaultSize
 	} = props;
 
