@@ -1,22 +1,21 @@
 import { FC } from 'react';
 
-import { useLocation } from 'react-router';
+import { Link } from 'gatsby';
 
-import { useTheme, InternalLink } from '@davidscicluna/component-library';
+import { useTheme, Button, useGetThemeAppearance } from '@davidscicluna/component-library';
 
 import { useMediaQuery, Stack } from '@chakra-ui/react';
 
-import { useGetNavItems, useSpacing, useUserTheme } from '../../../../../../common/hooks';
+import { useGetNavItems, useSpacing } from '../../../../../../common/hooks';
 
 const FooterNavigation: FC = () => {
 	const theme = useTheme();
-	const { color, colorMode } = useUserTheme();
+
+	const { color } = useGetThemeAppearance();
 
 	const [isSm] = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
-	const location = useLocation();
-
-	const spacing = useSpacing();
+	const [spacing] = useSpacing();
 
 	const navItems = useGetNavItems();
 
@@ -28,30 +27,20 @@ const FooterNavigation: FC = () => {
 			justifyContent='center'
 			spacing={spacing}
 		>
-			{navItems.map(({ title, location: l, getIsActive }) => {
-				const isActive = getIsActive(location);
+			{navItems.map(({ title, pathname, getIsActive }) => {
+				const isActive = getIsActive(globalThis.window.location);
 				return (
-					<InternalLink
-						key={title}
-						color={isActive ? color : 'gray'}
-						colorMode={colorMode}
-						to={{ ...l }}
-						isDisabled={isActive}
-						isFullWidth={isSm}
-						sx={{
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-
-							fontSize: 'md',
-							fontWeight: 'semibold',
-							textTransform: 'uppercase',
-							textDecoration: 'none !important',
-							lineHeight: 'shorter'
-						}}
-					>
-						{title}
-					</InternalLink>
+					<Link key={title} to={pathname}>
+						<Button
+							color={isActive ? color : 'gray'}
+							isCompact
+							isDisabled={isActive}
+							isFullWidth={isSm}
+							variant='text'
+						>
+							{title}
+						</Button>
+					</Link>
 				);
 			})}
 		</Stack>

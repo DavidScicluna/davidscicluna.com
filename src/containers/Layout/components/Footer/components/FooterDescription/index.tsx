@@ -1,20 +1,18 @@
 import { FC } from 'react';
 
-import { useTheme, utils } from '@davidscicluna/component-library';
+import { useGetColor } from '@davidscicluna/component-library';
 
 import { Text, VStack } from '@chakra-ui/react';
 
 import parser from 'react-html-parser';
 
-import { useGetAbout, useUserTheme } from '../../../../../../common/hooks';
-
-const { getColor } = utils;
+import { useGetAbout } from '../../../../../../common/hooks';
 
 const FooterDescription: FC = () => {
-	const theme = useTheme();
-	const { color, colorMode } = useUserTheme();
-
 	const paragraphs = useGetAbout();
+
+	const textColor = useGetColor({ color: 'gray', type: 'text.secondary' });
+	const anchorColor = useGetColor({ type: 'color' });
 
 	return (
 		<VStack width='100%' alignItems='stretch' justifyContent='stretch' spacing={2}>
@@ -22,11 +20,11 @@ const FooterDescription: FC = () => {
 				<Text
 					key={index}
 					align='left'
-					color={getColor({ theme, colorMode, type: 'text.secondary' })}
+					color={textColor}
 					fontSize='sm'
 					lineHeight='shorter'
 					userSelect='none'
-					sx={{ '& a': { color: getColor({ theme, colorMode, color, type: 'color' }) } }}
+					sx={{ '& a': { color: anchorColor } }}
 				>
 					{parser(paragraph)}
 				</Text>

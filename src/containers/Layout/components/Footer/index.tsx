@@ -1,14 +1,14 @@
 import { FC } from 'react';
 
-import { useLocation } from 'react-router';
+import { Link } from 'gatsby';
 
-import { useTheme, InternalLink, Divider, utils } from '@davidscicluna/component-library';
+import { useTheme, Divider, useGetColor, useGetThemeAppearance } from '@davidscicluna/component-library';
 
 import { useMediaQuery, VStack, Text, HStack } from '@chakra-ui/react';
 
 import { useTranslation } from 'react-i18next';
 
-import { useSpacing, useUserTheme } from '../../../../common/hooks';
+import { useSpacing } from '../../../../common/hooks';
 import dayjs from '../../../../common/scripts/dayjs';
 import { Logo } from '../../../../components';
 import Socials from '../Socials';
@@ -16,34 +16,34 @@ import Socials from '../Socials';
 import FooterDescription from './components/FooterDescription';
 import FooterNavigation from './components/FooterNavigation';
 
-const { getColor } = utils;
-
 const Footer: FC = () => {
 	const theme = useTheme();
-	const { colorMode } = useUserTheme();
+
+	const { colorMode } = useGetThemeAppearance();
 
 	const [isSm] = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
-	const spacing = useSpacing();
-
 	const { t } = useTranslation();
 
-	const location = useLocation();
+	const backgroundColor = useGetColor({ color: 'gray', type: colorMode });
+	const textColor = useGetColor({ color: 'gray', type: 'text.secondary' });
+
+	const [spacing] = useSpacing();
 
 	return (
 		<VStack
 			width='100%'
 			alignItems='stretch'
 			justifyContent='stretch'
-			divider={<Divider colorMode={colorMode} />}
-			background={getColor({ theme, colorMode, type: colorMode })}
+			divider={<Divider />}
+			background={backgroundColor}
 			spacing={spacing}
 			p={spacing}
 		>
 			<VStack width='100%' alignItems='stretch' justifyContent='stretch' spacing={spacing}>
-				<InternalLink to='/' isDisabled={location.pathname === '/'}>
-					<Logo colorMode={colorMode} isClickable={location.pathname !== '/'} size='sm' />
-				</InternalLink>
+				<Link to='/'>
+					<Logo isClickable={location.pathname !== '/'} size='sm' />
+				</Link>
 
 				<FooterDescription />
 			</VStack>
@@ -53,7 +53,7 @@ const Footer: FC = () => {
 			<HStack width='100%' alignItems='center' justifyContent={isSm ? 'center' : 'space-between'} spacing={0}>
 				<Text
 					align={isSm ? 'center' : 'left'}
-					color={getColor({ theme, colorMode, type: 'text.secondary' })}
+					color={textColor}
 					fontSize='sm'
 					fontWeight='medium'
 					lineHeight='shorter'
