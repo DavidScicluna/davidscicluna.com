@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { ModalsStateProps, PlaygroundModal } from './types';
+import { ModalsSliceStateProps, PlaygroundModal } from './common/types';
 
 export const defaultPlaygroundModal: PlaygroundModal = {
 	isOpen: false
 };
 
-const initialState: ModalsStateProps = {
+const initialState: ModalsSliceStateProps = {
 	ui: {
 		playgroundModal: { ...defaultPlaygroundModal },
 		isInternationalizationModalOpen: false
@@ -17,10 +17,10 @@ const modalsSlice = createSlice({
 	name: 'modals',
 	initialState: { ...initialState },
 	reducers: {
-		setPlaygroundModal: (state: ModalsStateProps, action: PayloadAction<PlaygroundModal>) => {
+		setPlaygroundModal: (state: ModalsSliceStateProps, action: PayloadAction<PlaygroundModal>) => {
 			state.ui.playgroundModal = action.payload;
 		},
-		toggleInternationalizationModal: (state: ModalsStateProps, action: PayloadAction<boolean>) => {
+		toggleInternationalizationModal: (state: ModalsSliceStateProps, action: PayloadAction<boolean>) => {
 			state.ui.isInternationalizationModalOpen = action.payload;
 		}
 	}

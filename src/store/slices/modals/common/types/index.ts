@@ -1,11 +1,11 @@
-import { ProjectID } from '../../../common/hooks/useGetProjects';
+import { ProjectID } from '../../../../../common/hooks/useGetProjects';
 
 export type PlaygroundModal = {
 	isOpen: boolean;
 	id?: ProjectID;
 };
 
-export type ModalsStateProps = {
+export type ModalsSliceStateProps = {
 	ui: {
 		playgroundModal: PlaygroundModal;
 		isInternationalizationModalOpen: boolean;
