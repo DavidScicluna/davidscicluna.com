@@ -19,7 +19,7 @@ const persistedReducer = persistReducer(persistConfig, slices);
 
 const store = configureStore({
 	reducer: persistedReducer,
-	devTools: import.meta.env.NODE_ENV === 'development',
+	devTools: process.env.GATSBY_ENV === 'dev',
 	middleware: [createStateSyncMiddleware(persistConfig)]
 });
 

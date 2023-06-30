@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { withReduxStateSync } from 'redux-state-sync';
 
-import app from './App';
-import modals from './Modals';
+import app from './app';
+import modals from './modals';
 
 const rootReducer = combineReducers({ app, modals });
 
