@@ -29,9 +29,9 @@ const Contact: FC = () => {
 	const [isActive, setIsActive] = useBoolean();
 
 	return (
-		<MailOverlay>
-			<HoverOverlay>
-				{({ isHovering }) => (
+		<HoverOverlay>
+			{({ isHovering }) => (
+				<MailOverlay>
 					<VStack
 						data-active={dataAttr(isHovering && isActive)}
 						width='100%'
@@ -68,9 +68,9 @@ const Contact: FC = () => {
 							{`${t('layout.contact.action')}`}
 						</Button>
 					</VStack>
-				)}
-			</HoverOverlay>
-		</MailOverlay>
+				</MailOverlay>
+			)}
+		</HoverOverlay>
 	);
 };
 
