@@ -11,7 +11,7 @@ import { MailOverlay } from '../../../../components';
 
 const { Email: EmailIcon, Github: GithubIcon, Linkedin: LinkedinIcon } = icons;
 
-const email = process.env.VITE_EMAIL_URL;
+const email = process.env.GATSBY_EMAIL_URL;
 
 const Socials: FC = () => {
 	const theme = useTheme();
@@ -47,7 +47,7 @@ const Socials: FC = () => {
 
 			<HoverOverlay>
 				{({ isHovering }) => (
-					<Link href={process.env.VITE_LINKEDIN_URL} target='_blank'>
+					<Link href={process.env.GATSBY_LINKEDIN_URL} target='_blank'>
 						<Tooltip
 							aria-label={`${t('layout.socials.linkedin.aria-label.tooltip')}`}
 							color='gray'
@@ -70,7 +70,7 @@ const Socials: FC = () => {
 
 			<HoverOverlay>
 				{({ isHovering }) => (
-					<Link href={process.env.VITE_GITHUB_URL} target='_blank'>
+					<Link href={process.env.GATSBY_GITHUB_URL} target='_blank'>
 						<Tooltip
 							aria-label={`${t('layout.socials.github.aria-label.tooltip')}`}
 							color='gray'
