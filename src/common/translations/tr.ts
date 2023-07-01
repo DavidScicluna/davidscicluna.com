@@ -7,18 +7,10 @@ export default {
 		},
 		common: {
 			about: [
-				`Merhaba! Ben güneşli Malta adalarında bulunan bir ön uç geliştirici olan David Scicluna. Şu anda <a href="${
-					import.meta.env.VITE_TAIN_URL
-				}" target="_blank">Tain</a> | <a href="${
-					import.meta.env.VITE_EEZE_URL
-				}" target="_blank">EEZE</a> ve serbest çalışan olarak.`,
+				`Merhaba! Ben güneşli Malta adalarında bulunan bir ön uç geliştirici olan David Scicluna. Şu anda <a href="${process.env.GATSBY_TAIN_URL}" target="_blank">Tain</a> | <a href="${process.env.GATSBY_EEZE_URL}" target="_blank">EEZE</a> ve serbest çalışan olarak.`,
 				'Teknoloji konusunda çok tutkuluyum; Uygulamalara fikir geliştirmeyi seviyorum ve olağanüstü kullanıcı deneyimi ve modern kullanıcı arayüzü teknikleriyle ürün ve hizmetler oluşturmaya kararlıyım.',
 				'Bu alandaki bilgimi öğrenmeye ve genişletmeye devam etmek için elimden geleni yapıyorum, çünkü ne kadar çok öğrenirsem, son kullanıcıların deneyimine o kadar iyi olur.',
-				`Beni <a href="${import.meta.env.VITE_LINKEDIN_URL}" target="_blank">Linkedin</a> ve <a href="${
-					import.meta.env.VITE_GITHUB_URL
-				}" target="_blank">Github</a> veya <a href="mailto:${
-					import.meta.env.VITE_EMAIL_URL
-				}">hello@davidscicluna.com</a>.`
+				`Beni <a href="${process.env.GATSBY_LINKEDIN_URL}" target="_blank">Linkedin</a> ve <a href="${process.env.GATSBY_GITHUB_URL}" target="_blank">Github</a> veya <a href="mailto:${process.env.GATSBY_EMAIL_URL}">hello@davidscicluna.com</a>.`
 			],
 			navItems: { '/': 'Ev', '/about': 'Hakkında', '/projects': 'Projeler' },
 			projects: {

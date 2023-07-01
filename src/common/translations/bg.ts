@@ -7,20 +7,10 @@ export default {
 		},
 		common: {
 			about: [
-				`Здравейте! Аз съм Дейвид Scicluna, разработчик на предния край, базиран на слънчевите малтийски острови. В момента работи на <a href="${
-					import.meta.env.VITE_TAIN_URL
-				}" target="_blank">Tain</a> | <a href="${
-					import.meta.env.VITE_EEZE_URL
-				}" target="_blank">EEZE</a> и като фрийлансър.`,
+				`Здравейте! Аз съм Дейвид Scicluna, разработчик на предния край, базиран на слънчевите малтийски острови. В момента работи на <a href="${process.env.GATSBY_TAIN_URL}" target="_blank">Tain</a> | <a href="${process.env.GATSBY_EEZE_URL}" target="_blank">EEZE</a> и като фрийлансър.`,
 				'Много съм страстен по отношение на технологиите; Обичам да разработвам идеи в приложения и се ангажирам да създавам продукти и услуги с изключително потребителско изживяване и със съвременни техники на потребителски интерфейс.',
 				'Опитвам се да продължа да уча и да разширявам знанията си в тази област, тъй като вярвам, че колкото повече науча, толкова по-добър опит ще има крайните потребители.',
-				`Можете да ме намерите на <a href="${
-					import.meta.env.VITE_LINKEDIN_URL
-				}" target="_blank">Linkedin</a> и <a href="${
-					import.meta.env.VITE_GITHUB_URL
-				}" target="_blank">Github</a> или се свържете с мен по имейл на <a href="mailto:${
-					import.meta.env.VITE_EMAIL_URL
-				}">hello@davidscicluna.com</a>.`
+				`Можете да ме намерите на <a href="${process.env.GATSBY_LINKEDIN_URL}" target="_blank">Linkedin</a> и <a href="${process.env.GATSBY_GITHUB_URL}" target="_blank">Github</a> или се свържете с мен по имейл на <a href="mailto:${process.env.GATSBY_EMAIL_URL}">hello@davidscicluna.com</a>.`
 			],
 			navItems: { '/': 'У дома', '/about': 'относно', '/projects': 'Проекти' },
 			projects: {

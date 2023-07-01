@@ -7,20 +7,10 @@ export default {
 		},
 		common: {
 			about: [
-				`Γειά σου! Είμαι ο David Scicluna, ένας προγραμματιστής front-end με έδρα τα ηλιόλουστα νησιά της Μάλτας. Αυτή τη στιγμή λειτουργεί σε <a href="${
-					import.meta.env.VITE_TAIN_URL
-				}" target="_blank">Tain</a> | <a href="${
-					import.meta.env.VITE_EEZE_URL
-				}" target="_blank">EEZE</a> Και ως ελεύθερος επαγγελματίας.`,
+				`Γειά σου! Είμαι ο David Scicluna, ένας προγραμματιστής front-end με έδρα τα ηλιόλουστα νησιά της Μάλτας. Αυτή τη στιγμή λειτουργεί σε <a href="${process.env.GATSBY_TAIN_URL}" target="_blank">Tain</a> | <a href="${process.env.GATSBY_EEZE_URL}" target="_blank">EEZE</a> Και ως ελεύθερος επαγγελματίας.`,
 				'Είμαι πολύ παθιασμένος με την τεχνολογία. Λατρεύω την ανάπτυξη ιδεών σε εφαρμογές και είμαι δεσμευμένος στη δημιουργία προϊόντων και υπηρεσιών με εξαιρετική εμπειρία χρήστη και με σύγχρονες τεχνικές διεπαφής χρήστη.',
 				'Προσπαθώ να συνεχίσω να μαθαίνω και να επεκτείνω τις γνώσεις μου σε αυτόν τον τομέα, καθώς πιστεύω ότι όσο περισσότερο μαθαίνω, τόσο καλύτερη είναι η εμπειρία που θα έχουν οι τελικοί χρήστες.',
-				`Μπορείτε να με βρείτε στο <a href="${
-					import.meta.env.VITE_LINKEDIN_URL
-				}" target="_blank">Linkedin</a>, Και <a href="${
-					import.meta.env.VITE_GITHUB_URL
-				}" target="_blank">Github</a>, ή επικοινωνήστε μαζί μου μέσω ηλεκτρονικού ταχυδρομείου σε <a href="mailto:${
-					import.meta.env.VITE_EMAIL_URL
-				}">hello@davidscicluna.com</a>.`
+				`Μπορείτε να με βρείτε στο <a href="${process.env.GATSBY_LINKEDIN_URL}" target="_blank">Linkedin</a>, Και <a href="${process.env.GATSBY_GITHUB_URL}" target="_blank">Github</a>, ή επικοινωνήστε μαζί μου μέσω ηλεκτρονικού ταχυδρομείου σε <a href="mailto:${process.env.GATSBY_EMAIL_URL}">hello@davidscicluna.com</a>.`
 			],
 			navItems: { '/': 'Σπίτι', '/about': 'Σχετικά με', '/projects': 'Εργα' },
 			projects: {

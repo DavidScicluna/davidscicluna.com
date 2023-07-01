@@ -7,20 +7,10 @@ export default {
 		},
 		common: {
 			about: [
-				`Bongu! Jien David Scicluna, żviluppatur front-end ibbażat fil-Gżejjer Sunny Maltese. Bħalissa qed jaħdem f <a href="${
-					import.meta.env.VITE_TAIN_URL
-				}" target="_blank">Tain</a> | <a href="${
-					import.meta.env.VITE_EEZE_URL
-				}" target="_blank">EEZE</a> u bħala freelancer.`,
+				`Bongu! Jien David Scicluna, żviluppatur front-end ibbażat fil-Gżejjer Sunny Maltese. Bħalissa qed jaħdem f <a href="${process.env.GATSBY_TAIN_URL}" target="_blank">Tain</a> | <a href="${process.env.GATSBY_EEZE_URL}" target="_blank">EEZE</a> u bħala freelancer.`,
 				"Jiena passjonat ħafna dwar it-teknoloġija; Inħobb niżviluppa ideat f'applikazzjonijiet u ninsab impenjat li noħloq prodotti u servizzi b'esperjenza eċċezzjonali ta 'l-utent u ma' tekniki moderni ta 'interface ta' l-utent.",
 				"Nipprova l-almu tiegħi biex nibqa 'nitgħallem u nespandi l-għarfien tiegħi f'dan il-qasam, billi nemmen li iktar ma nitgħallem, aħjar tkun l-esperjenza li l-utenti finali se jkollhom.",
-				`Tista 'ssibni fuq <a href="${
-					import.meta.env.VITE_LINKEDIN_URL
-				}" target="_blank">Linkedin</a>, u <a href="${
-					import.meta.env.VITE_GITHUB_URL
-				}" target="_blank">Github</a>, jew aqbad lili permezz ta 'email fuq <a href="mailto:${
-					import.meta.env.VITE_EMAIL_URL
-				}">hello@davidscicluna.com</a>.`
+				`Tista 'ssibni fuq <a href="${process.env.GATSBY_LINKEDIN_URL}" target="_blank">Linkedin</a>, u <a href="${process.env.GATSBY_GITHUB_URL}" target="_blank">Github</a>, jew aqbad lili permezz ta 'email fuq <a href="mailto:${process.env.GATSBY_EMAIL_URL}">hello@davidscicluna.com</a>.`
 			],
 			navItems: { '/': 'Id-dar', '/about': 'Madwar', '/projects': 'Proġetti' },
 			projects: {

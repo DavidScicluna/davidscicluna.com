@@ -7,20 +7,10 @@ export default {
 		},
 		common: {
 			about: [
-				`Helló! David Scicluna vagyok, a napsütéses máltai szigeteken székhellyel rendelkező front-end fejlesztő. Jelenleg a <a href="${
-					import.meta.env.VITE_TAIN_URL
-				}" target="_blank">Tain</a> | <a href="${
-					import.meta.env.VITE_EEZE_URL
-				}" target="_blank">EEZE</a> és szabadúszóként.`,
+				`Helló! David Scicluna vagyok, a napsütéses máltai szigeteken székhellyel rendelkező front-end fejlesztő. Jelenleg a <a href="${process.env.GATSBY_TAIN_URL}" target="_blank">Tain</a> | <a href="${process.env.GATSBY_EEZE_URL}" target="_blank">EEZE</a> és szabadúszóként.`,
 				'Nagyon szenvedélyesen foglalkozom a technológiával; Szeretem az ötletek kidolgozását az alkalmazásokba, és elkötelezett vagyok a kivételes felhasználói élményű termékek és szolgáltatások létrehozása iránt, valamint a modern felhasználói felület technikáival.',
 				'Minden tőlem telhetőt megpróbálok folytatni, hogy továbbtanuljak és bővítsem tudásomat ezen a területen, mivel azt hiszem, minél többet tanulok, annál jobb a tapasztalatok a végfelhasználók számára.',
-				`Megtalálhat engem <a href="${
-					import.meta.env.VITE_LINKEDIN_URL
-				}" target="_blank">Linkedin</a> és <a href="${
-					import.meta.env.VITE_GITHUB_URL
-				}" target="_blank">Github</a>, vagy e -mailben lépjen fel velem a <a href="mailto:${
-					import.meta.env.VITE_EMAIL_URL
-				}">hello@davidscicluna.com</a>.`
+				`Megtalálhat engem <a href="${process.env.GATSBY_LINKEDIN_URL}" target="_blank">Linkedin</a> és <a href="${process.env.GATSBY_GITHUB_URL}" target="_blank">Github</a>, vagy e -mailben lépjen fel velem a <a href="mailto:${process.env.GATSBY_EMAIL_URL}">hello@davidscicluna.com</a>.`
 			],
 			navItems: { '/': 'itthon', '/about': 'Ról ről', '/projects': 'Projektek' },
 			projects: {
