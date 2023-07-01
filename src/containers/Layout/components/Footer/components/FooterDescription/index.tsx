@@ -4,7 +4,7 @@ import { useGetColor } from '@davidscicluna/component-library';
 
 import { Text, VStack } from '@chakra-ui/react';
 
-import parser from 'react-html-parser';
+import parser from 'html-react-parser';
 
 import { useGetAbout } from '../../../../../../common/hooks';
 

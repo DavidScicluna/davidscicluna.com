@@ -30,7 +30,7 @@ const FooterNavigation: FC = () => {
 			{navItems.map(({ title, pathname, getIsActive }) => {
 				const isActive = getIsActive(globalThis.window.location);
 				return (
-					<Link key={title} to={pathname}>
+					<Link key={pathname} to={pathname}>
 						<Button
 							color={isActive ? color : 'gray'}
 							isCompact
