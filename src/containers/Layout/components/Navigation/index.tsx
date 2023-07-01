@@ -1,46 +1,43 @@
 import { FC } from 'react';
 
-import { useLocation } from 'react-router';
+import { Link } from 'gatsby';
 
-import { useTheme, InternalLink, Button, Divider, ScaleFade } from '@davidscicluna/component-library';
+import { useTheme, Button, Divider, ScaleFade } from '@davidscicluna/component-library';
 
 import { useMediaQuery, VStack, HStack } from '@chakra-ui/react';
 
 import { useTranslation } from 'react-i18next';
 
-import { useSpacing, useUserTheme } from '../../../../common/hooks';
+import { useSpacing } from '../../../../common/hooks';
 import { Logo, MailOverlay } from '../../../../components';
 import Socials from '../Socials';
 
-import ColorModeIconButton from './components/ColorModeIconButton';
 import InternationalizationIconButton from './components/InternationalizationIconButton';
 import NavigationItems from './components/NavigationItems';
+import ThemeAppearancePicker from './components/ThemeAppearancePicker';
 
 const Navigation: FC = () => {
 	const theme = useTheme();
-	const { color, colorMode } = useUserTheme();
 
 	const [isXs] = useMediaQuery('(max-width: 350px)');
 	const [isSm] = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 	const [isMd] = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 	const [isLg] = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
 
-	const spacing = useSpacing();
-
 	const { t } = useTranslation();
 
-	const location = useLocation();
+	const [spacing] = useSpacing();
 
 	return isMd ? (
-		<VStack width='100%' divider={<Divider colorMode={colorMode} />} spacing={0}>
+		<VStack width='100%' divider={<Divider />} spacing={0}>
 			<HStack width='100%' alignItems='center' justifyContent='space-between' spacing={0} p={spacing}>
-				<InternalLink to='/' isDisabled={location.pathname === '/'}>
-					<Logo colorMode={colorMode} isClickable={location.pathname !== '/'} />
-				</InternalLink>
+				<Link to='/'>
+					<Logo isClickable={location.pathname !== '/'} />
+				</Link>
 
 				<HStack spacing={0}>
 					<InternationalizationIconButton />
-					<ColorModeIconButton />
+					<ThemeAppearancePicker />
 				</HStack>
 			</HStack>
 
@@ -56,9 +53,9 @@ const Navigation: FC = () => {
 		</VStack>
 	) : (
 		<HStack width='100%' alignItems='center' justifyContent='space-between' spacing={0} p={spacing}>
-			<InternalLink to='/' isDisabled={location.pathname === '/'}>
-				<Logo colorMode={colorMode} isClickable={location.pathname !== '/'} />
-			</InternalLink>
+			<Link to='/'>
+				<Logo isClickable={location.pathname !== '/'} />
+			</Link>
 
 			<HStack spacing={!isLg && location.pathname !== '/' ? 2 : 0}>
 				<NavigationItems />
@@ -66,16 +63,15 @@ const Navigation: FC = () => {
 				{!isLg && (
 					<ScaleFade in={location.pathname !== '/'}>
 						<MailOverlay>
-							<Button color={color} colorMode={colorMode}>
-								{`${t('layout.navigation.action')}`}
-							</Button>
+							<Button>{`${t('layout.navigation.action')}`}</Button>
 						</MailOverlay>
 					</ScaleFade>
 				)}
 
-				<InternationalizationIconButton />
-
-				<ColorModeIconButton />
+				<HStack spacing={0}>
+					<InternationalizationIconButton />
+					<ThemeAppearancePicker />
+				</HStack>
 			</HStack>
 		</HStack>
 	);
