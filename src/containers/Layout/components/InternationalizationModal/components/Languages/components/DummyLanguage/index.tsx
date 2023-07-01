@@ -1,15 +1,14 @@
 import { FC } from 'react';
 
-import { DummyCard, DummyCardHeader } from '@davidscicluna/component-library';
-
-import { useUserTheme } from '../../../../../../../../common/hooks';
+import { DummyCard, DummyCardHeader, CardTitle, CardSubtitle } from '@davidscicluna/component-library';
 
 const DummyLanguage: FC = () => {
-	const { colorMode } = useUserTheme();
-
 	return (
-		<DummyCard color='gray' colorMode={colorMode} isLight isFullWidth variant='outlined' p={2}>
-			<DummyCardHeader hasTitle hasSubtitle />
+		<DummyCard width='100%' color='gray' variant='monochrome' p={2}>
+			<DummyCardHeader
+				renderTitle={(props) => <CardTitle {...props}>Native</CardTitle>}
+				renderSubtitle={(props) => <CardSubtitle {...props}>Name</CardSubtitle>}
+			/>
 		</DummyCard>
 	);
 };
