@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { useTheme, ScaleFade, utils, useGetColor } from '@davidscicluna/component-library';
+import { useConst, useTheme, ScaleFade, utils, useGetColor } from '@davidscicluna/component-library';
 
-import { useConst, Text } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
 
 import { Transition } from 'framer-motion';
 import { useTranslation } from 'react-i18next';

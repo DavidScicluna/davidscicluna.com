@@ -5,12 +5,13 @@ import {
 	Modal,
 	ModalStack,
 	ModalBody,
+	useConst,
 	ScaleFade,
 	utils,
 	useGetColor
 } from '@davidscicluna/component-library';
 
-import { useConst, Center, Show } from '@chakra-ui/react';
+import { Center, Show } from '@chakra-ui/react';
 
 import { Transition } from 'framer-motion';
 import { useWindowSize } from 'rooks';
