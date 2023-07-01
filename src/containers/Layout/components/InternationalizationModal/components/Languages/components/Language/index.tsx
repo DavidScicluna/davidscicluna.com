@@ -1,20 +1,24 @@
 import { FC } from 'react';
 
-import { useTheme, Card, CardHeader, Icon, ScaleFade, utils } from '@davidscicluna/component-library';
-
-import { Text } from '@chakra-ui/react';
+import {
+	useTheme,
+	Card,
+	CardTitle,
+	CardSubtitle,
+	CardHeader,
+	Icon,
+	ScaleFade,
+	useGetThemeAppearance
+} from '@davidscicluna/component-library';
 
 import { useTranslation } from 'react-i18next';
 
-import { useUserTheme } from '../../../../../../../../common/hooks';
-
-import { LanguageProps } from './types';
-
-const { getColor } = utils;
+import { LanguageProps } from './common/types';
 
 const Language: FC<LanguageProps> = (props) => {
 	const theme = useTheme();
-	const { color, colorMode } = useUserTheme();
+
+	const { color } = useGetThemeAppearance();
 
 	const { t } = useTranslation();
 
@@ -24,62 +28,29 @@ const Language: FC<LanguageProps> = (props) => {
 	return (
 		<Card
 			{...rest}
+			width='100%'
 			color={isActive || isSelected ? color : 'gray'}
-			colorMode={colorMode}
-			isLight={!isActive && !isSelected}
 			isActive={isActive}
 			isFixed={isActive}
 			isClickable
-			isFullWidth
-			variant={isActive ? 'contained' : 'outlined'}
+			variant={isActive || isSelected ? 'contained' : 'monochrome'}
 			p={2}
 		>
 			<CardHeader
-				renderTitle={(props) => (
-					<Text
-						{...props}
-						color={getColor({
-							theme,
-							colorMode,
-							color: !isActive && isSelected ? color : 'gray',
-							type: isActive ? 'background' : !isActive && isSelected ? 'color' : 'text.primary'
-						})}
-						fontSize='md'
-						fontWeight='semibold'
-						textTransform='capitalize'
-					>
-						{name}
-					</Text>
-				)}
+				renderTitle={(props) => <CardTitle {...props}>{name}</CardTitle>}
 				renderSubtitle={(props) => (
-					<Text
-						{...props}
-						color={getColor({
-							theme,
-							colorMode,
-							color: !isActive && isSelected ? color : 'gray',
-							type: isActive ? 'background' : !isActive && isSelected ? 'color' : 'text.secondary'
-						})}
-						fontSize='sm'
-						fontWeight='medium'
-						textTransform='capitalize'
-					>
+					<CardSubtitle {...props}>
 						{`${t(`layout.internationalizationModal.languages.${iso_639_1}`)}`}
-					</Text>
+					</CardSubtitle>
 				)}
 				actions={
 					<ScaleFade in={isActive || isSelected} unmountOnExit={false}>
 						<Icon
-							width={theme.fontSizes['2xl']}
-							height={theme.fontSizes['2xl']}
+							width='auto'
+							height='auto'
 							fontSize={theme.fontSizes['2xl']}
-							icon={isActive ? 'check' : isSelected ? 'done_all' : 'square'}
-							color={getColor({
-								theme,
-								colorMode,
-								color: !isActive && isSelected ? color : 'gray',
-								type: !isActive && isSelected ? 'color' : 'background'
-							})}
+							icon={isActive ? 'check' : isSelected ? 'done_all' : 'crop_square'}
+							variant='transparent'
 						/>
 					</ScaleFade>
 				}
