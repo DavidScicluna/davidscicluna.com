@@ -1,17 +1,18 @@
-import { AppColor, AppFullColorMode, defaults } from '@davidscicluna/component-library';
+import { AppColor, AppFullColorMode,  } from '@davidscicluna/component-library';
 
+import colors from '@/common/content/colors';
 import { defaultLanguage, Language } from '@/common/content/languages';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { sample } from 'lodash';
 
 import { AppSliceStateProps } from './common/types';
 
-const { defaultColor, defaultColorMode } = defaults.props;
 
 const initialState: AppSliceStateProps = {
 	ui: {
 		theme: {
-			color: defaultColor,
-			colorMode: defaultColorMode
+			color: sample(colors) || 'blue',
+			colorMode: 'system' 
 		},
 		language: { ...defaultLanguage }
 	}
