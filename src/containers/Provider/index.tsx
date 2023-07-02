@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { DSCLProvider, DSCLProviderProps as ProviderProps } from '@davidscicluna/component-library';
 
-import { useSelector } from '../../common/hooks';
+import { useSelector } from '@/common/hooks';
 
 const Provider: FC<ProviderProps> = ({ children }) => {
 	const { color, colorMode } = useSelector((state) => state.app.ui.theme);
