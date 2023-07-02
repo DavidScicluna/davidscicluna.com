@@ -27,13 +27,13 @@ const Error404Page = () => {
 		>
 			<Error
 				code={404}
-				title={`${t('noMatch.title')}`}
-				subtitle={`${t('noMatch.subtitle')}`}
+				title={`${t('error404.title')}`}
+				subtitle={`${t('error404.subtitle')}`}
 				renderActions={(props) => (
 					<>
 						<Link href='/'>
 							<Button {...props} isFullWidth={isSm}>
-								{`${t('noMatch.action1')}`}
+								{`${t('error404.action1')}`}
 							</Button>
 						</Link>
 
@@ -43,7 +43,7 @@ const Error404Page = () => {
 							onClick={() => window.location.reload()}
 							variant='outlined'
 						>
-							{`${t('noMatch.action2')}`}
+							{`${t('error404.action2')}`}
 						</Button>
 					</>
 				)}
