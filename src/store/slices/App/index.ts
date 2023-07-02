@@ -1,9 +1,8 @@
 import { AppColor, AppFullColorMode, defaults } from '@davidscicluna/component-library';
 
+import { defaultLanguage } from '@/common/content/languages';
+import { Language } from '@/common/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-import { defaultLanguage } from '../../../common/content/languages';
-import { Language } from '../../../common/types';
 
 import { AppSliceStateProps } from './common/types';
 
