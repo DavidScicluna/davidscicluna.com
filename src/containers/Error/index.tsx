@@ -21,7 +21,7 @@ const Error: FC<ErrorProps> = (props) => {
 		<Center width='100%' height='100%' minHeight='inherit'>
 			<VStack spacing={spacing} p={xsSpacing}>
 				<Show breakpoint={`(max-width: ${theme.breakpoints.md})`}>
-					<VStack alignItems='flex-start' divider={<Divider />} spacing={xsSpacing}>
+					<VStack alignItems='flex-start' divider={<Divider color='gray' />} spacing={xsSpacing}>
 						<ErrorCode code={code} />
 						<ErrorDescription title={title} subtitle={subtitle} />
 					</VStack>
@@ -30,7 +30,7 @@ const Error: FC<ErrorProps> = (props) => {
 					<HStack
 						alignItems='stretch'
 						justifyContent='stretch'
-						divider={<Divider orientation='vertical' />}
+						divider={<Divider color='gray' orientation='vertical' />}
 						spacing={xsSpacing}
 					>
 						<ErrorCode code={code} />
