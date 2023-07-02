@@ -1,6 +1,6 @@
 import { AppColor, AppFullColorMode } from '@davidscicluna/component-library';
 
-import { Language } from '../../../../../common/types';
+import { Language } from '@/common/content/languages';
 
 export type AppSliceStateProps = {
 	ui: {
