@@ -1,15 +1,14 @@
 import { FC } from 'react';
 
-import { Link } from 'gatsby';
-
 import { useTheme, Button, Divider, ScaleFade } from '@davidscicluna/component-library';
 
 import { useMediaQuery, VStack, HStack } from '@chakra-ui/react';
 
+import { useSpacing } from '@/common/hooks';
+import { Logo, MailOverlay } from '@/components';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
-import { useSpacing } from '../../../../common/hooks';
-import { Logo, MailOverlay } from '../../../../components';
 import Socials from '../Socials';
 
 import InternationalizationIconButton from './components/InternationalizationIconButton';
@@ -31,7 +30,7 @@ const Navigation: FC = () => {
 	return isMd ? (
 		<VStack width='100%' divider={<Divider />} spacing={0}>
 			<HStack width='100%' alignItems='center' justifyContent='space-between' spacing={0} p={spacing}>
-				<Link to='/'>
+				<Link href='/'>
 					<Logo isClickable={location.pathname !== '/'} />
 				</Link>
 
@@ -53,7 +52,7 @@ const Navigation: FC = () => {
 		</VStack>
 	) : (
 		<HStack width='100%' alignItems='center' justifyContent='space-between' spacing={0} p={spacing}>
-			<Link to='/'>
+			<Link href='/'>
 				<Logo isClickable={location.pathname !== '/'} />
 			</Link>
 

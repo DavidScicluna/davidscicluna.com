@@ -1,12 +1,11 @@
 import { FC } from 'react';
 
-import { Link } from 'gatsby';
-
 import { useTheme, Button, useGetThemeAppearance } from '@davidscicluna/component-library';
 
 import { useMediaQuery, HStack } from '@chakra-ui/react';
 
-import { useGetNavItems } from '../../../../../../common/hooks';
+import { useGetNavItems } from '@/common/hooks';
+import Link from 'next/link';
 
 const NavigationItems: FC = () => {
 	const theme = useTheme();
@@ -23,7 +22,7 @@ const NavigationItems: FC = () => {
 			{navItems.map(({ title, pathname, getIsActive }) => {
 				const isActive = getIsActive(location);
 				return (
-					<Link key={pathname} to={pathname}>
+					<Link key={pathname} href={pathname}>
 						<Button
 							color={isActive ? color : 'gray'}
 							size={isSm ? 'xs' : isMd ? 'sm' : 'md'}

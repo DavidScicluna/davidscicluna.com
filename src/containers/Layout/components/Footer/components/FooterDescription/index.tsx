@@ -4,9 +4,8 @@ import { useGetColor } from '@davidscicluna/component-library';
 
 import { Text, VStack } from '@chakra-ui/react';
 
+import { useGetAbout } from '@/common/hooks';
 import parser from 'html-react-parser';
-
-import { useGetAbout } from '../../../../../../common/hooks';
 
 const FooterDescription: FC = () => {
 	const paragraphs = useGetAbout();

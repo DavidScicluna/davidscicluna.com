@@ -8,10 +8,9 @@ import {
 	useGetThemeAppearance
 } from '@davidscicluna/component-library';
 
+import { toggleInternationalizationModal } from '@/store/slices/modals';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-
-import { toggleInternationalizationModal } from '../../../../../../store/slices/Modals';
 
 const InternationalizationIconButton: FC = () => {
 	const { colorMode } = useGetThemeAppearance();

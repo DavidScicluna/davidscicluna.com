@@ -4,14 +4,12 @@ import { useConst, StateOverlay, SearchBar, ClearIconButton } from '@davidsciclu
 
 import { VStack, SimpleGrid } from '@chakra-ui/react';
 
+import allLanguages, { Languages as LanguagesType } from '@/common/content/languages';
+import { useSelector } from '@/common/hooks';
 import { sort } from 'fast-sort';
 import { omit, range, sample } from 'lodash';
 import { Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-
-import allLanguages from '../../../../../../common/content/languages';
-import { useSelector } from '../../../../../../common/hooks';
-import { Languages as LanguagesType } from '../../../../../../common/types';
 
 import { LanguagesProps } from './common/types';
 import { getLanguages } from './common/utils';

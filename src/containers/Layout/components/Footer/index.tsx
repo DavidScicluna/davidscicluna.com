@@ -1,16 +1,15 @@
 import { FC } from 'react';
 
-import { Link } from 'gatsby';
-
 import { useTheme, Divider, useGetColor, useGetThemeAppearance } from '@davidscicluna/component-library';
 
 import { useMediaQuery, VStack, Text, HStack } from '@chakra-ui/react';
 
+import { useSpacing } from '@/common/hooks';
+import dayjs from '@/common/scripts/dayjs';
+import { Logo } from '@/components';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
-import { useSpacing } from '../../../../common/hooks';
-import dayjs from '../../../../common/scripts/dayjs';
-import { Logo } from '../../../../components';
 import Socials from '../Socials';
 
 import FooterDescription from './components/FooterDescription';
@@ -41,7 +40,7 @@ const Footer: FC = () => {
 			p={spacing}
 		>
 			<VStack width='100%' alignItems='stretch' justifyContent='stretch' spacing={spacing}>
-				<Link to='/'>
+				<Link href='/'>
 					<Logo isClickable={location.pathname !== '/'} size='sm' />
 				</Link>
 

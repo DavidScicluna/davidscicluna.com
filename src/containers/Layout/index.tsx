@@ -16,7 +16,6 @@ import { useTranslation } from 'react-i18next';
 import { useWindowSize } from 'rooks';
 import { useElementSize, useIsFirstRender, useTimeout } from 'usehooks-ts';
 
-import Providers from '../Providers';
 import Splashscreen from '../Splashscreen';
 
 import { LayoutContext as LayoutContextType, LayoutProps } from './common/types';
@@ -53,7 +52,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 	useTimeout(() => setSetIsRoutesVisible.on(), isSplashscreenOpen ? 4000 : null);
 
 	return (
-		<Providers>
+		<>
 			<Splashscreen isOpen={isSplashscreenOpen} onClose={() => setSetIsSplashscreenOpen.off()} />
 
 			<Container
@@ -115,7 +114,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 			<InternationalizationModal />
 
 			<PlaygroundModal />
-		</Providers>
+		</>
 	);
 };
 

@@ -23,12 +23,11 @@ import {
 
 import { Text, VStack } from '@chakra-ui/react';
 
+import colors from '@/common/content/colors';
+import { useSelector } from '@/common/hooks';
+import { setAppColor, setAppColorMode } from '@/store/slices/app';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-
-import colors from '../../../../../../common/content/colors';
-import { useSelector } from '../../../../../../common/hooks';
-import { setAppColor, setAppColorMode } from '../../../../../../store/slices/app';
 
 const colorModes: AppFullColorMode[] = ['light', 'system', 'dark'];
 

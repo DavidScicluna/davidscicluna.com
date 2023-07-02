@@ -4,11 +4,10 @@ import { useTheme, Button, useBoolean, useGetThemeAppearance, HoverOverlay } fro
 
 import { useMediaQuery, VStack, Text } from '@chakra-ui/react';
 
+import { useSpacing } from '@/common/hooks';
+import { MailOverlay } from '@/components';
 import { dataAttr } from '@chakra-ui/utils';
 import { useTranslation } from 'react-i18next';
-
-import { useSpacing } from '../../../../common/hooks';
-import { MailOverlay } from '../../../../components';
 
 import useStyles from './common/styles';
 

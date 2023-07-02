@@ -4,10 +4,9 @@ import { useTheme, Link, Tooltip, IconButton, HoverOverlay } from '@davidsciclun
 
 import { useMediaQuery, HStack } from '@chakra-ui/react';
 
+import icons from '@/common/assets/icons';
+import { MailOverlay } from '@/components';
 import { useTranslation } from 'react-i18next';
-
-import icons from '../../../../common/assets/icons';
-import { MailOverlay } from '../../../../components';
 
 const { Email: EmailIcon, Github: GithubIcon, Linkedin: LinkedinIcon } = icons;
 

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { Style, utils } from '@davidscicluna/component-library';
 
 import { darken } from 'color2k';

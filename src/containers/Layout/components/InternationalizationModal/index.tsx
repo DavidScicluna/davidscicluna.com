@@ -13,14 +13,13 @@ import {
 
 import { Text } from '@chakra-ui/react';
 
+import { useSelector } from '@/common/hooks';
+import { setLanguage } from '@/store/slices/app';
+import { toggleInternationalizationModal } from '@/store/slices/modals';
 import { omit } from 'lodash';
 import { useForm, useFormState } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-
-import { useSelector } from '../../../../common/hooks';
-import { setLanguage } from '../../../../store/slices/app';
-import { toggleInternationalizationModal } from '../../../../store/slices/modals';
 
 import { InternationalizationModalForm } from './common/types';
 import Languages from './components/Languages';
