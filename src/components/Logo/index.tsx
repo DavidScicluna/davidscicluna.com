@@ -18,11 +18,18 @@ import { LogoProps } from './common/types';
 const Logo: FC<LogoProps> = (props) => {
 	const theme = useTheme();
 
-	const { color, colorMode } = useGetThemeAppearance();
+	const { color: defaultColor, colorMode: defaultColorMode } = useGetThemeAppearance();
 
 	const { t } = useTranslation();
 
-	const { isClickable = defaultIsClickable, isSquare = defaultIsSquare, size = defaultSize, sx } = props;
+	const {
+		color = defaultColor,
+		colorMode = defaultColorMode,
+		isClickable = defaultIsClickable,
+		isSquare = defaultIsSquare,
+		size = defaultSize,
+		sx
+	} = props;
 
 	const style = useStyles({ theme, color, colorMode, isClickable, size });
 
