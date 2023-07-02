@@ -4,7 +4,7 @@ import { useTheme, Divider } from '@davidscicluna/component-library';
 
 import { Center, Show, HStack, VStack } from '@chakra-ui/react';
 
-import { useSpacing } from '../../common/hooks';
+import { useSpacing } from '@/common/hooks';
 
 import { ErrorProps } from './common/types';
 import ErrorCode from './components/ErrorCode';
