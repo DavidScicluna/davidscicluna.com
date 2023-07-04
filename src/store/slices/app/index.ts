@@ -1,4 +1,4 @@
-import { AppColor, AppFullColorMode,  } from '@davidscicluna/component-library';
+import { AppColor, AppFullColorMode } from '@davidscicluna/component-library';
 
 import colors from '@/common/content/colors';
 import { defaultLanguage, Language } from '@/common/content/languages';
@@ -7,12 +7,11 @@ import { sample } from 'lodash';
 
 import { AppSliceStateProps } from './common/types';
 
-
 const initialState: AppSliceStateProps = {
 	ui: {
 		theme: {
 			color: sample(colors) || 'blue',
-			colorMode: 'system' 
+			colorMode: 'system'
 		},
 		language: { ...defaultLanguage }
 	}
