@@ -58,7 +58,7 @@ import '@fontsource/material-icons-outlined';
 
 const AppPage = ({ Component, pageProps }: AppProps) => {
 	return (
-		<Providers>
+		<Providers {...pageProps}>
 			<Meta />
 			<main>
 				<Layout>
