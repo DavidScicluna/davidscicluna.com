@@ -2,6 +2,7 @@ import { Button, useTheme } from '@davidscicluna/component-library';
 
 import { Center, useMediaQuery } from '@chakra-ui/react';
 
+import { Meta } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { useWindowSize } from 'rooks';
 
@@ -20,21 +21,29 @@ const Error500Page = () => {
 	const { innerHeight: windowHeight = 0 } = useWindowSize();
 
 	return (
-		<Center
-			width='100%'
-			minHeight={`calc(${windowHeight ? `${windowHeight}px` : '100vh'} - ${navigationHeight}px)`}
-		>
-			<Error
-				code={500}
-				title={`${t('error500.title')}`}
-				subtitle={`${t('error500.subtitle')}`}
-				renderActions={(props) => (
-					<Button {...props} isFullWidth={isSm} onClick={() => window.location.reload()} variant='outlined'>
-						{`${t('error500.action1')}`}
-					</Button>
-				)}
-			/>
-		</Center>
+		<>
+			<Meta title={`${t('error500.pageTitle')}`} />
+			<Center
+				width='100%'
+				minHeight={`calc(${windowHeight ? `${windowHeight}px` : '100vh'} - ${navigationHeight}px)`}
+			>
+				<Error
+					code={500}
+					title={`${t('error500.title')}`}
+					subtitle={`${t('error500.subtitle')}`}
+					renderActions={(props) => (
+						<Button
+							{...props}
+							isFullWidth={isSm}
+							onClick={() => window.location.reload()}
+							variant='outlined'
+						>
+							{`${t('error500.action1')}`}
+						</Button>
+					)}
+				/>
+			</Center>
+		</>
 	);
 };
 
